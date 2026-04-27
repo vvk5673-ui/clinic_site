@@ -73,7 +73,9 @@
 
 - **Фронтенд:** чистый HTML5 + CSS3 + Vanilla JS (без фреймворков)
 - **Хостинг:** Vercel (бесплатный план, автодеплой из GitHub)
-- **Домен:** Vercel-поддомен на старте (`clinic-site.vercel.app`), свой домен — позже
+- **Живая версия:** https://clinic-site-tan.vercel.app
+- **Репозиторий:** https://github.com/vvk5673-ui/clinic_site
+- **Домен:** Vercel-поддомен на старте, свой домен — позже
 - **Шрифты:** Google Fonts (Inter или похожий, как в my_lending)
 - **Иконки:** SVG inline или Lucide
 - **Картинки:** стоковые (Unsplash) на этапе демо
