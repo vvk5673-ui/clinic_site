@@ -1,0 +1,84 @@
+/* CSS-переменные шаблона. Меняешь цвет/шрифт/радиусы здесь —
+   обновляется весь сайт сразу. */
+
+:root {
+  /* === ЦВЕТА БРЕНДА === */
+  --brand-primary: #20B377;
+  --brand-primary-soft: #E6F8F0;
+  --brand-dark: #0E3D2C;
+  --brand-accent: #EC5555;
+  --brand-accent-soft: #FFE9E7;
+
+  /* === ПАЛИТРА ТЕКСТА === */
+  --text-primary: #0F2027;
+  --text-secondary: #5B6B73;
+  --text-muted: #95A1A8;
+  --text-on-dark: #FFFFFF;
+  --text-on-primary: #FFFFFF;
+
+  /* === ФОНЫ === */
+  --bg: #FFFFFF;
+  --bg-soft: #F5F8F9;
+  --bg-card: #FFFFFF;
+  --bg-dark: var(--brand-dark);
+  --bg-primary: var(--brand-primary);
+
+  /* === ГРАНИЦЫ И ТЕНИ === */
+  --border-color: #E6EBED;
+  --shadow-sm: 0 2px 8px rgba(15, 32, 39, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 32, 39, 0.08);
+  --shadow-lg: 0 24px 48px rgba(15, 32, 39, 0.12);
+
+  /* === РАДИУСЫ === */
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* === ОТСТУПЫ === */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+  --space-10: 64px;
+  --space-12: 96px;
+
+  /* === ШРИФТЫ === */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-md: 18px;
+  --fs-lg: 22px;
+  --fs-xl: 28px;
+  --fs-2xl: 36px;
+  --fs-3xl: 48px;
+  --fs-4xl: 64px;
+  --fs-5xl: 88px;
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* === КОНТЕЙНЕР === */
+  --container-max: 1280px;
+  --container-pad: 24px;
+
+  /* === АНИМАЦИИ === */
+  --t-fast: 0.15s ease-out;
+  --t-base: 0.25s ease-out;
+  --t-slow: 0.4s ease-out;
+}

@@ -1,13 +1,336 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клиника — современная стоматология</title>
-    <meta name="description" content="Универсальный шаблон сайта для клиник и стоматологий.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-bind="name">Клиника</title>
+  <meta name="description" data-bind-attr="content||tagline" content="Стоматологическая клиника">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>clinic_site — старт проекта</h1>
-    <p>Здесь будет демо-сайт. Этап 0 завершён, разметка появится после Discovery Interview.</p>
+
+  <!-- 1. ШАПКА -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <span class="logo-text" data-bind="name">Клиника</span>
+      </a>
+      <div class="header__info">
+        <div class="header__address">
+          <span class="header__label">Адрес клиники:</span>
+          <span data-bind="address">—</span>
+        </div>
+        <div class="header__hours">
+          <span class="header__label">Звоните:</span>
+          <span data-bind="workingHoursShort">—</span>
+          <a class="header__phone" href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+        </div>
+      </div>
+      <a href="#cta" class="btn btn--accent btn--header">Онлайн запись на приём</a>
+    </div>
+    <nav class="nav container">
+      <a href="#services">Услуги</a>
+      <a href="#promotions">Акции</a>
+      <a href="#doctors">Врачи</a>
+      <a href="#about">О компании</a>
+      <a href="#blog">Статьи</a>
+      <a href="#faq">Вопрос-ответ</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <!-- 2. HERO -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <div class="badge badge--accent" data-bind="badge">№ 1</div>
+        <h1 class="hero__title" data-bind="tagline">Стоматологическая клиника</h1>
+        <p class="hero__subtitle" data-bind="subtitle">Без боли</p>
+        <a href="#cta" class="btn btn--primary btn--lg">Получить консультацию</a>
+        <div class="hero__stats" data-list="heroStats" data-template="hero-stat-tpl"></div>
+      </div>
+      <div class="hero__media">
+        <div class="hero__photo" aria-hidden="true">
+          <span class="hero__photo-placeholder">фото врача</span>
+        </div>
+        <div class="hero__promo-badge" data-bind="promoBadge">скидка</div>
+      </div>
+    </div>
+  </section>
+
+  <template id="hero-stat-tpl">
+    <div class="stat">
+      <div class="stat__value" data-bind="value">—</div>
+      <div class="stat__label" data-bind="label">—</div>
+    </div>
+  </template>
+
+  <!-- 3. ПРЕИМУЩЕСТВА -->
+  <section class="section section--advantages" data-section="advantages">
+    <div class="container">
+      <h2 class="section__title">С нами безопасно</h2>
+      <div class="cards-grid cards-grid--3" data-list="advantages" data-template="advantage-tpl"></div>
+    </div>
+  </section>
+  <template id="advantage-tpl">
+    <article class="card card--advantage">
+      <div class="card__icon" data-bind="icon">●</div>
+      <h3 class="card__title" data-bind="title">—</h3>
+      <p class="card__text" data-bind="text">—</p>
+    </article>
+  </template>
+
+  <!-- 4. УСЛУГИ -->
+  <section class="section section--services" data-section="services" id="services">
+    <div class="container">
+      <div class="section--services__inner">
+        <h2 class="section__title section__title--inverted">Услуги нашей клиники</h2>
+        <div class="cards-grid cards-grid--3" data-list="services" data-template="service-tpl"></div>
+      </div>
+    </div>
+  </section>
+  <template id="service-tpl">
+    <article class="card card--service">
+      <div class="card__media"><span class="card__media-placeholder" data-bind="title">фото</span></div>
+      <div class="card__body">
+        <h3 class="card__title" data-bind="title">—</h3>
+        <p class="card__text" data-bind="text">—</p>
+        <a href="#cta" class="btn btn--primary btn--block">Получить консультацию</a>
+      </div>
+    </article>
+  </template>
+
+  <!-- 5. АКЦИИ -->
+  <section class="section section--promotions" data-section="promotions" id="promotions">
+    <div class="container">
+      <h2 class="section__title">Акции и спецпредложения</h2>
+      <div class="cards-grid cards-grid--3" data-list="promotions" data-template="promotion-tpl"></div>
+    </div>
+  </section>
+  <template id="promotion-tpl">
+    <article class="card card--promotion">
+      <h3 class="card__title" data-bind="title">—</h3>
+      <p class="card__text" data-bind="text">—</p>
+      <div class="card__price" data-bind="price">—</div>
+      <a href="#cta" class="btn btn--accent btn--block">Участвовать в акции</a>
+    </article>
+  </template>
+
+  <!-- 6. ДИАГНОСТИКА -->
+  <section class="section section--diagnosis" data-section="diagnosis">
+    <div class="container diagnosis__grid">
+      <div class="diagnosis__main">
+        <h2 class="section__title">Не знаете с чего начать?</h2>
+        <p class="section__subtitle">Выберите свою ситуацию — мы предложим план диагностики и лечения</p>
+        <div class="diagnosis__options" data-list="diagnosis" data-template="diagnosis-tpl"></div>
+      </div>
+      <aside class="diagnosis__doctor card">
+        <div class="card__media"><span class="card__media-placeholder">фото врача</span></div>
+        <div class="card__body">
+          <h3 class="card__title" data-bind="diagnosisDoctor.name">—</h3>
+          <p class="card__text" data-bind="diagnosisDoctor.role">—</p>
+          <p class="card__text card__text--muted" data-bind="diagnosisDoctor.experience">—</p>
+          <a href="#cta" class="btn btn--primary btn--block">Получить план лечения</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <template id="diagnosis-tpl">
+    <button class="diagnosis-option">
+      <div class="diagnosis-option__media"><span class="diagnosis-option__placeholder" data-bind="title">фото</span></div>
+      <div class="diagnosis-option__body">
+        <h4 class="diagnosis-option__title" data-bind="title">—</h4>
+        <p class="diagnosis-option__text" data-bind="text">—</p>
+      </div>
+    </button>
+  </template>
+
+  <!-- 13. ВРАЧИ -->
+  <section class="section section--doctors" data-section="doctors" id="doctors">
+    <div class="container">
+      <h2 class="section__title">Лучшие стоматологи</h2>
+      <div class="cards-grid cards-grid--4" data-list="doctors" data-template="doctor-tpl"></div>
+    </div>
+  </section>
+  <template id="doctor-tpl">
+    <article class="card card--doctor">
+      <div class="card__media"><span class="card__media-placeholder" data-bind="name">фото</span></div>
+      <div class="card__body">
+        <h3 class="card__title" data-bind="name">—</h3>
+        <p class="card__text" data-bind="role">—</p>
+        <p class="card__text card__text--muted" data-bind="experience">—</p>
+      </div>
+    </article>
+  </template>
+
+  <!-- 9. ОТЗЫВЫ -->
+  <section class="section section--reviews" data-section="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section__title">Что говорят пациенты</h2>
+      <div class="cards-grid cards-grid--3" data-list="reviews" data-template="review-tpl"></div>
+    </div>
+  </section>
+  <template id="review-tpl">
+    <article class="card card--review">
+      <div class="review__rating">★★★★★</div>
+      <p class="review__text" data-bind="text">—</p>
+      <div class="review__author">
+        <div class="review__photo"><span data-bind="name">—</span></div>
+        <div>
+          <div class="review__name"><span data-bind="name">—</span>, <span data-bind="age">—</span></div>
+          <div class="review__date" data-bind="date">—</div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- 10. ЛИД-МАГНИТ -->
+  <section class="section section--lead-magnet" data-section="leadMagnet" id="lead-magnet">
+    <div class="container lead-magnet__grid">
+      <div class="lead-magnet__content">
+        <h2 class="section__title section__title--inverted" data-bind="leadMagnet.title">—</h2>
+        <p class="section__subtitle section__subtitle--inverted" data-bind="leadMagnet.subtitle">—</p>
+        <form class="lead-form" onsubmit="alert('Спасибо! В рабочей версии заявка отправится менеджеру.'); return false;">
+          <label class="lead-form__label" data-bind="leadMagnet.formLabel">—</label>
+          <select class="lead-form__select" data-options="leadMagnet.channels"></select>
+          <input class="lead-form__input" type="tel" data-bind-attr="placeholder||leadMagnet.inputPlaceholder">
+          <button class="btn btn--primary btn--lg btn--block" type="submit" data-bind="leadMagnet.submitText">—</button>
+          <small class="lead-form__consent" data-bind="leadMagnet.consent">—</small>
+        </form>
+      </div>
+      <div class="lead-magnet__visual">
+        <div class="lead-magnet__placeholder">обложка PDF-инструкции</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. О КОМПАНИИ -->
+  <section class="section section--about" data-section="about" id="about">
+    <div class="container about__grid">
+      <div class="about__content">
+        <h2 class="section__title" data-bind="about.title">—</h2>
+        <p class="about__quote" data-bind="about.quote">—</p>
+        <p class="about__text" data-bind="about.text">—</p>
+      </div>
+      <div class="about__visual">
+        <div class="about__placeholder">фото команды</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. БЛОГ -->
+  <section class="section section--blog" data-section="blog" id="blog">
+    <div class="container">
+      <h2 class="section__title">Полезные статьи</h2>
+      <p class="section__subtitle">Делимся открыто в нашем блоге</p>
+      <div class="cards-grid cards-grid--3" data-list="blog" data-template="blog-tpl"></div>
+    </div>
+  </section>
+  <template id="blog-tpl">
+    <article class="card card--blog">
+      <div class="card__media"><span class="card__media-placeholder" data-bind="title">обложка</span></div>
+      <div class="card__body">
+        <div class="card__meta" data-bind="date">—</div>
+        <h3 class="card__title" data-bind="title">—</h3>
+        <p class="card__text" data-bind="excerpt">—</p>
+        <a href="#" class="card__link">Читать подробнее →</a>
+      </div>
+    </article>
+  </template>
+
+  <!-- 16. FAQ -->
+  <section class="section section--faq" data-section="faq" id="faq">
+    <div class="container">
+      <h2 class="section__title">Часто задаваемые вопросы</h2>
+      <div class="faq" data-list="faq" data-template="faq-tpl"></div>
+    </div>
+  </section>
+  <template id="faq-tpl">
+    <details class="faq__item">
+      <summary class="faq__q" data-bind="q">—</summary>
+      <div class="faq__a" data-bind="a">—</div>
+    </details>
+  </template>
+
+  <!-- 17. КОНТАКТЫ -->
+  <section class="section section--contacts" data-section="contacts" id="contacts">
+    <div class="container">
+      <h2 class="section__title" data-bind="contacts.title">Контакты</h2>
+      <div class="contacts__grid">
+        <div class="contacts__list" data-list="contacts.branches" data-template="branch-tpl"></div>
+        <div class="contacts__map">
+          <iframe data-bind-attr="src||contacts.mapEmbed" frameborder="0" loading="lazy" title="Карта"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+  <template id="branch-tpl">
+    <article class="card card--branch">
+      <div class="branch__photo"><span class="card__media-placeholder">фото</span></div>
+      <div class="card__body">
+        <h3 class="card__title" data-bind="address">—</h3>
+        <p class="card__text" data-bind="hours">—</p>
+        <a class="card__phone" href="#" data-bind="phone">—</a>
+      </div>
+    </article>
+  </template>
+
+  <!-- ФИНАЛЬНЫЙ CTA -->
+  <section class="section section--cta" id="cta">
+    <div class="container cta">
+      <h2 class="cta__title">Запишитесь на бесплатную консультацию</h2>
+      <p class="cta__text">Перезвоним в течение 5 минут и подберём удобное время</p>
+      <a class="btn btn--accent btn--lg" href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+    </div>
+  </section>
+
+  <!-- 18. FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo-text logo-text--inverted" data-bind="name">Клиника</span>
+        <p class="footer__tagline" data-bind="cityFromYear">—</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Навигация</h4>
+        <a href="#services">Услуги</a>
+        <a href="#doctors">Врачи</a>
+        <a href="#about">О компании</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Контакты</h4>
+        <a href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+        <a href="#" data-bind-attr="href|mailto:|email" data-bind="email">—</a>
+        <span data-bind="address">—</span>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Соцсети</h4>
+        <a href="#" data-bind-attr="href|https://t.me/|telegram">Telegram</a>
+        <a href="#" data-bind-attr="href|https://wa.me/|whatsapp">WhatsApp</a>
+        <a href="#" data-bind-attr="href|https://vk.com/|vk">ВКонтакте</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span data-bind="name">—</span></span>
+      <span>Сделано с заботой</span>
+    </div>
+  </footer>
+
+  <!-- ПЛАВАЮЩАЯ SIDE-CTA ПАНЕЛЬ -->
+  <aside class="floating-cta">
+    <a class="floating-cta__btn" href="#" data-bind-attr="href|tel:|phoneRaw" title="Позвонить">📞</a>
+    <a class="floating-cta__btn" href="#reviews" title="Отзывы">★</a>
+    <a class="floating-cta__btn floating-cta__btn--wa" href="#" data-bind-attr="href|https://wa.me/|whatsapp" title="WhatsApp">W</a>
+  </aside>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
