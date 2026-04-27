@@ -73,13 +73,15 @@ const CLINIC = {
   ],
 
   // === УСЛУГИ: 6 карточек ===
+  servicesTitle: "Услуги нашей клиники",
+  servicesSubtitle: "От терапии до имплантации — все направления стоматологии в одной клинике",
   services: [
-    { title: "Терапия", text: "Лечение кариеса, пульпита, периодонтита", image: "img/service-therapy.jpg" },
-    { title: "Хирургия", text: "Удаление зубов, имплантация", image: "img/service-surgery.jpg" },
-    { title: "Ортопедия", text: "Коронки, протезирование, виниры", image: "img/service-orthopedics.jpg" },
-    { title: "Ортодонтия", text: "Брекеты, элайнеры, исправление прикуса", image: "img/service-orthodontics.jpg" },
-    { title: "Гигиена", text: "Отбеливание, профессиональная чистка", image: "img/service-hygiene.jpg" },
-    { title: "Детский стоматолог", text: "Лечение молочных зубов, профилактика", image: "img/service-kids.jpg" }
+    { title: "Терапия",            text: "Лечение кариеса, пульпита, периодонтита",     price: "от 2 500 ₽",  icon: "tooth",      image: "img/service-therapy.jpg" },
+    { title: "Хирургия",           text: "Удаление зубов, имплантация",                 price: "от 8 000 ₽",  icon: "syringe",    image: "img/service-surgery.jpg" },
+    { title: "Ортопедия",          text: "Коронки, протезирование, виниры",             price: "от 12 000 ₽", icon: "crown",      image: "img/service-orthopedics.jpg" },
+    { title: "Ортодонтия",         text: "Брекеты, элайнеры, исправление прикуса",      price: "от 35 000 ₽", icon: "smile",      image: "img/service-orthodontics.jpg" },
+    { title: "Гигиена",            text: "Отбеливание, профессиональная чистка",        price: "от 3 500 ₽",  icon: "sparkles",   image: "img/service-hygiene.jpg" },
+    { title: "Детский стоматолог", text: "Лечение молочных зубов, профилактика",        price: "от 1 500 ₽",  icon: "baby",       image: "img/service-kids.jpg" }
   ],
 
   // === АКЦИИ: горизонтальный слайдер из 3 карточек ===
