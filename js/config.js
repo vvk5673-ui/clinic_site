@@ -77,7 +77,7 @@ const CLINIC = {
   servicesSubtitle: "От терапии до имплантации — все направления стоматологии в одной клинике",
   // Фото услуг — Unsplash, единые параметры (800x600, crop, q=80) для согласованной стилистики
   services: [
-    { title: "Терапия",            text: "Лечение кариеса, пульпита, периодонтита",     price: "от 2 500 ₽",  icon: "tooth",      image: "https://images.unsplash.com/photo-1657470179447-0f5aa16daa91?w=800&h=600&fit=crop&q=80&auto=format" },
+    { title: "Терапия",            text: "Лечение кариеса, пульпита, периодонтита",     price: "от 2 500 ₽",  icon: "tooth",      image: "pictures/service-therapy.jpg" },
     { title: "Хирургия",           text: "Удаление зубов, имплантация",                 price: "от 8 000 ₽",  icon: "syringe",    image: "https://images.unsplash.com/photo-1590424693420-634a0b0b782c?w=800&h=600&fit=crop&q=80&auto=format" },
     { title: "Ортопедия",          text: "Коронки, протезирование, виниры",             price: "от 12 000 ₽", icon: "crown",      image: "https://images.unsplash.com/photo-1720685193964-4529228a33c1?w=800&h=600&fit=crop&q=80&auto=format" },
     { title: "Ортодонтия",         text: "Брекеты, элайнеры, исправление прикуса",      price: "от 35 000 ₽", icon: "smile",      image: "https://images.unsplash.com/photo-1694675236489-d73651370688?w=800&h=600&fit=crop&q=80&auto=format" },
