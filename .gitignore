@@ -1,0 +1,29 @@
+# Секреты и переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Зависимости (на будущее, если появятся)
+node_modules/
+
+# Логи и временные файлы
+*.log
+*.tmp
+temp/
+tmp/
+
+# Сборка
+dist/
+build/
