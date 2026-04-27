@@ -284,6 +284,7 @@
     setupHeaderScroll();
     setupCardStagger('.card--advantage');
     setupCardStagger('.card--service');
+    setupCardStagger('.card--promotion');
     setupServicesCarousel();
   }
 

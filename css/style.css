@@ -685,12 +685,60 @@ p { margin: 0; }
 .card--service .btn--block:hover .btn__arrow { transform: translateX(4px); }
 
 /* === АКЦИИ (без тёмного — третья теперь светло-мятная) === */
-.card--promotion { gap: var(--space-3); }
+.card--promotion {
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out, box-shadow var(--t-base);
+}
+.card--promotion.is-visible { opacity: 1; transform: translateY(0); }
+.card--promotion:nth-child(1) { transition-delay: 0s; }
+.card--promotion:nth-child(2) { transition-delay: 0.1s; }
+.card--promotion:nth-child(3) { transition-delay: 0.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .card--promotion { opacity: 1; transform: none; transition: none; }
+}
+
 .card--promotion:nth-child(1) { background: var(--brand-primary); color: var(--text-on-primary); }
 .card--promotion:nth-child(1) .card__text { color: rgba(255,255,255,0.9); }
 .card--promotion:nth-child(2) { background: var(--bg-soft); }
 .card--promotion:nth-child(3) { background: var(--brand-primary-soft); color: var(--text-primary); border: 1px solid var(--border-color); }
 .card--promotion:nth-child(3) .card__text { color: var(--text-secondary); }
+
+/* На белой/светлой карточке — иконка получает мятную подложку */
+.card--promotion:nth-child(2) .card__icon,
+.card--promotion:nth-child(3) .card__icon {
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+}
+
+/* Hover: подъём + усиленная тень */
+.card--promotion:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26, 67, 115, 0.12);
+}
+.card--promotion.is-visible:hover { transform: translateY(-6px); }
+
+/* Угловой бейдж — поворот, акцентный цвет */
+.promo-badge {
+  position: absolute;
+  top: 18px;
+  right: -34px;
+  background: var(--brand-accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+  padding: 6px 40px;
+  transform: rotate(35deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
 .card__price {
   font-family: var(--font-display);
   font-size: var(--fs-2xl);

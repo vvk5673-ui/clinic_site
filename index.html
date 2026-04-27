@@ -149,13 +149,18 @@
   <!-- 5. АКЦИИ -->
   <section class="section section--promotions" data-section="promotions" id="promotions">
     <div class="container">
-      <h2 class="section__title">Акции и спецпредложения</h2>
+      <h2 class="section__title" data-bind="promotionsTitle">Акции и спецпредложения</h2>
+      <p class="section__subtitle" data-bind="promotionsSubtitle">—</p>
       <div class="cards-grid cards-grid--3" data-list="promotions" data-template="promotion-tpl"></div>
     </div>
   </section>
   <template id="promotion-tpl">
     <article class="card card--promotion">
-      <h3 class="card__title" data-bind="title">—</h3>
+      <span class="promo-badge" data-bind="badge">—</span>
+      <div class="card__head">
+        <span class="card__icon card__icon--inline" data-icon="icon" aria-hidden="true"></span>
+        <h3 class="card__title" data-bind="title">—</h3>
+      </div>
       <p class="card__text" data-bind="text">—</p>
       <div class="card__price" data-bind="price">—</div>
       <a href="#cta" class="btn btn--accent btn--block">Участвовать в акции</a>
