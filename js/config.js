@@ -8,7 +8,6 @@ const CLINIC = {
   tagline: "Стоматология полного цикла",
   subtitle: "От лечения до имплантации — без нервов, очередей и боли. Врачи с опытом от 20 лет",
   badge: "№ 1 клиника в городе",
-  promoTagLabel: "Подарок",
   promoTagValue: "Бесплатная консультация",
   promoTagNote: "при первом визите",
   heroPhoto: "pictures/dellavalle-ortodonzia-conservativa-hero.webp",
