@@ -1138,6 +1138,33 @@ p { margin: 0; }
   .section { padding: 40px 0; }
   .cards-grid { gap: var(--space-3); }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
+
+  /* Услуги на мобиле — горизонтальный свайп вместо столбика 6 карточек */
+  .section--services .cards-grid--3 {
+    display: flex;
+    grid-template-columns: none;
+    flex-wrap: nowrap;
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 0 var(--space-4);
+  }
+  .section--services .cards-grid--3::-webkit-scrollbar { display: none; }
+  .section--services .card--service {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    /* отключаем stagger transform — он ломает horizontal scroll */
+    opacity: 1;
+    transform: none;
+  }
+  /* мини-подсказка после подзаголовка "· листайте →" */
+  .section--services .section__subtitle::after {
+    content: " · листайте →";
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+  }
   .diagnosis__options { grid-template-columns: 1fr; }
   .faq { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; gap: var(--space-5); }
