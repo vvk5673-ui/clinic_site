@@ -595,11 +595,13 @@ p { margin: 0; }
 /* Инлайн-иконка слева от заголовка карточки услуги */
 .card__head {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
   margin-bottom: var(--space-3);
+  min-height: 64px; /* 2 строки заголовка — для выравнивания кнопок по горизонтали */
 }
 .card__head .card__title { margin-bottom: 0; }
+.card--service .card__text { min-height: 48px; /* 2 строки описания — для выравнивания */ }
 .card__icon--inline {
   width: 36px;
   height: 36px;
