@@ -164,6 +164,97 @@
     cards.forEach(function (c) { observer.observe(c); });
   }
 
+  // Карусель Услуг на мобильных: точки-индикаторы + бесшовная зацикленность.
+  // Клонирует первую и последнюю карточки и подкладывает в конец/начало.
+  // При прокрутке к клону незаметно перепрыгивает на оригинал — ощущение infinite loop.
+  function setupServicesCarousel() {
+    var grid = document.querySelector('.section--services .cards-grid');
+    var dotsContainer = document.getElementById('services-dots');
+    if (!grid || !dotsContainer) return;
+    var realCards = Array.from(grid.querySelectorAll('.card--service'));
+    if (realCards.length < 2) return;
+
+    // Клонируем крайние карточки для бесшовного цикла
+    var firstClone = realCards[0].cloneNode(true);
+    var lastClone = realCards[realCards.length - 1].cloneNode(true);
+    firstClone.classList.add('card--service-clone');
+    lastClone.classList.add('card--service-clone');
+    firstClone.setAttribute('aria-hidden', 'true');
+    lastClone.setAttribute('aria-hidden', 'true');
+    grid.insertBefore(lastClone, realCards[0]);
+    grid.appendChild(firstClone);
+
+    // Точки — по числу реальных карточек
+    realCards.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'services-dot';
+      dot.setAttribute('aria-label', 'Перейти к услуге ' + (i + 1));
+      dotsContainer.appendChild(dot);
+    });
+    var dots = Array.from(dotsContainer.querySelectorAll('.services-dot'));
+
+    function isMobile() { return window.matchMedia('(max-width: 640px)').matches; }
+    function getSlideWidth() {
+      var gap = parseFloat(getComputedStyle(grid).columnGap || getComputedStyle(grid).gap || '0');
+      return realCards[0].offsetWidth + (isNaN(gap) ? 0 : gap);
+    }
+    function setInitialPosition() {
+      if (!isMobile()) { grid.scrollLeft = 0; return; }
+      grid.scrollLeft = getSlideWidth(); // встаём на первый реальный слайд
+    }
+    function activeIndex() {
+      var w = getSlideWidth();
+      if (w === 0) return 0;
+      var idx = Math.round(grid.scrollLeft / w) - 1; // -1 = клон последнего, 0..N-1 = реальные, N = клон первого
+      if (idx < 0) return realCards.length - 1;
+      if (idx >= realCards.length) return 0;
+      return idx;
+    }
+    function updateDots() {
+      var idx = activeIndex();
+      dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+    }
+
+    var jumping = false;
+    grid.addEventListener('scroll', function () {
+      if (jumping || !isMobile()) return;
+      updateDots();
+      var w = getSlideWidth();
+      var max = grid.scrollWidth - grid.clientWidth;
+      // Достигли клона в конце → прыжок на первый реальный
+      if (grid.scrollLeft >= max - 4) {
+        jumping = true;
+        grid.scrollLeft = w;
+        requestAnimationFrame(function () { jumping = false; });
+      }
+      // Достигли клона в начале → прыжок на последний реальный
+      else if (grid.scrollLeft <= 4) {
+        jumping = true;
+        grid.scrollLeft = w * realCards.length;
+        requestAnimationFrame(function () { jumping = false; });
+      }
+    }, { passive: true });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        var w = getSlideWidth();
+        grid.scrollTo({ left: (i + 1) * w, behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      setInitialPosition();
+      updateDots();
+    });
+
+    // Первичная установка после рендера и применения CSS
+    requestAnimationFrame(function () {
+      setInitialPosition();
+      updateDots();
+    });
+  }
+
   // Добавляет класс .is-scrolled на шапку при прокрутке вниз — для тени.
   function setupHeaderScroll() {
     var header = document.querySelector('.header');
@@ -193,6 +284,7 @@
     setupHeaderScroll();
     setupCardStagger('.card--advantage');
     setupCardStagger('.card--service');
+    setupServicesCarousel();
   }
 
   if (document.readyState === 'loading') {

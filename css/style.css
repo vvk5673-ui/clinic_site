@@ -613,6 +613,26 @@ p { margin: 0; }
 }
 .card__icon--inline svg { width: 20px; height: 20px; }
 
+/* Точки-индикаторы карусели Услуг (показываются только на мобиле) */
+.services-dots { display: none; }
+.services-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background var(--t-base), transform var(--t-base), width var(--t-base);
+}
+.services-dot.is-active {
+  background: #fff;
+  width: 24px;
+  border-radius: 4px;
+}
+/* Клоны карточек для бесшовного цикла — на десктопе скрыты */
+.card--service-clone { display: none; }
+
 /* Цена услуги — выделена крупно акцентным цветом, прижата к низу */
 .card__price {
   font-family: var(--font-display);
@@ -1147,6 +1167,17 @@ p { margin: 0; }
     padding: 0;
     border-radius: 0;
   }
+  /* Точки-индикаторы видны на мобиле, цвета подходят к светлому фону */
+  .services-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: var(--space-4);
+  }
+  .services-dot { background: var(--border-color); }
+  .services-dot.is-active { background: var(--brand-primary); }
+  /* Клоны карточек видны в свайпе на мобиле */
+  .card--service-clone { display: flex; }
   .section--services .section__title--inverted { color: var(--text-primary); }
   .section--services .section__subtitle--inverted { color: var(--text-secondary); }
 
