@@ -106,6 +106,17 @@
     });
   }
 
+  // Подставляет SVG-иконки в статичный HTML.
+  // data-icon="имя" — имя берётся напрямую из ICONS.
+  // (В renderLists другая логика: там data-icon="поле" и значение поля берётся из item.)
+  function bindIcons(root) {
+    root.querySelectorAll('[data-icon]').forEach(function (el) {
+      if (el.closest('template')) return;
+      var iconName = el.dataset.icon;
+      if (iconName && ICONS[iconName]) el.innerHTML = ICONS[iconName];
+    });
+  }
+
   function applySectionFlags(ctx) {
     var flags = ctx.sections || {};
     document.querySelectorAll('[data-section]').forEach(function (el) {
@@ -130,6 +141,7 @@
     applySectionFlags(CLINIC);
     bindText(document, CLINIC);
     bindAttrs(document, CLINIC);
+    bindIcons(document);
     fillOptions(document, CLINIC);
     renderLists(CLINIC);
     // повторно — на случай data-bind-attr внутри отрендеренных карточек, ссылающихся на корневой CLINIC
