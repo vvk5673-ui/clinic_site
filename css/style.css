@@ -715,12 +715,8 @@ p { margin: 0; }
 }
 
 /* На 1-й (цветной мятной) карточке — инвертируем акценты,
-   чтобы они не сливались с фоном: бейдж/цена/кнопка → белые */
-.card--promotion:nth-child(1) .promo-badge {
-  background: #fff;
-  color: var(--brand-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-}
+   чтобы они не сливались с фоном: цена/кнопка → белые
+   (бейдж остаётся красным — хорошо читается на мятном фоне) */
 .card--promotion:nth-child(1) .card__price { color: #fff; }
 .card--promotion:nth-child(1) .card__icon {
   background: rgba(255, 255, 255, 0.18);
@@ -742,13 +738,14 @@ p { margin: 0; }
 }
 .card--promotion.is-visible:hover { transform: translateY(-6px); }
 
-/* Угловой бейдж — лента фиксированной ширины через угол карточки */
+/* Угловой бейдж — лента фиксированной ширины через угол карточки.
+   Цвет красный — классический промо-стикер, контрастирует с любым фоном */
 .promo-badge {
   position: absolute;
   top: 22px;
   right: -52px;
   width: 180px;
-  background: var(--brand-accent);
+  background: #E63946;
   color: #fff;
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
