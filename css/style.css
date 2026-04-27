@@ -534,7 +534,7 @@ p { margin: 0; }
 .card--advantage:nth-child(even) .card__text { color: var(--text-secondary); }
 .card--advantage:nth-child(even) .card__icon { color: var(--brand-primary); }
 
-/* Декоративная нумерация в правом верхнем углу карточки */
+/* Декоративная нумерация в правом верхнем углу карточки — акцент periwinkle */
 .card--advantage::before {
   content: "0" counter(advantage-num);
   position: absolute;
@@ -544,9 +544,28 @@ p { margin: 0; }
   font-weight: var(--fw-black);
   font-size: var(--fs-2xl);
   line-height: 1;
-  color: currentColor;
-  opacity: 0.18;
+  color: var(--brand-accent);
+  opacity: 0.55;
   pointer-events: none;
+}
+/* На синих карточках (нечётных) — нумерация ярче, чтобы читалась на цветном фоне */
+.card--advantage:nth-child(odd)::before { color: #fff; opacity: 0.45; }
+
+/* Декоративная акцентная линия под заголовком секции */
+.section--advantages .section__title {
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+.section--advantages .section__title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brand-accent);
 }
 
 /* Stagger fade-in при появлении в viewport */
