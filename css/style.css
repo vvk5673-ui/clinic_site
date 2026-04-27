@@ -742,18 +742,20 @@ p { margin: 0; }
 }
 .card--promotion.is-visible:hover { transform: translateY(-6px); }
 
-/* Угловой бейдж — поворот, акцентный цвет */
+/* Угловой бейдж — лента фиксированной ширины через угол карточки */
 .promo-badge {
   position: absolute;
-  top: 18px;
-  right: -34px;
+  top: 22px;
+  right: -52px;
+  width: 180px;
   background: var(--brand-accent);
   color: #fff;
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   font-size: var(--fs-sm);
   letter-spacing: 0.04em;
-  padding: 6px 40px;
+  padding: 6px 0;
+  text-align: center;
   transform: rotate(35deg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 2;
