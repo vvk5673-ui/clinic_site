@@ -464,6 +464,20 @@ p { margin: 0; }
   }
 }
 
+/* === ТАЧ-УСТРОЙСТВА (телефон/планшет): hover-эффекты не работают === */
+@media (hover: none) {
+  /* Overlay карточки врача всегда видим — имя и специализация без тапа */
+  .card--doctor .card__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Не показываем hover-overlay на услугах/блоге — на мобильных бесполезен */
+  .card--service .card__media::before,
+  .card--service .card__media::after,
+  .card--blog .card__media::before,
+  .card--blog .card__media::after { display: none; }
+}
+
 /* === ПРОГРЕСС-БАР с движущимися диагональными полосками === */
 .progress-bar {
   position: relative;
