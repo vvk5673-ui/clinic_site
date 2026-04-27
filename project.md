@@ -85,21 +85,21 @@
 ```js
 const CLINIC = {
   // Брендинг
-  name: "Клиника «Денталия»",
-  tagline: "Здоровая улыбка — наша профессия",
+  name: "Клиника «Дентал»",
+  tagline: "Красивая улыбка — наша профессия",
   logoUrl: "img/logo.svg",
 
   // Контакты
   phone: "+7 (495) 123-45-67",
-  email: "info@dentaliya.ru",
+  email: "info@dental.ru",
   address: "Москва, ул. Примерная, д. 1",
   workingHours: "Пн-Сб 9:00-21:00",
 
   // Соцсети и мессенджеры
   whatsapp: "+74951234567",
-  telegram: "dentaliya_clinic",
-  instagram: "dentaliya",
-  vk: "dentaliya",
+  telegram: "dental_clinic",
+  instagram: "dental",
+  vk: "dental",
 
   // Цвета бренда (применяются через CSS-переменные)
   brandColor: "#1ABBC9",
