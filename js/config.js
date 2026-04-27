@@ -9,6 +9,9 @@ const CLINIC = {
   subtitle: "От лечения до имплантации — без нервов, очередей и боли. Врачи с опытом от 20 лет",
   badge: "№ 1 клиника в городе",
   promoBadge: "скидка 10%",
+  promoBadgeRing: "СКИДКА 10% • СКИДКА 10% • ",
+  promoBadgeCenter: "−10%",
+  heroPhoto: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=900&q=80&auto=format&fit=crop",
   logoUrl: "img/logo.svg",
 
   // === КОНТАКТЫ ===

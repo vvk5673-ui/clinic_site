@@ -217,13 +217,26 @@ p { margin: 0; }
   width: 100%;
   height: 100%;
   min-height: 480px;
+  max-height: 600px;
+  object-fit: cover;
   background: linear-gradient(135deg, var(--brand-primary-soft) 0%, #fff 100%);
   border-radius: var(--r-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 30px 60px -20px rgba(58, 139, 112, 0.18);
 }
-.hero__photo-placeholder { color: var(--text-muted); font-size: var(--fs-md); }
+
+/* Декоративные точки перед подзаголовком */
+.hero__dots {
+  display: inline-block;
+  margin-right: 12px;
+  vertical-align: middle;
+  letter-spacing: 4px;
+  color: var(--brand-accent);
+  font-size: 10px;
+  line-height: 1;
+}
+.hero__dots::before { content: "○ ○ ○ ○"; }
+
+/* Анимированный промо-бейдж: текст крутится по кругу */
 .hero__promo-badge {
   position: absolute;
   right: -10px;
@@ -236,13 +249,35 @@ p { margin: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-align: center;
-  padding: 12px;
   box-shadow: var(--shadow-lg);
+}
+.hero__promo-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: hero-promo-spin 12s linear infinite;
+}
+.hero__promo-text {
+  fill: var(--text-on-primary);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.hero__promo-center {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+@keyframes hero-promo-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__promo-ring { animation: none; }
 }
 
 /* ===================== СЕТКА КАРТОЧЕК ===================== */
@@ -818,20 +853,20 @@ p { margin: 0; }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { white-space: nowrap; }
 
-  /* hero — фото-плейсхолдер ниже, бейдж компактнее и не вылезает */
+  /* hero — фото компактнее, промо-бейдж не вылезает */
   .hero { padding: 32px 0 48px; }
   .hero__media { min-height: 240px; }
-  .hero__photo { min-height: 240px; }
+  .hero__photo { min-height: 240px; max-height: 360px; }
   .hero__stats { gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
   .hero__stats .stat { flex: 1; min-width: 90px; }
   .stat__value { font-size: 32px; }
   .hero__promo-badge {
-    width: 84px; height: 84px;
-    font-size: 11px;
-    right: 12px;
-    bottom: 12px;
-    padding: 8px;
+    width: 88px; height: 88px;
+    right: 8px;
+    bottom: 8px;
   }
+  .hero__promo-text { font-size: 11px; letter-spacing: 0.5px; }
+  .hero__promo-center { font-size: 16px; }
 
   /* услуги — внутренний padding меньше, чтоб карточки не сжимались */
   .section--services__inner { padding: 28px 16px; border-radius: var(--r-lg); }

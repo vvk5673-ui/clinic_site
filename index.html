@@ -51,15 +51,26 @@
       <div class="hero__content">
         <div class="badge badge--accent" data-bind="badge">№ 1</div>
         <h1 class="hero__title" data-bind="tagline">Стоматологическая клиника</h1>
-        <p class="hero__subtitle" data-bind="subtitle">Без боли</p>
+        <p class="hero__subtitle">
+          <span class="hero__dots" aria-hidden="true"></span>
+          <span data-bind="subtitle">Без боли</span>
+        </p>
         <a href="#cta" class="btn btn--primary btn--lg">Получить консультацию</a>
         <div class="hero__stats" data-list="heroStats" data-template="hero-stat-tpl"></div>
       </div>
       <div class="hero__media">
-        <div class="hero__photo" aria-hidden="true">
-          <span class="hero__photo-placeholder">фото врача</span>
+        <img class="hero__photo" alt="Врач-стоматолог" data-bind-attr="src||heroPhoto" loading="eager" />
+        <div class="hero__promo-badge" aria-hidden="true">
+          <svg class="hero__promo-ring" viewBox="0 0 200 200">
+            <defs>
+              <path id="hero-promo-circle" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />
+            </defs>
+            <text class="hero__promo-text">
+              <textPath href="#hero-promo-circle" data-bind="promoBadgeRing">СКИДКА 10% • СКИДКА 10% • </textPath>
+            </text>
+          </svg>
+          <span class="hero__promo-center" data-bind="promoBadgeCenter">−10%</span>
         </div>
-        <div class="hero__promo-badge" data-bind="promoBadge">скидка</div>
       </div>
     </div>
   </section>
