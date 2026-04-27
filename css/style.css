@@ -191,9 +191,15 @@ p { margin: 0; }
 /* ===================== HERO ===================== */
 
 .hero { padding: var(--space-10) 0 var(--space-12); background: var(--bg-soft); position: relative; overflow: hidden; }
-.hero__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-10); align-items: center; }
-.hero__title { font-size: var(--fs-5xl); margin-bottom: var(--space-5); font-weight: var(--fw-black); }
-.hero__subtitle { font-size: var(--fs-lg); color: var(--text-secondary); margin-bottom: var(--space-6); max-width: 540px; }
+.hero__grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-10); align-items: center; }
+.hero__title {
+  font-size: var(--fs-5xl);
+  margin-bottom: var(--space-5);
+  font-weight: var(--fw-black);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.hero__subtitle { font-size: var(--fs-xl); color: var(--text-secondary); margin-bottom: var(--space-6); max-width: 580px; line-height: 1.4; }
 
 .hero__stats { display: flex; gap: var(--space-8); margin-top: var(--space-8); }
 .stat__value {
