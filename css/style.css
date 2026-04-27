@@ -549,22 +549,6 @@ p { margin: 0; }
   pointer-events: none;
 }
 
-/* Декоративная акцентная линия под заголовком секции */
-.section--advantages .section__title {
-  position: relative;
-  padding-bottom: var(--space-3);
-}
-.section--advantages .section__title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 56px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--brand-accent);
-}
 
 /* Stagger fade-in при появлении в viewport */
 .card--advantage {
