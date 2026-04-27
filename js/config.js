@@ -33,7 +33,7 @@ const CLINIC = {
   // Палитра «Голубой кабинет» — медицинский голубой и белый
   brandColor: "#5AB4DD",
   brandColorDark: "#2C7AB5",
-  accentColor: "#1A4373",
+  accentColor: "#14B8A6",
 
   // === КАКИЕ БЛОКИ ПОКАЗЫВАТЬ ===
   sections: {
