@@ -73,6 +73,20 @@
       </div>
       <div class="hero__media">
         <img class="hero__photo" alt="Врач-стоматолог" data-bind-attr="src||heroPhoto" loading="eager" />
+        <div class="hero-badge hero-badge--rating">
+          <span class="hero-badge__icon" data-icon="star"></span>
+          <div class="hero-badge__text">
+            <div class="hero-badge__value" data-bind="heroBadgeRating.value">4.9</div>
+            <div class="hero-badge__label" data-bind="heroBadgeRating.source">Яндекс.Карты</div>
+          </div>
+        </div>
+        <div class="hero-badge hero-badge--license">
+          <span class="hero-badge__icon" data-icon="shield"></span>
+          <div class="hero-badge__text">
+            <div class="hero-badge__value" data-bind="heroBadgeLicense.title">Лицензия</div>
+            <div class="hero-badge__label" data-bind="heroBadgeLicense.number">№...</div>
+          </div>
+        </div>
         <div class="hero__promo-tag" aria-label="Акция">
           <strong class="hero__promo-tag-value" data-bind="promoTagValue">10%</strong>
           <span class="hero__promo-tag-note" data-bind="promoTagNote">на первый визит</span>

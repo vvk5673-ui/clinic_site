@@ -12,6 +12,8 @@ const CLINIC = {
   badge: "№ 1 клиника в городе",
   promoTagValue: "Бесплатная консультация",
   promoTagNote: "на первом приёме",
+  heroBadgeRating: { value: "4.9", source: "Яндекс.Карты" },
+  heroBadgeLicense: { title: "Лицензия Минздрава", number: "№ ЛО-77-01-019234" },
   heroPhoto: "pictures/dellavalle-ortodonzia-conservativa-hero.webp",
   logoUrl: "img/logo.svg",
 
