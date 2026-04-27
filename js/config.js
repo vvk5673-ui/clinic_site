@@ -8,9 +8,9 @@ const CLINIC = {
   tagline: "Стоматология полного цикла",
   subtitle: "От лечения до имплантации — без нервов, очередей и боли. Врачи с опытом от 20 лет",
   badge: "№ 1 клиника в городе",
-  promoTagLabel: "Скидка",
-  promoTagValue: "10%",
-  promoTagNote: "на первый визит",
+  promoTagLabel: "Подарок",
+  promoTagValue: "Бесплатная консультация",
+  promoTagNote: "при первом визите",
   heroPhoto: "pictures/dellavalle-ortodonzia-conservativa-hero.webp",
   logoUrl: "img/logo.svg",
 
@@ -30,9 +30,9 @@ const CLINIC = {
   instagram: "dental",
 
   // === ЦВЕТА БРЕНДА (применяются как CSS-переменные через main.js) ===
-  // Палитра «Мятная свежесть» — мягкая, без тёмно-зелёного
-  brandColor: "#4DBA94",
-  brandColorDark: "#3A8B70",
+  // Палитра «Голубой кабинет» — медицинский голубой и белый
+  brandColor: "#5AB4DD",
+  brandColorDark: "#2C7AB5",
   accentColor: "#F26B5E",
 
   // === КАКИЕ БЛОКИ ПОКАЗЫВАТЬ ===
