@@ -714,6 +714,27 @@ p { margin: 0; }
   color: var(--brand-primary);
 }
 
+/* На 1-й (цветной мятной) карточке — инвертируем акценты,
+   чтобы они не сливались с фоном: бейдж/цена/кнопка → белые */
+.card--promotion:nth-child(1) .promo-badge {
+  background: #fff;
+  color: var(--brand-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+.card--promotion:nth-child(1) .card__price { color: #fff; }
+.card--promotion:nth-child(1) .card__icon {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+.card--promotion:nth-child(1) .btn--accent {
+  background: #fff;
+  color: var(--brand-primary);
+}
+.card--promotion:nth-child(1) .btn--accent:hover {
+  background: var(--brand-primary-soft);
+  color: var(--brand-dark);
+}
+
 /* Hover: подъём + усиленная тень */
 .card--promotion:hover {
   transform: translateY(-6px);
