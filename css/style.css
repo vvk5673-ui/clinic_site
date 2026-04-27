@@ -1139,7 +1139,15 @@ p { margin: 0; }
   .cards-grid { gap: var(--space-3); }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
 
-  /* Услуги на мобиле — горизонтальный свайп вместо столбика 6 карточек */
+  /* Услуги на мобиле — горизонтальный свайп + убираем голубую обёртку */
+  .section--services__inner {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+  .section--services .section__title--inverted { color: var(--text-primary); }
+  .section--services .section__subtitle--inverted { color: var(--text-secondary); }
+
   .section--services .cards-grid--3 {
     display: flex;
     grid-template-columns: none;
@@ -1153,7 +1161,7 @@ p { margin: 0; }
   }
   .section--services .cards-grid--3::-webkit-scrollbar { display: none; }
   .section--services .card--service {
-    flex: 0 0 85%;
+    flex: 0 0 92%;
     scroll-snap-align: start;
     /* отключаем stagger transform — он ломает horizontal scroll */
     opacity: 1;
@@ -1162,7 +1170,7 @@ p { margin: 0; }
   /* мини-подсказка после подзаголовка "· листайте →" */
   .section--services .section__subtitle::after {
     content: " · листайте →";
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted);
     font-size: 12px;
   }
   .diagnosis__options { grid-template-columns: 1fr; }
