@@ -516,8 +516,18 @@ p { margin: 0; }
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
+  overflow: hidden;
 }
 .card__media-placeholder { font-size: var(--fs-sm); }
+.card__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--t-base);
+}
+.card--service:hover .card__media-img,
+.card--blog:hover .card__media-img { transform: scale(1.05); }
 .card__body { display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
 .card__meta { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 .card__link { color: var(--brand-accent); font-weight: var(--fw-semibold); margin-top: auto; }

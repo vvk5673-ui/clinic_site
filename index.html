@@ -131,7 +131,9 @@
   </section>
   <template id="service-tpl">
     <article class="card card--service">
-      <div class="card__media"><span class="card__media-placeholder" data-bind="title">фото</span></div>
+      <div class="card__media">
+        <img class="card__media-img" data-bind-attr="src||image" alt="" loading="lazy">
+      </div>
       <div class="card__body">
         <div class="card__head">
           <span class="card__icon card__icon--inline" data-icon="icon" aria-hidden="true"></span>
