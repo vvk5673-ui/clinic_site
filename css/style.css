@@ -440,11 +440,11 @@ p { margin: 0; }
   align-items: center;
   justify-content: center;
   z-index: 2;
-  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.35);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
   transition: transform var(--t-fast), box-shadow var(--t-base);
   cursor: pointer;
 }
-.card__action:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(20, 184, 166, 0.5); }
+.card__action:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5); }
 
 /* === HOVER-OVERLAY для карточек с фото (Услуги, Блог) === */
 /* Красный градиент снизу + круглая кнопка «развернуть» в центре */
@@ -458,7 +458,7 @@ p { margin: 0; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(20, 184, 166, 0.78) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(59, 130, 246, 0.78) 100%);
   opacity: 0;
   transition: opacity var(--t-base);
   pointer-events: none;
@@ -482,7 +482,7 @@ p { margin: 0; }
   transition: opacity var(--t-base), transform var(--t-base);
   pointer-events: none;
   z-index: 2;
-  box-shadow: 0 8px 22px rgba(20, 184, 166, 0.4);
+  box-shadow: 0 8px 22px rgba(59, 130, 246, 0.4);
 }
 .card--service:hover .card__media::after,
 .card--blog:hover .card__media::after {
@@ -788,10 +788,10 @@ p { margin: 0; }
   line-height: 1;
   cursor: pointer;
   margin-top: 8px;
-  box-shadow: 0 6px 16px rgba(20, 184, 166, 0.35);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
   transition: transform var(--t-fast), box-shadow var(--t-base);
 }
-.floating-cta__totop:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(20, 184, 166, 0.5); }
+.floating-cta__totop:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(59, 130, 246, 0.5); }
 
 /* ===================== АДАПТИВ — ПЛАНШЕТ ===================== */
 

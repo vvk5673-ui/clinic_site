@@ -6,8 +6,8 @@
   --brand-primary: #5AB4DD;       /* мягкий sky-blue — основные кнопки, акценты */
   --brand-primary-soft: #E8F4FB;  /* очень светло-голубой — фоны секций */
   --brand-dark: #2C7AB5;          /* тёмно-голубой — для градиентов и контрастных вставок */
-  --brand-accent: #14B8A6;        /* teal-бирюзовый — CTA, sticky-кнопки, обводки */
-  --brand-accent-soft: #D4F4F0;   /* очень светлая мята — обводки outline-кнопок */
+  --brand-accent: #3B82F6;        /* классический синий — CTA, sticky-кнопки, обводки */
+  --brand-accent-soft: #DBEAFE;   /* очень светлый синий — обводки outline-кнопок */
 
   /* === ПАЛИТРА ТЕКСТА === */
   --text-primary: #0F2027;
