@@ -5,13 +5,13 @@
 const CLINIC = {
   // === БРЕНДИНГ ===
   name: "Клиника «Дентал»",
-  logoBrand: "Дентал",
+  logoBrand: "Dental",
   logoDescriptor: "Стоматология",
   tagline: "Стоматология полного цикла",
   subtitle: "От лечения до имплантации — без нервов, очередей и боли. Врачи с опытом от 20 лет",
   badge: "№ 1 клиника в городе",
   promoTagValue: "Бесплатная консультация",
-  promoTagNote: "при первом визите",
+  promoTagNote: "на первом приёме",
   heroPhoto: "pictures/dellavalle-ortodonzia-conservativa-hero.webp",
   logoUrl: "img/logo.svg",
 
