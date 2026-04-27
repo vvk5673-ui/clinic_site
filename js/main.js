@@ -135,6 +135,26 @@
     if (ctx.accentColor) root.style.setProperty('--brand-accent', ctx.accentColor);
   }
 
+  // Stagger-появление карточек преимуществ при скролле через IntersectionObserver.
+  // Если IO нет — сразу показываем все карточки.
+  function setupAdvantageStagger() {
+    var cards = document.querySelectorAll('.card--advantage');
+    if (!cards.length) return;
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(function (c) { c.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cards.forEach(function (c) { observer.observe(c); });
+  }
+
   // Добавляет класс .is-scrolled на шапку при прокрутке вниз — для тени.
   function setupHeaderScroll() {
     var header = document.querySelector('.header');
@@ -162,6 +182,7 @@
     // повторно — на случай data-bind-attr внутри отрендеренных карточек, ссылающихся на корневой CLINIC
     bindAttrs(document, CLINIC);
     setupHeaderScroll();
+    setupAdvantageStagger();
   }
 
   if (document.readyState === 'loading') {
