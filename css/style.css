@@ -1,6 +1,7 @@
 /* ===================== СБРОС И БАЗА ===================== */
 
 *, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100vw; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -12,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+img, iframe { max-width: 100%; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; transition: color var(--t-fast); }
 a:hover { color: var(--brand-primary); }
@@ -455,15 +457,101 @@ p { margin: 0; }
 /* ===================== АДАПТИВ — МОБИЛЬНЫЙ ===================== */
 
 @media (max-width: 640px) {
-  :root { --fs-5xl: 44px; --fs-4xl: 36px; --fs-3xl: 28px; --fs-2xl: 24px; --container-pad: 16px; }
-  .section { padding: var(--space-8) 0; }
+  :root {
+    --fs-5xl: 38px;
+    --fs-4xl: 32px;
+    --fs-3xl: 26px;
+    --fs-2xl: 22px;
+    --fs-xl: 20px;
+    --fs-lg: 18px;
+    --container-pad: 16px;
+    --space-10: 48px;
+    --space-12: 64px;
+  }
+
+  /* секции компактнее */
+  .section { padding: 40px 0; }
+  .cards-grid { gap: var(--space-3); }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
   .diagnosis__options { grid-template-columns: 1fr; }
   .faq { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr; }
-  .section--services__inner { padding: var(--space-6); }
-  .nav { gap: var(--space-3); font-size: var(--fs-xs); }
-  .floating-cta { right: 8px; }
-  .floating-cta__btn { width: 44px; height: 44px; }
-  .hero__promo-badge { width: 100px; height: 100px; font-size: var(--fs-sm); right: 0; bottom: 0; }
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-5); }
+
+  /* шапка — кнопка не помещается, делаем компактнее */
+  .header__inner { padding: 12px 16px; gap: var(--space-3); }
+  .btn--header { padding: 10px 14px; font-size: 12px; }
+  .logo-text { font-size: 22px; }
+
+  /* меню — горизонтальная прокрутка вместо переноса */
+  .nav {
+    gap: var(--space-4);
+    font-size: 13px;
+    padding: 10px 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { white-space: nowrap; }
+
+  /* hero — фото-плейсхолдер ниже, бейдж компактнее и не вылезает */
+  .hero { padding: 32px 0 48px; }
+  .hero__media { min-height: 240px; }
+  .hero__photo { min-height: 240px; }
+  .hero__stats { gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
+  .hero__stats .stat { flex: 1; min-width: 90px; }
+  .stat__value { font-size: 32px; }
+  .hero__promo-badge {
+    width: 84px; height: 84px;
+    font-size: 11px;
+    right: 12px;
+    bottom: 12px;
+    padding: 8px;
+  }
+
+  /* услуги — внутренний padding меньше, чтоб карточки не сжимались */
+  .section--services__inner { padding: 28px 16px; border-radius: var(--r-lg); }
+
+  /* карточки — фото-плейсхолдер компактнее, отступы меньше */
+  .card { padding: 20px; border-radius: var(--r-md); }
+  .card__media {
+    height: 180px;
+    margin: -20px -20px 16px;
+    border-radius: 0;
+  }
+  .card--doctor .card__media { height: 220px; }
+  .card--blog .card__media { height: 160px; }
+  .diagnosis__doctor .card__media { height: 220px; }
+
+  /* акции — числа цены не давят на текст */
+  .card__price { font-size: 24px; }
+
+  /* лид-магнит — обложка PDF не вылезает */
+  .lead-magnet__placeholder { width: 100%; max-width: 240px; height: 320px; }
+
+  /* о компании — фото меньше */
+  .about__placeholder { height: 280px; }
+
+  /* контакты — карта пониже */
+  .contacts__map iframe { min-height: 280px; }
+
+  /* sticky-панель — оставляем только 1 ключевую кнопку (WhatsApp) */
+  .floating-cta {
+    right: 12px;
+    bottom: 16px;
+    top: auto;
+    transform: none;
+  }
+  .floating-cta__btn { width: 52px; height: 52px; box-shadow: var(--shadow-lg); }
+  .floating-cta__btn:not(.floating-cta__btn--wa) { display: none; }
+
+  /* финальный CTA — кнопка во всю ширину, не вылезает */
+  .section--cta { padding: 48px 0; }
+  .cta__title { font-size: 24px; }
+  .btn--lg { width: 100%; padding: 16px 20px; font-size: 16px; }
+
+  /* footer — мельче */
+  .footer { padding: 40px 0 20px; }
+  .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
