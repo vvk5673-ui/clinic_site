@@ -20,7 +20,10 @@
     <div class="container header__inner">
       <a href="#" class="header__logo">
         <span class="header__logo-icon" data-icon="tooth"></span>
-        <span class="logo-text" data-bind="name">Клиника</span>
+        <div class="header__logo-text">
+          <span class="header__logo-descriptor" data-bind="logoDescriptor">Стоматология</span>
+          <span class="logo-text" data-bind="logoBrand">Дентал</span>
+        </div>
       </a>
       <div class="header__info">
         <div class="header__info-item">
@@ -322,7 +325,10 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <span class="logo-text logo-text--inverted" data-bind="name">Клиника</span>
+        <div class="header__logo-text">
+          <span class="header__logo-descriptor" data-bind="logoDescriptor">Стоматология</span>
+          <span class="logo-text logo-text--inverted" data-bind="logoBrand">Дентал</span>
+        </div>
         <p class="footer__tagline" data-bind="cityFromYear">—</p>
       </div>
       <div class="footer__col">
