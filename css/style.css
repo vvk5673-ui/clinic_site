@@ -224,60 +224,40 @@ p { margin: 0; }
   box-shadow: 0 30px 60px -20px rgba(58, 139, 112, 0.18);
 }
 
-/* Декоративные точки перед подзаголовком */
-.hero__dots {
-  display: inline-block;
-  margin-right: 12px;
-  vertical-align: middle;
-  letter-spacing: 4px;
-  color: var(--brand-accent);
-  font-size: 10px;
-  line-height: 1;
-}
-.hero__dots::before { content: "○ ○ ○ ○"; }
-
-/* Анимированный промо-бейдж: текст крутится по кругу */
-.hero__promo-badge {
+/* Промо-ярлык со скидкой — выходит из-под фото справа-снизу */
+.hero__promo-tag {
   position: absolute;
-  right: -10px;
-  bottom: 30px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+  right: 24px;
+  bottom: -28px;
   background: var(--brand-primary);
   color: var(--text-on-primary);
+  padding: 18px 24px;
+  border-radius: var(--r-md);
+  box-shadow: 0 14px 32px -8px rgba(58, 139, 112, 0.45);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-lg);
-}
-.hero__promo-ring {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  animation: hero-promo-spin 12s linear infinite;
-}
-.hero__promo-text {
-  fill: var(--text-on-primary);
+  flex-direction: column;
+  align-items: flex-start;
   font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 14px;
-  letter-spacing: 1px;
+  z-index: 2;
+}
+.hero__promo-tag-label {
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
   text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
 }
-.hero__promo-center {
-  font-family: var(--font-display);
+.hero__promo-tag-value {
+  font-size: 38px;
   font-weight: var(--fw-black);
-  font-size: 26px;
+  line-height: 1;
+  margin: 4px 0 6px;
   letter-spacing: -0.02em;
-  z-index: 1;
 }
-@keyframes hero-promo-spin {
-  to { transform: rotate(360deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__promo-ring { animation: none; }
+.hero__promo-tag-note {
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ===================== СЕТКА КАРТОЧЕК ===================== */
@@ -860,13 +840,14 @@ p { margin: 0; }
   .hero__stats { gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
   .hero__stats .stat { flex: 1; min-width: 90px; }
   .stat__value { font-size: 32px; }
-  .hero__promo-badge {
-    width: 88px; height: 88px;
-    right: 8px;
-    bottom: 8px;
+  .hero__promo-tag {
+    right: 12px;
+    bottom: -20px;
+    padding: 12px 16px;
   }
-  .hero__promo-text { font-size: 11px; letter-spacing: 0.5px; }
-  .hero__promo-center { font-size: 16px; }
+  .hero__promo-tag-label { font-size: 10px; letter-spacing: 0.06em; }
+  .hero__promo-tag-value { font-size: 26px; margin: 2px 0 4px; }
+  .hero__promo-tag-note { font-size: 10px; }
 
   /* услуги — внутренний padding меньше, чтоб карточки не сжимались */
   .section--services__inner { padding: 28px 16px; border-radius: var(--r-lg); }
