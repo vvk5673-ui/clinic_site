@@ -19,18 +19,25 @@
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="header__logo">
+        <span class="header__logo-icon" data-icon="tooth"></span>
         <span class="logo-text" data-bind="name">Клиника</span>
       </a>
       <div class="header__info">
-        <div class="header__address">
-          <span class="header__label">Адрес клиники:</span>
-          <span data-bind="address">—</span>
+        <div class="header__info-item">
+          <span class="header__icon" data-icon="map-pin"></span>
+          <div class="header__info-text">
+            <span class="header__label">Адрес клиники</span>
+            <span data-bind="address">—</span>
+          </div>
         </div>
-        <div class="header__hours">
-          <span class="header__label">Звоните:</span>
-          <span data-bind="workingHoursShort">—</span>
-          <a class="header__phone" href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+        <div class="header__info-item">
+          <span class="header__icon" data-icon="clock"></span>
+          <div class="header__info-text">
+            <span class="header__label">Время работы</span>
+            <span data-bind="workingHoursShort">—</span>
+          </div>
         </div>
+        <a class="header__phone" href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
       </div>
       <a href="#cta" class="btn btn--accent btn--header">Онлайн запись на приём</a>
     </div>
