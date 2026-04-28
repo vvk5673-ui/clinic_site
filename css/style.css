@@ -26,8 +26,24 @@ h1, h2, h3, h4, h5 {
   line-height: var(--lh-tight);
   margin: 0;
   letter-spacing: -0.02em;
+  text-wrap: balance; /* выравнивает длину строк заголовка для эстетики */
 }
 p { margin: 0; }
+
+/* Focus-visible: при навигации с клавиатуры показываем чёткое выделение.
+   Скрыто при клике мышью (псевдокласс отрабатывает только для keyboard focus). */
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 3px;
+}
+.btn:focus-visible {
+  outline-offset: 3px;
+}
+.btn:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
 
 /* ===================== КОНТЕЙНЕР ===================== */
 
@@ -778,13 +794,6 @@ p { margin: 0; }
 }
 /* Клоны карточек Акций для бесшовного цикла — на десктопе скрыты */
 .card--promotion-clone { display: none; }
-
-.card__price {
-  font-family: var(--font-display);
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-bold);
-  margin: var(--space-3) 0;
-}
 
 /* === ДИАГНОСТИКА === */
 .section--diagnosis { background: var(--bg-soft); }

@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-bind="name">Клиника</title>
+  <title data-bind="name">Клиника «Дентал»</title>
   <meta name="description" data-bind-attr="content||tagline" content="Стоматологическая клиника">
+
+  <!-- Брендовая favicon (зуб эвкалиптового цвета) -->
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+  <!-- Цвет адресной строки на мобильных браузерах -->
+  <meta name="theme-color" content="#6FB89E">
+
+  <!-- Open Graph: превью при шаринге ссылки в WhatsApp / Telegram / VK / FB.
+       При перекраске под нового клиента — обновить эти 5 строк вручную
+       (боты соцсетей не выполняют JS, поэтому data-bind тут не работает). -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Клиника «Дентал» — стоматология полного цикла">
+  <meta property="og:description" content="От лечения до имплантации — без нервов, очередей и боли. Лицензия Минздрава, 25+ лет опыта.">
+  <meta property="og:image" content="https://clinic-site-tan.vercel.app/pictures/AdobeStock_253448255.jpeg">
+  <meta property="og:url" content="https://clinic-site-tan.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
