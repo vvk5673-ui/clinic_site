@@ -198,7 +198,10 @@
     });
     var dots = Array.from(dotsContainer.querySelectorAll('.' + opts.dotClass));
 
-    function isMobile() { return window.matchMedia('(max-width: 640px)').matches; }
+    function isMobile() {
+      if (opts.alwaysCarousel) return true; // карусель всегда активна (используется в Отзывах)
+      return window.matchMedia('(max-width: 640px)').matches;
+    }
     function getSlideWidth() {
       var gap = parseFloat(getComputedStyle(grid).columnGap || getComputedStyle(grid).gap || '0');
       return realCards[0].offsetWidth + (isNaN(gap) ? 0 : gap);
@@ -472,7 +475,6 @@
     setupCardStagger('.card--service');
     setupCardStagger('.card--promotion');
     setupCardStagger('.card--doctor');
-    setupCardStagger('.card--review');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
     setupLeadForm();
@@ -494,6 +496,15 @@
       dotClass: 'promotions-dot',
       cloneClass: 'card--promotion-clone',
       ariaLabelPrefix: 'Перейти к акции '
+    });
+    setupCarousel({
+      gridSelector: '.section--reviews .cards-grid',
+      cardSelector: '.card--review',
+      dotsId: 'reviews-dots',
+      dotClass: 'reviews-dot',
+      cloneClass: 'card--review-clone',
+      ariaLabelPrefix: 'Перейти к отзыву ',
+      alwaysCarousel: true
     });
   }
 
