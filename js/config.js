@@ -82,7 +82,7 @@ const CLINIC = {
     { title: "Ортопедия",          text: "Коронки, протезирование, виниры",             price: "от 12 000 ₽", icon: "crown",      image: "pictures/service-orthopedics.jpg" },
     { title: "Ортодонтия",         text: "Брекеты, элайнеры, исправление прикуса",      price: "от 35 000 ₽", icon: "smile",      image: "pictures/service-orthodontics.jpg" },
     { title: "Гигиена",            text: "Отбеливание, профессиональная чистка",        price: "от 3 500 ₽",  icon: "sparkles",   image: "pictures/service-hygiene.jpg" },
-    { title: "Детский стоматолог", text: "Лечение молочных зубов, профилактика",        price: "от 1 500 ₽",  icon: "baby",       image: "https://images.unsplash.com/photo-1652761029249-6ec32a82ccb0?w=800&h=600&fit=crop&q=80&auto=format" }
+    { title: "Детский стоматолог", text: "Лечение молочных зубов, профилактика",        price: "от 1 500 ₽",  icon: "baby",       image: "pictures/service-kids.jpg" }
   ],
 
   // === АКЦИИ: горизонтальный слайдер из 3 карточек ===
