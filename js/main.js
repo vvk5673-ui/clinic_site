@@ -365,7 +365,7 @@
     var section = document.querySelector('.section--diagnosis');
     var progressBar = section ? section.querySelector('.progress-bar') : null;
     var progressFill = progressBar ? progressBar.querySelector('.progress-bar__fill') : null;
-    var progressLabel = progressBar ? progressBar.querySelector('.progress-bar__label') : null;
+    var progressLabel = section ? section.querySelector('.progress-bar__label') : null;
     var cta = document.querySelector('.diagnosis__cta');
 
     options.forEach(function (opt) {
