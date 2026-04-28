@@ -207,21 +207,23 @@ button:focus:not(:focus-visible) {
   line-height: 1;
 }
 .logo-text--inverted { color: var(--text-on-dark); }
-/* Используется только в футере (в шапке descriptor убран после redesign-skill аудита) */
 .header__logo-text {
   display: flex;
   flex-direction: column;
   line-height: 1;
+  gap: 2px;
 }
+/* Спокойная подпись под брендом — без CAPS и tracking, в Manrope-теле */
 .header__logo-descriptor {
-  font-family: var(--font-display);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--brand-dark);
-  font-weight: var(--fw-semibold);
-  margin-bottom: 2px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0;
+  color: var(--text-muted);
 }
+/* В футере descriptor поверх бренда (по HTML), нужен светлый цвет для тёмного фона */
+.footer .header__logo-text { gap: 4px; }
+.footer .header__logo-descriptor { color: rgba(255, 255, 255, 0.6); }
 
 .header__info {
   display: flex;
