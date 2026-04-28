@@ -411,6 +411,7 @@
   <section class="section section--contacts" data-section="contacts" id="contacts">
     <div class="container">
       <h2 class="section__title" data-bind="contacts.title">Контакты</h2>
+      <p class="section__subtitle" data-bind="contacts.subtitle">—</p>
       <div class="contacts__grid">
         <div class="contacts__list" data-list="contacts.branches" data-template="branch-tpl"></div>
         <div class="contacts__map">
@@ -421,11 +422,33 @@
   </section>
   <template id="branch-tpl">
     <article class="card card--branch">
-      <div class="branch__photo"><img class="branch__photo-img" data-bind-attr="src||photo" alt="Фасад клиники"></div>
+      <div class="branch__photo">
+        <img class="branch__photo-img" data-bind-attr="src||photo,alt||name" loading="lazy">
+        <span class="card__media-caption" data-bind="name" aria-hidden="true">—</span>
+      </div>
       <div class="card__body">
-        <h3 class="card__title" data-bind="address">—</h3>
-        <p class="card__text" data-bind="hours">—</p>
-        <a class="card__phone" href="#" data-bind="phone">—</a>
+        <h3 class="card__title" data-bind="name">—</h3>
+        <ul class="branch__info">
+          <li class="branch__info-item">
+            <span class="branch__info-icon" data-icon="map-pin" aria-hidden="true"></span>
+            <div class="branch__info-text">
+              <span class="branch__address" data-bind="address">—</span>
+              <span class="branch__metro" data-bind="metro">—</span>
+            </div>
+          </li>
+          <li class="branch__info-item">
+            <span class="branch__info-icon" data-icon="clock" aria-hidden="true"></span>
+            <span data-bind="hours">—</span>
+          </li>
+          <li class="branch__info-item">
+            <span class="branch__info-icon" data-icon="phone" aria-hidden="true"></span>
+            <a class="branch__phone" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+          </li>
+        </ul>
+        <div class="branch__actions">
+          <a class="btn btn--primary btn--sm" data-bind-attr="href||routeUrl" target="_blank" rel="noopener">Построить маршрут</a>
+          <a class="btn btn--outline-accent btn--sm" data-bind-attr="href|https://wa.me/|whatsapp" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
       </div>
     </article>
   </template>

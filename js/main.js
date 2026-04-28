@@ -537,6 +537,7 @@
     setupCardStagger('.card--promotion');
     setupCardStagger('.card--doctor');
     setupCardStagger('.card--blog');
+    setupCardStagger('.card--branch');
     setupCardStagger('.faq__item');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();

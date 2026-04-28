@@ -267,12 +267,37 @@ const CLINIC = {
   ],
 
   // === КОНТАКТЫ ===
+  // mapEmbed — Yandex Maps embed с двумя sage-метками pm2gnm:
+  // pt=lon,lat,style~lon,lat,style. Координаты ~ Войковская и Алексеевская.
+  // routeUrl — Yandex Maps deep link с поиском адреса (open в новой вкладке).
+  // whatsapp — номер без + для wa.me.
   contacts: {
-    title: "Наши контакты",
+    title: "Где нас найти",
+    subtitle: "2 филиала на севере Москвы. Записывайтесь по телефону или в WhatsApp",
     branches: [
-      { address: "Москва, ул. Карьерная, 10А", hours: "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00", phone: "+7 (495) 786-19-32", photo: "pictures/branch-1.webp" },
-      { address: "Москва, проспект Мира, 45",  hours: "Пн-Сб 10:00–20:00, Вс выходной",     phone: "+7 (495) 244-87-15", photo: "pictures/branch-2.webp" }
+      {
+        name:     "Главный офис",
+        address:  "Москва, ул. Карьерная, 10А",
+        metro:    "м. Войковская, 5 минут пешком",
+        hours:    "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00",
+        phone:    "+7 (495) 786-19-32",
+        phoneRaw: "+74957861932",
+        whatsapp: "74957861932",
+        routeUrl: "https://yandex.ru/maps/?text=Москва%2C+ул.+Карьерная%2C+10А",
+        photo:    "pictures/branch-1.webp"
+      },
+      {
+        name:     "Филиал на Мира",
+        address:  "Москва, проспект Мира, 45",
+        metro:    "м. Алексеевская, 7 минут пешком",
+        hours:    "Пн-Сб 10:00–20:00, Вс выходной",
+        phone:    "+7 (495) 244-87-15",
+        phoneRaw: "+74952448715",
+        whatsapp: "74952448715",
+        routeUrl: "https://yandex.ru/maps/?text=Москва%2C+проспект+Мира%2C+45",
+        photo:    "pictures/branch-2.webp"
+      }
     ],
-    mapEmbed: "https://yandex.ru/map-widget/v1/?ll=37.620070%2C55.753630&z=11"
+    mapEmbed: "https://yandex.ru/map-widget/v1/?ll=37.568%2C55.813&z=12&pt=37.499,55.819,pm2gnm~37.638,55.808,pm2gnm"
   }
 };
