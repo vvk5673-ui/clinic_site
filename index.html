@@ -171,12 +171,9 @@
     <article class="card card--service">
       <div class="card__media">
         <img class="card__media-img" data-bind-attr="src||image,alt||title" loading="lazy">
+        <span class="card__media-caption" data-bind="title">—</span>
       </div>
       <div class="card__body">
-        <div class="card__head">
-          <span class="card__icon card__icon--inline" data-icon="icon" aria-hidden="true"></span>
-          <h3 class="card__title" data-bind="title">—</h3>
-        </div>
         <p class="card__text" data-bind="text">—</p>
         <div class="card__price" data-bind="price">—</div>
         <a href="#cta" class="btn btn--outline-accent btn--block">Подробнее <span class="btn__arrow" data-icon="arrow-right"></span></a>
@@ -341,42 +338,29 @@
 
   <!-- 11. О КОМПАНИИ -->
   <section class="section section--about" data-section="about" id="about">
-    <div class="container">
-      <div class="about__head">
-        <h2 class="section__title" data-bind="about.title">—</h2>
-        <p class="section__subtitle" data-bind="about.subtitle">—</p>
-      </div>
-      <div class="about__stats" data-list="about.stats" data-template="about-stat-tpl"></div>
-      <div class="about__grid">
-        <div class="about__content">
-          <blockquote class="about__quote-block">
-            <p class="about__quote" data-bind="about.quote">—</p>
-            <div class="about__quote-author">
-              <img class="about__quote-author-photo" data-bind-attr="src||about.quoteAuthor.photo" alt="">
-              <div class="about__quote-author-text">
-                <span class="about__quote-author-name" data-bind="about.quoteAuthor.name">—</span>
-                <span class="about__quote-author-role" data-bind="about.quoteAuthor.role">—</span>
-              </div>
+    <div class="container about__grid">
+      <div class="about__content">
+        <blockquote class="about__quote-block">
+          <p class="about__quote" data-bind="about.quote">—</p>
+          <div class="about__quote-author">
+            <img class="about__quote-author-photo" data-bind-attr="src||about.quoteAuthor.photo" alt="">
+            <div class="about__quote-author-text">
+              <span class="about__quote-author-name" data-bind="about.quoteAuthor.name">—</span>
+              <span class="about__quote-author-role" data-bind="about.quoteAuthor.role">—</span>
             </div>
-          </blockquote>
-          <p class="about__text" data-bind="about.text">—</p>
-          <a href="#cta" class="btn btn--primary about__cta" data-bind="about.ctaText">—</a>
-        </div>
-        <div class="about__visual">
-          <div class="about__photo-wrap">
-            <img class="about__photo" data-bind-attr="src||about.photo" alt="Команда клиники">
-            <span class="about__photo-caption" data-bind="about.photoCaption">—</span>
           </div>
+        </blockquote>
+        <p class="about__text" data-bind="about.text">—</p>
+        <a href="#cta" class="btn btn--primary about__cta" data-bind="about.ctaText">—</a>
+      </div>
+      <div class="about__visual">
+        <div class="about__photo-wrap">
+          <img class="about__photo" data-bind-attr="src||about.photo" alt="Команда клиники">
+          <span class="about__photo-caption" data-bind="about.photoCaption">—</span>
         </div>
       </div>
     </div>
   </section>
-  <template id="about-stat-tpl">
-    <div class="about__stat">
-      <div class="about__stat-value" data-bind="value">—</div>
-      <div class="about__stat-label" data-bind="label">—</div>
-    </div>
-  </template>
 
   <!-- 15. БЛОГ -->
   <section class="section section--blog" data-section="blog" id="blog">
