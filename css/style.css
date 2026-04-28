@@ -368,7 +368,7 @@ button:focus:not(:focus-visible) {
   object-position: center;
   background: var(--brand-primary-soft);
   border-radius: var(--r-xl);
-  box-shadow: 0 30px 60px -20px rgba(44, 122, 181, 0.20);
+  box-shadow: 0 30px 60px -20px rgba(45, 125, 95, 0.20);
 }
 
 /* Hero-плашки доверия (рейтинг и лицензия) — белые карточки на фото */
@@ -444,7 +444,7 @@ button:focus:not(:focus-visible) {
   color: var(--text-on-primary);
   padding: 18px 24px;
   border-radius: var(--r-md);
-  box-shadow: 0 14px 32px -8px rgba(44, 122, 181, 0.45);
+  box-shadow: 0 14px 32px -8px rgba(45, 125, 95, 0.45);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -742,7 +742,7 @@ button:focus:not(:focus-visible) {
 /* Hover: подъём + усиленная тень */
 .card--promotion:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(26, 67, 115, 0.12);
+  box-shadow: 0 16px 40px rgba(45, 125, 95, 0.12);
 }
 .card--promotion.is-visible:hover { transform: translateY(-6px); }
 
@@ -923,11 +923,11 @@ button:focus:not(:focus-visible) {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  box-shadow: 0 4px 14px rgba(114, 128, 224, 0.35);
+  box-shadow: 0 4px 14px rgba(45, 125, 95, 0.35);
   transition: transform var(--t-fast), box-shadow var(--t-base);
   cursor: pointer;
 }
-.card__action:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(114, 128, 224, 0.5); }
+.card__action:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(45, 125, 95, 0.5); }
 
 /* === HOVER-OVERLAY для карточек с фото (Услуги, Блог) === */
 /* Красный градиент снизу + круглая кнопка «развернуть» в центре */
@@ -941,7 +941,7 @@ button:focus:not(:focus-visible) {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(114, 128, 224, 0.78) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(45, 125, 95, 0.78) 100%);
   opacity: 0;
   transition: opacity var(--t-base);
   pointer-events: none;
@@ -965,7 +965,7 @@ button:focus:not(:focus-visible) {
   transition: opacity var(--t-base), transform var(--t-base);
   pointer-events: none;
   z-index: 2;
-  box-shadow: 0 8px 22px rgba(114, 128, 224, 0.4);
+  box-shadow: 0 8px 22px rgba(45, 125, 95, 0.4);
 }
 .card--service:hover .card__media::after,
 .card--blog:hover .card__media::after {
@@ -1271,10 +1271,10 @@ button:focus:not(:focus-visible) {
   line-height: 1;
   cursor: pointer;
   margin-top: 8px;
-  box-shadow: 0 6px 16px rgba(114, 128, 224, 0.35);
+  box-shadow: 0 6px 16px rgba(45, 125, 95, 0.35);
   transition: transform var(--t-fast), box-shadow var(--t-base);
 }
-.floating-cta__totop:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(114, 128, 224, 0.5); }
+.floating-cta__totop:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(45, 125, 95, 0.5); }
 
 /* ===================== АДАПТИВ — ПЛАНШЕТ ===================== */
 
