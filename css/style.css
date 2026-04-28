@@ -1248,12 +1248,42 @@ button:focus:not(:focus-visible) {
 }
 .card--review-clone { display: flex; }
 
+/* Навигация под каруселью отзывов: стрелка-prev + точки + стрелка-next */
+.reviews-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+.reviews-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--brand-dark);
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--t-base), border-color var(--t-base), color var(--t-base), transform var(--t-base);
+}
+.reviews-arrow:hover {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--bg-card);
+  transform: scale(1.05);
+}
+.reviews-arrow:active { transform: scale(0.95); }
+.reviews-arrow svg { display: block; }
+
 /* Точки-индикаторы под каруселью отзывов */
 .reviews-dots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: var(--space-4);
 }
 .reviews-dot {
   width: 8px;
@@ -1280,6 +1310,8 @@ button:focus:not(:focus-visible) {
   .section--reviews .card--review {
     flex: 0 0 92%;
   }
+  /* На мобиле стрелки скрыты — листают свайпом или точками */
+  .reviews-arrow { display: none; }
 }
 
 /* Шапка карточки: лого Яндекс.Карт слева + рейтинг (звёзды + 5,0) справа */

@@ -263,6 +263,20 @@
       });
     });
 
+    // Стрелки prev/next (опционально — используются в Отзывах на десктопе)
+    function step(delta) {
+      var w = getSlideWidth();
+      grid.scrollBy({ left: delta * w, behavior: 'smooth' });
+    }
+    if (opts.prevId) {
+      var prevBtn = document.getElementById(opts.prevId);
+      if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+    }
+    if (opts.nextId) {
+      var nextBtn = document.getElementById(opts.nextId);
+      if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+    }
+
     window.addEventListener('resize', function () {
       setInitialPosition();
       updateDots();
@@ -504,7 +518,9 @@
       dotClass: 'reviews-dot',
       cloneClass: 'card--review-clone',
       ariaLabelPrefix: 'Перейти к отзыву ',
-      alwaysCarousel: true
+      alwaysCarousel: true,
+      prevId: 'reviews-prev',
+      nextId: 'reviews-next'
     });
   }
 

@@ -86,7 +86,7 @@ const CLINIC = {
   ],
 
   // === УСЛУГИ: 6 карточек ===
-  servicesTitle: "Шесть направлений стоматологии под одной крышей",
+  servicesTitle: "От лечения кариеса до имплантации — в одном месте",
   servicesSubtitle: "От лечения кариеса до имплантации с гарантией до 5 лет",
   // Фото услуг — единая sage Kodak Portra стилистика (Krea Flux + Bing MAI-Image-1), WebP @ 1440px / q82
   services: [
