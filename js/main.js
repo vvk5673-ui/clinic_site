@@ -164,21 +164,23 @@
     cards.forEach(function (c) { observer.observe(c); });
   }
 
-  // Карусель Услуг на мобильных: точки-индикаторы + бесшовная зацикленность.
+  // Карусель на мобильных: точки-индикаторы + бесшовная зацикленность.
   // Клонирует первую и последнюю карточки и подкладывает в конец/начало.
   // При прокрутке к клону незаметно перепрыгивает на оригинал — ощущение infinite loop.
-  function setupServicesCarousel() {
-    var grid = document.querySelector('.section--services .cards-grid');
-    var dotsContainer = document.getElementById('services-dots');
+  // Универсальная: принимает селектор грида, селектор карточки, id контейнера точек,
+  // классы для клона и точки, текст aria-label.
+  function setupCarousel(opts) {
+    var grid = document.querySelector(opts.gridSelector);
+    var dotsContainer = document.getElementById(opts.dotsId);
     if (!grid || !dotsContainer) return;
-    var realCards = Array.from(grid.querySelectorAll('.card--service'));
+    var realCards = Array.from(grid.querySelectorAll(opts.cardSelector));
     if (realCards.length < 2) return;
 
     // Клонируем крайние карточки для бесшовного цикла
     var firstClone = realCards[0].cloneNode(true);
     var lastClone = realCards[realCards.length - 1].cloneNode(true);
-    firstClone.classList.add('card--service-clone');
-    lastClone.classList.add('card--service-clone');
+    firstClone.classList.add(opts.cloneClass);
+    lastClone.classList.add(opts.cloneClass);
     firstClone.setAttribute('aria-hidden', 'true');
     lastClone.setAttribute('aria-hidden', 'true');
     grid.insertBefore(lastClone, realCards[0]);
@@ -188,11 +190,11 @@
     realCards.forEach(function (_, i) {
       var dot = document.createElement('button');
       dot.type = 'button';
-      dot.className = 'services-dot';
-      dot.setAttribute('aria-label', 'Перейти к услуге ' + (i + 1));
+      dot.className = opts.dotClass;
+      dot.setAttribute('aria-label', opts.ariaLabelPrefix + (i + 1));
       dotsContainer.appendChild(dot);
     });
-    var dots = Array.from(dotsContainer.querySelectorAll('.services-dot'));
+    var dots = Array.from(dotsContainer.querySelectorAll('.' + opts.dotClass));
 
     function isMobile() { return window.matchMedia('(max-width: 640px)').matches; }
     function getSlideWidth() {
@@ -285,7 +287,22 @@
     setupCardStagger('.card--advantage');
     setupCardStagger('.card--service');
     setupCardStagger('.card--promotion');
-    setupServicesCarousel();
+    setupCarousel({
+      gridSelector: '.section--services .cards-grid',
+      cardSelector: '.card--service',
+      dotsId: 'services-dots',
+      dotClass: 'services-dot',
+      cloneClass: 'card--service-clone',
+      ariaLabelPrefix: 'Перейти к услуге '
+    });
+    setupCarousel({
+      gridSelector: '.section--promotions .cards-grid',
+      cardSelector: '.card--promotion',
+      dotsId: 'promotions-dots',
+      dotClass: 'promotions-dot',
+      cloneClass: 'card--promotion-clone',
+      ariaLabelPrefix: 'Перейти к акции '
+    });
   }
 
   if (document.readyState === 'loading') {
