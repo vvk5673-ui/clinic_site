@@ -536,6 +536,7 @@
     setupCardStagger('.card--promotion');
     setupCardStagger('.card--doctor');
     setupCardStagger('.diagnosis-option');
+    setupCardStagger('.about__stat');
     setupDiagnosisOptions();
     setupLeadForm();
     setupHeroCarousel();

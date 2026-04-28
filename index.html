@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-bind="name">Клиника «Дентал»</title>
+  <title data-bind="name">Клиника «Dental»</title>
   <meta name="description" data-bind-attr="content||tagline" content="Стоматологическая клиника">
 
   <!-- Брендовая favicon (зуб эвкалиптового цвета) -->
@@ -16,8 +16,8 @@
        При перекраске под нового клиента — обновить эти 5 строк вручную
        (боты соцсетей не выполняют JS, поэтому data-bind тут не работает). -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Клиника «Дентал» — стоматология полного цикла">
-  <meta property="og:description" content="От лечения до имплантации — без нервов, очередей и боли. Лицензия Минздрава, 25+ лет опыта.">
+  <meta property="og:title" content="Клиника «Dental» — стоматология полного цикла">
+  <meta property="og:description" content="От лечения до имплантации — без нервов, очередей и боли. Лицензия Минздрава, 14 лет в Москве.">
   <meta property="og:image" content="https://clinic-site-tan.vercel.app/pictures/AdobeStock_253448255.jpeg">
   <meta property="og:url" content="https://clinic-site-tan.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
@@ -341,17 +341,42 @@
 
   <!-- 11. О КОМПАНИИ -->
   <section class="section section--about" data-section="about" id="about">
-    <div class="container about__grid">
-      <div class="about__content">
+    <div class="container">
+      <div class="about__head">
         <h2 class="section__title" data-bind="about.title">—</h2>
-        <p class="about__quote" data-bind="about.quote">—</p>
-        <p class="about__text" data-bind="about.text">—</p>
+        <p class="section__subtitle" data-bind="about.subtitle">—</p>
       </div>
-      <div class="about__visual">
-        <img class="about__photo" data-bind-attr="src||about.photo" alt="Команда клиники">
+      <div class="about__stats" data-list="about.stats" data-template="about-stat-tpl"></div>
+      <div class="about__grid">
+        <div class="about__content">
+          <blockquote class="about__quote-block">
+            <p class="about__quote" data-bind="about.quote">—</p>
+            <div class="about__quote-author">
+              <img class="about__quote-author-photo" data-bind-attr="src||about.quoteAuthor.photo" alt="">
+              <div class="about__quote-author-text">
+                <span class="about__quote-author-name" data-bind="about.quoteAuthor.name">—</span>
+                <span class="about__quote-author-role" data-bind="about.quoteAuthor.role">—</span>
+              </div>
+            </div>
+          </blockquote>
+          <p class="about__text" data-bind="about.text">—</p>
+          <a href="#cta" class="btn btn--primary about__cta" data-bind="about.ctaText">—</a>
+        </div>
+        <div class="about__visual">
+          <div class="about__photo-wrap">
+            <img class="about__photo" data-bind-attr="src||about.photo" alt="Команда клиники">
+            <span class="about__photo-caption" data-bind="about.photoCaption">—</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <template id="about-stat-tpl">
+    <div class="about__stat">
+      <div class="about__stat-value" data-bind="value">—</div>
+      <div class="about__stat-label" data-bind="label">—</div>
+    </div>
+  </template>
 
   <!-- 15. БЛОГ -->
   <section class="section section--blog" data-section="blog" id="blog">
