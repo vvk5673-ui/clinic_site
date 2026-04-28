@@ -18,8 +18,8 @@ const CLINIC = {
   logoUrl: "img/logo.svg",
 
   // === КОНТАКТЫ ===
-  phone: "+7 (495) 123-45-67",
-  phoneRaw: "+74951234567",
+  phone: "+7 (495) 786-19-32",
+  phoneRaw: "+74957861932",
   email: "info@dental.ru",
   address: "Москва, ул. Карьерная, 10А",
   workingHours: "Пн-Пт: 9:00–18:00",
@@ -27,7 +27,7 @@ const CLINIC = {
   cityFromYear: "в Москве с 2012 года",
 
   // === МЕССЕНДЖЕРЫ И СОЦСЕТИ ===
-  whatsapp: "+74951234567",
+  whatsapp: "+74957861932",
   telegram: "dental_clinic",
   vk: "dental",
   instagram: "dental",
@@ -56,7 +56,7 @@ const CLINIC = {
   // === HERO: СТАТИСТИКА (встроена в первый экран) ===
   heroStats: [
     { value: "25+", label: "лет опыта" },
-    { value: "1000+", label: "пациентов" },
+    { value: "1247", label: "пациентов" },
     { value: "4.9", label: "рейтинг" }
   ],
 
@@ -103,7 +103,7 @@ const CLINIC = {
     { title: "Другое",                text: "Не нашли свой вариант?",            icon: "help-circle" }
   ],
   diagnosisDoctor: {
-    name: "Иванов Александр",
+    name: "Виноградов Олег",
     role: "Главный врач, стоматолог-хирург",
     experience: "Опыт 18 лет",
     photo: "img/doctor-main.jpg"
@@ -111,10 +111,10 @@ const CLINIC = {
 
   // === ВРАЧИ: 4 карточки в карусели ===
   doctors: [
-    { name: "Иванов Александр", role: "Стоматолог-хирург", experience: "18 лет", photo: "img/doc-1.jpg" },
-    { name: "Петрова Мария", role: "Врач-ортодонт", experience: "12 лет", photo: "img/doc-2.jpg" },
-    { name: "Сидоров Дмитрий", role: "Стоматолог-терапевт", experience: "9 лет", photo: "img/doc-3.jpg" },
-    { name: "Козлова Анна", role: "Детский стоматолог", experience: "7 лет", photo: "img/doc-4.jpg" }
+    { name: "Виноградов Олег",   role: "Стоматолог-хирург",    experience: "18 лет", photo: "img/doc-1.jpg" },
+    { name: "Крамаренко Ольга",  role: "Врач-ортодонт",        experience: "12 лет", photo: "img/doc-2.jpg" },
+    { name: "Бейсембаев Тимур",  role: "Стоматолог-терапевт",  experience: "9 лет",  photo: "img/doc-3.jpg" },
+    { name: "Гордеева Ксения",   role: "Детский стоматолог",   experience: "7 лет",  photo: "img/doc-4.jpg" }
   ],
 
   // === ОТЗЫВЫ: 3 карточки (фото + текст + рейтинг) ===
@@ -169,8 +169,8 @@ const CLINIC = {
   contacts: {
     title: "Наши контакты",
     branches: [
-      { address: "Москва, ул. Карьерная, 10А", hours: "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00", phone: "+7 (495) 123-45-67", photo: "img/branch-1.jpg" },
-      { address: "Москва, проспект Мира, 45", hours: "Пн-Сб 10:00–20:00, Вс выходной", phone: "+7 (495) 765-43-21", photo: "img/branch-2.jpg" }
+      { address: "Москва, ул. Карьерная, 10А", hours: "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00", phone: "+7 (495) 786-19-32", photo: "img/branch-1.jpg" },
+      { address: "Москва, проспект Мира, 45",  hours: "Пн-Сб 10:00–20:00, Вс выходной",     phone: "+7 (495) 244-87-15", photo: "img/branch-2.jpg" }
     ],
     mapEmbed: "https://yandex.ru/map-widget/v1/?ll=37.620070%2C55.753630&z=11"
   }
