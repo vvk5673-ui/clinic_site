@@ -103,7 +103,7 @@ const CLINIC = {
   promotionsSubtitle: "Текущие предложения клиники — записывайтесь со скидкой",
   promotions: [
     { title: "Имплантация под ключ",   text: "Имплант + коронка + работа врача. Гарантия 10 лет",  price: "от 35 000 ₽", period: "До 31 мая",     badge: "−40 000 ₽" },
-    { title: "Профессиональная чистка", text: "Air Flow + ультразвук + полировка",                  price: "2 500 ₽",     period: "По вторникам",  badge: "−30%" },
+    { title: "Профессиональная чистка", text: "Air Flow + ультразвук + полировка",                  price: "от 2 500 ₽",  period: "По вторникам",  badge: "−30%" },
     { title: "Консультация бесплатно",  text: "При первом визите для всех пациентов",               price: "0 ₽",         period: "Бессрочно",     badge: "Подарок" }
   ],
 
@@ -127,8 +127,8 @@ const CLINIC = {
   doctorsTitle: "Лучшие врачи нашей клиники",
   doctorsSubtitle: "У каждого специалиста своё направление и многолетняя практика с премиум-протоколами",
   doctors: [
-    { name: "Олег Виноградов",   role: "Имплантолог Nobel, хирург",      experience: "18 лет", photo: "pictures/doc-1.webp" },
-    { name: "Ольга Крамаренко",  role: "Ортодонт Damon Q, Star Smile",   experience: "12 лет", photo: "pictures/doc-2.webp" },
+    { name: "Олег Виноградов",   role: "Имплантолог, стоматолог-хирург", experience: "18 лет", photo: "pictures/doc-1.webp" },
+    { name: "Ольга Крамаренко",  role: "Ортодонт, эстетическая коррекция прикуса", experience: "12 лет", photo: "pictures/doc-2.webp" },
     { name: "Тимур Бейсембаев",  role: "Терапевт-эндодонтист",           experience: "9 лет",  photo: "pictures/doc-3.webp" },
     { name: "Ксения Гордеева",   role: "Детский стоматолог",             experience: "7 лет",  photo: "pictures/doc-4.webp" }
   ],
