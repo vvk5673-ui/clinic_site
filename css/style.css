@@ -1045,6 +1045,11 @@ button:focus:not(:focus-visible) {
   .card--doctor { opacity: 1; transform: none; transition: none; }
 }
 .card--doctor:hover { transform: none; }  /* отключаем общий hover-сдвиг */
+/* Карточка Ольги (2-я) — фото с большим лицом, не помещается в cover. Вписываем целиком */
+.card--doctor:nth-child(2) .card__media-img {
+  object-fit: contain;
+  background: var(--brand-primary-soft);
+}
 .card--doctor .card__media {
   position: absolute;
   inset: 0;
