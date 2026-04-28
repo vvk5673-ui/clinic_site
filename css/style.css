@@ -596,10 +596,13 @@ p { margin: 0; }
 /* === УСЛУГИ (мятный блок — не тёмный) === */
 .section--services { background: var(--bg); padding: var(--space-10) 0; }
 .section--services__inner {
-  background: var(--brand-primary);
+  background: var(--brand-primary-soft);
   border-radius: var(--r-xl);
   padding: var(--space-10);
 }
+/* Светлый фон → инвертированные заголовки получают тёмный цвет */
+.section--services .section__title--inverted { color: var(--text-primary); }
+.section--services .section__subtitle--inverted { color: var(--text-secondary); }
 .card--service { background: var(--bg-card); }
 
 /* Инлайн-иконка слева от заголовка карточки услуги */
