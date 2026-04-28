@@ -862,23 +862,31 @@ button:focus:not(:focus-visible) {
   .card--promotion { opacity: 1; transform: none; transition: none; }
 }
 
-.card--promotion:nth-child(1) { background: var(--brand-primary); color: var(--text-on-primary); }
-.card--promotion:nth-child(1) .card__text { color: rgba(255,255,255,0.9); }
-.card--promotion:nth-child(2) { background: var(--bg-soft); }
-.card--promotion:nth-child(3) { background: var(--brand-primary-soft); color: var(--text-primary); border: 1px solid var(--border-color); }
-.card--promotion:nth-child(3) .card__text { color: var(--text-secondary); }
+/* Чередование фонов: 1-я и 3-я зелёные (primary), 2-я серая (soft) — синхрон с Преимуществами */
+.card--promotion:nth-child(odd)  { background: var(--brand-primary); color: var(--text-on-primary); }
+.card--promotion:nth-child(odd)  .card__text { color: rgba(255,255,255,0.9); }
+.card--promotion:nth-child(even) { background: var(--bg-soft); }
 
-/* На 1-й (цветной мятной) карточке — инвертируем акценты,
-   чтобы они не сливались с фоном: цена/кнопка → белые
-   (бейдж остаётся красным — хорошо читается на мятном фоне) */
-.card--promotion:nth-child(1) .card__price { color: #fff; }
-.card--promotion:nth-child(1) .btn--accent {
+/* На зелёных карточках инвертируем акценты (цена/кнопка/period → белые),
+   чтобы не сливались с зелёным фоном */
+.card--promotion:nth-child(odd) .card__price { color: #fff; }
+.card--promotion:nth-child(odd) .card__period { color: rgba(255,255,255,0.75); }
+.card--promotion:nth-child(odd) .btn--accent {
   background: #fff;
   color: var(--brand-primary);
 }
-.card--promotion:nth-child(1) .btn--accent:hover {
+.card--promotion:nth-child(odd) .btn--accent:hover {
   background: var(--brand-primary-soft);
   color: var(--brand-dark);
+}
+
+/* Подпись срока действия акции — мини-meta под бейджем */
+.card--promotion .card__period {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: var(--fw-semibold);
 }
 
 /* Hover: подъём + усиленная тень */
