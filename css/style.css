@@ -1312,6 +1312,12 @@ button:focus:not(:focus-visible) {
   display: flex; align-items: center; justify-content: center;
   color: var(--text-muted);
 }
+.about__photo {
+  width: 100%; height: 420px;
+  object-fit: cover;
+  border-radius: var(--r-xl);
+  display: block;
+}
 
 /* === БЛОГ === */
 .card--blog .card__media { height: 200px; }
@@ -1686,7 +1692,7 @@ button:focus:not(:focus-visible) {
   .lead-magnet__placeholder { width: 100%; max-width: 240px; height: 320px; }
 
   /* о компании — фото меньше */
-  .about__placeholder { height: 280px; }
+  .about__placeholder, .about__photo { height: 280px; }
 
   /* контакты — карта пониже */
   .contacts__map iframe { min-height: 280px; }

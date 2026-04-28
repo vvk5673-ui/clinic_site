@@ -209,7 +209,7 @@
         <div class="diagnosis__options" data-list="diagnosis" data-template="diagnosis-tpl"></div>
       </div>
       <aside class="diagnosis__doctor card">
-        <div class="card__media"><span class="card__media-placeholder">фото врача</span></div>
+        <div class="card__media"><img class="card__media-img" data-bind-attr="src||diagnosisDoctor.photo" alt="Главный врач"></div>
         <div class="card__body">
           <h3 class="card__title" data-bind="diagnosisDoctor.name">—</h3>
           <p class="card__text" data-bind="diagnosisDoctor.role">—</p>
@@ -238,7 +238,7 @@
   </section>
   <template id="doctor-tpl">
     <article class="card card--doctor">
-      <div class="card__media"><span class="card__media-placeholder" data-bind="name">фото</span></div>
+      <div class="card__media"><img class="card__media-img" data-bind-attr="src||photo" alt="Фото врача"></div>
       <div class="card__overlay">
         <h3 class="card__overlay-title" data-bind="name">—</h3>
         <p class="card__overlay-text" data-bind="role">—</p>
@@ -312,7 +312,7 @@
         <p class="about__text" data-bind="about.text">—</p>
       </div>
       <div class="about__visual">
-        <div class="about__placeholder">фото команды</div>
+        <img class="about__photo" data-bind-attr="src||about.photo" alt="Команда клиники">
       </div>
     </div>
   </section>
