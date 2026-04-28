@@ -18,12 +18,15 @@ const CLINIC = {
   heroBadgeRating: { value: "4.9", source: "Яндекс.Карты" },
   heroBadgeLicense: { title: "Лицензия Минздрава", number: "№ ЛО-77-01-019234" },
   // 3 фото для fade-карусели Hero (с ken-burns эффектом).
-  // Сейчас плейсхолдеры из текущих фото — заменим на 3 новых эвкалиптовых
-  // когда Виктор сгенерирует через Krea.
+  // Сгенерированы через Krea Flux 1.1 Pro в едином стиле эвкалиптовой
+  // клиники (35mm Kodak Portra 400). Конвертированы в WebP @ 1440px:
+  //   #1 — первый осмотр пациентки + врач с зеркалом
+  //   #2 — sideview процедуры с открытым ртом
+  //   #3 — главврач Виноградов Олег (мужчина ~42, опыт 18 лет)
   heroPhotos: [
-    { url: "pictures/AdobeStock_253448255.jpeg" },
-    { url: "pictures/service-therapy.jpg" },
-    { url: "pictures/service-hygiene.jpg" }
+    { url: "pictures/hero-1.webp" },
+    { url: "pictures/hero-2.webp" },
+    { url: "pictures/hero-3.webp" }
   ],
   logoUrl: "img/logo.svg",
 
