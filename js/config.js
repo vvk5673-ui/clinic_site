@@ -123,12 +123,14 @@ const CLINIC = {
     photo: "pictures/doc-1.webp"
   },
 
-  // === ВРАЧИ: 4 карточки в карусели ===
+  // === ВРАЧИ: 4 карточки ===
+  doctorsTitle: "Команда из 4 врачей с опытом от 7 лет",
+  doctorsSubtitle: "У каждого специалиста своё направление и многолетняя практика с премиум-протоколами",
   doctors: [
-    { name: "Виноградов Олег",   role: "Стоматолог-хирург",    experience: "18 лет", photo: "pictures/doc-1.webp" },
-    { name: "Крамаренко Ольга",  role: "Врач-ортодонт",        experience: "12 лет", photo: "pictures/doc-2.webp" },
-    { name: "Бейсембаев Тимур",  role: "Стоматолог-терапевт",  experience: "9 лет",  photo: "pictures/doc-3.webp" },
-    { name: "Гордеева Ксения",   role: "Детский стоматолог",   experience: "7 лет",  photo: "pictures/doc-4.webp" }
+    { name: "Олег Виноградов",   role: "Имплантолог Nobel, хирург",      experience: "18 лет", photo: "pictures/doc-1.webp" },
+    { name: "Ольга Крамаренко",  role: "Ортодонт Damon Q, Star Smile",   experience: "12 лет", photo: "pictures/doc-2.webp" },
+    { name: "Тимур Бейсембаев",  role: "Терапевт-эндодонтист",           experience: "9 лет",  photo: "pictures/doc-3.webp" },
+    { name: "Ксения Гордеева",   role: "Детский стоматолог",             experience: "7 лет",  photo: "pictures/doc-4.webp" }
   ],
 
   // === ОТЗЫВЫ: 3 карточки в стиле Яндекс.Карт (компактные с меткой визита) ===

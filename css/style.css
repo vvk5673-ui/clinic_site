@@ -1020,15 +1020,29 @@ button:focus:not(:focus-visible) {
 .diagnosis-option__text { font-size: var(--fs-sm); color: var(--text-secondary); }
 .diagnosis__doctor .card__media { height: 280px; }
 
-/* === ВРАЧИ — фото на всю карточку, текст появляется при hover === */
+/* === ВРАЧИ — фото на всю карточку, имя+специализация всегда видны === */
 .card--doctor {
   padding: 0;
   position: relative;
   overflow: hidden;
   border-radius: var(--r-lg);
   aspect-ratio: 3 / 4;
-  cursor: pointer;
   background: var(--brand-primary-soft);
+  display: block;            /* <a> элемент */
+  text-decoration: none;
+  color: inherit;
+  /* Stagger fade-in (как у Услуг и Преимуществ) */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out, box-shadow var(--t-base);
+}
+.card--doctor.is-visible { opacity: 1; transform: translateY(0); }
+.card--doctor:nth-child(1) { transition-delay: 0s; }
+.card--doctor:nth-child(2) { transition-delay: 0.08s; }
+.card--doctor:nth-child(3) { transition-delay: 0.16s; }
+.card--doctor:nth-child(4) { transition-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  .card--doctor { opacity: 1; transform: none; transition: none; }
 }
 .card--doctor:hover { transform: none; }  /* отключаем общий hover-сдвиг */
 .card--doctor .card__media {
@@ -1042,16 +1056,11 @@ button:focus:not(:focus-visible) {
 .card__overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  padding: 24px 24px 70px;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 32, 39, 0.92) 70%);
+  padding: 20px 20px 22px;
+  background: linear-gradient(180deg, transparent 0%, rgba(20, 60, 45, 0.92) 70%);
   color: var(--text-on-dark);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity var(--t-base), transform var(--t-base);
-  pointer-events: none;
   z-index: 1;
 }
-.card--doctor:hover .card__overlay { opacity: 1; transform: translateY(0); }
 .card__overlay-title {
   font-family: var(--font-display);
   font-size: 22px;
@@ -1060,26 +1069,41 @@ button:focus:not(:focus-visible) {
 }
 .card__overlay-text { font-size: var(--fs-sm); color: rgba(255,255,255,0.92); margin: 0; }
 .card__overlay-text--muted { color: rgba(255,255,255,0.7); margin-top: 2px; }
-.card__action {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--brand-accent);
-  color: var(--text-on-primary);
-  font-size: 26px;
-  font-weight: var(--fw-bold);
-  line-height: 1;
-  display: flex;
+
+/* Доп.блок (опыт) и CTA-кнопка — на десктопе появляются при hover, на тач всегда видны */
+.card__overlay-extra,
+.card__overlay-cta {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity var(--t-base), max-height var(--t-base), margin var(--t-base);
+  overflow: hidden;
+}
+.card__overlay-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  color: var(--brand-accent);
+  letter-spacing: 0.01em;
+}
+.card__overlay-cta .btn__arrow {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  box-shadow: 0 4px 14px rgba(45, 125, 95, 0.35);
-  transition: transform var(--t-fast), box-shadow var(--t-base);
-  cursor: pointer;
+  width: 14px; height: 14px;
+  transition: transform var(--t-base);
 }
-.card__action:hover { transform: scale(1.1); box-shadow: 0 6px 18px rgba(45, 125, 95, 0.5); }
+.card__overlay-cta .btn__arrow svg { width: 100%; height: 100%; }
+.card--doctor:hover .card__overlay-extra,
+.card--doctor:hover .card__overlay-cta {
+  opacity: 1;
+  max-height: 32px;
+}
+.card--doctor:hover .card__overlay-extra { margin-top: 2px; }
+.card--doctor:hover .card__overlay-cta { margin-top: 8px; }
+.card--doctor:hover .card__overlay-cta .btn__arrow { transform: translateX(4px); }
 
 /* === HOVER-OVERLAY для карточек с фото (Услуги, Блог) === */
 /* Красный градиент снизу + круглая кнопка «развернуть» в центре */
@@ -1136,11 +1160,14 @@ button:focus:not(:focus-visible) {
 
 /* === ТАЧ-УСТРОЙСТВА (телефон/планшет): hover-эффекты не работают === */
 @media (hover: none) {
-  /* Overlay карточки врача всегда видим — имя и специализация без тапа */
-  .card--doctor .card__overlay {
+  /* Карточка врача — на тач показываем всё сразу: имя/специализация уже видны базово, доп.блок (опыт) и CTA — раскрываем */
+  .card--doctor .card__overlay-extra,
+  .card--doctor .card__overlay-cta {
     opacity: 1;
-    transform: translateY(0);
+    max-height: 32px;
   }
+  .card--doctor .card__overlay-extra { margin-top: 2px; }
+  .card--doctor .card__overlay-cta { margin-top: 8px; }
   /* Не показываем hover-overlay на услугах/блоге — на мобильных бесполезен */
   .card--service .card__media::before,
   .card--service .card__media::after,
@@ -1775,7 +1802,7 @@ button:focus:not(:focus-visible) {
   /* doctor сохраняет фото на всю карточку и текст-оверлей */
   .card--doctor { padding: 0; aspect-ratio: 3/4; }
   .card--doctor .card__media { position: absolute; inset: 0; height: 100%; margin: 0; border-radius: 0; }
-  .card--doctor .card__overlay { padding: 16px 16px 60px; }
+  .card--doctor .card__overlay { padding: 16px 16px 18px; }
   .diagnosis__doctor .card__media { height: 220px; }
 
   /* акции — числа цены не давят на текст */

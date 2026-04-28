@@ -240,20 +240,21 @@
   <!-- 13. ВРАЧИ -->
   <section class="section section--doctors" data-section="doctors" id="doctors">
     <div class="container">
-      <h2 class="section__title">Лучшие стоматологи</h2>
+      <h2 class="section__title" data-bind="doctorsTitle">Команда врачей</h2>
+      <p class="section__subtitle" data-bind="doctorsSubtitle">—</p>
       <div class="cards-grid cards-grid--4" data-list="doctors" data-template="doctor-tpl"></div>
     </div>
   </section>
   <template id="doctor-tpl">
-    <article class="card card--doctor">
-      <div class="card__media"><img class="card__media-img" data-bind-attr="src||photo" alt="Фото врача"></div>
+    <a class="card card--doctor" href="#cta">
+      <div class="card__media"><img class="card__media-img" data-bind-attr="src||photo,alt||name" loading="lazy"></div>
       <div class="card__overlay">
         <h3 class="card__overlay-title" data-bind="name">—</h3>
         <p class="card__overlay-text" data-bind="role">—</p>
-        <p class="card__overlay-text card__overlay-text--muted" data-bind="experience">—</p>
+        <p class="card__overlay-text card__overlay-text--muted card__overlay-extra" data-bind="experience">—</p>
+        <span class="card__overlay-cta">Записаться <span class="btn__arrow" data-icon="arrow-right"></span></span>
       </div>
-      <button type="button" class="card__action" aria-label="Подробнее о враче">+</button>
-    </article>
+    </a>
   </template>
 
   <!-- 9. ОТЗЫВЫ -->
