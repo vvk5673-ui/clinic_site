@@ -200,8 +200,8 @@ const CLINIC = {
   contacts: {
     title: "Наши контакты",
     branches: [
-      { address: "Москва, ул. Карьерная, 10А", hours: "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00", phone: "+7 (495) 786-19-32", photo: "img/branch-1.jpg" },
-      { address: "Москва, проспект Мира, 45",  hours: "Пн-Сб 10:00–20:00, Вс выходной",     phone: "+7 (495) 244-87-15", photo: "img/branch-2.jpg" }
+      { address: "Москва, ул. Карьерная, 10А", hours: "Пн-Пт 9:00–21:00, Сб-Вс 10:00–18:00", phone: "+7 (495) 786-19-32", photo: "pictures/branch-1.webp" },
+      { address: "Москва, проспект Мира, 45",  hours: "Пн-Сб 10:00–20:00, Вс выходной",     phone: "+7 (495) 244-87-15", photo: "pictures/branch-2.webp" }
     ],
     mapEmbed: "https://yandex.ru/map-widget/v1/?ll=37.620070%2C55.753630&z=11"
   }
