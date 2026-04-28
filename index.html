@@ -298,7 +298,7 @@
         </form>
       </div>
       <div class="lead-magnet__visual">
-        <div class="lead-magnet__placeholder">обложка PDF-инструкции</div>
+        <img class="lead-magnet__cover" data-bind-attr="src||leadMagnet.cover" alt="Обложка инструкции">
       </div>
     </div>
   </section>
@@ -327,7 +327,7 @@
   </section>
   <template id="blog-tpl">
     <article class="card card--blog">
-      <div class="card__media"><span class="card__media-placeholder" data-bind="title">обложка</span></div>
+      <div class="card__media"><img class="card__media-img" data-bind-attr="src||image" alt="" loading="lazy"></div>
       <div class="card__body">
         <div class="card__meta" data-bind="date">—</div>
         <h3 class="card__title" data-bind="title">—</h3>

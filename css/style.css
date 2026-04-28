@@ -1283,6 +1283,13 @@ button:focus:not(:focus-visible) {
   font-weight: var(--fw-medium);
 }
 .lead-form__success[hidden] { display: none; }
+.lead-magnet__cover {
+  width: 280px; height: 360px;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  display: block;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
 .lead-magnet__placeholder {
   width: 280px; height: 360px;
   background: rgba(255,255,255,0.08);
@@ -1696,7 +1703,7 @@ button:focus:not(:focus-visible) {
   .card__price { font-size: 24px; }
 
   /* лид-магнит — обложка PDF не вылезает */
-  .lead-magnet__placeholder { width: 100%; max-width: 240px; height: 320px; }
+  .lead-magnet__placeholder, .lead-magnet__cover { width: 100%; max-width: 240px; height: 320px; }
 
   /* о компании — фото меньше */
   .about__placeholder, .about__photo { height: 280px; }
