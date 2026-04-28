@@ -1219,11 +1219,23 @@ button:focus:not(:focus-visible) {
   .progress-bar__fill { animation: none; }
 }
 
-/* === ОТЗЫВЫ (стиль Яндекс.Карт: компактная карточка с меткой визита) === */
+/* === ОТЗЫВЫ (стиль Яндекс.Карт / 2ГИС: компактная карточка с меткой визита) === */
 .card--review {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   gap: var(--space-3);
+  /* Stagger fade-in (как у Услуг и Врачей) */
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out, box-shadow var(--t-base);
+}
+.card--review.is-visible { opacity: 1; transform: translateY(0); }
+.card--review:nth-child(1) { transition-delay: 0s; }
+.card--review:nth-child(2) { transition-delay: 0.1s; }
+.card--review:nth-child(3) { transition-delay: 0.2s; }
+.card--review.is-visible:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+@media (prefers-reduced-motion: reduce) {
+  .card--review { opacity: 1; transform: none; transition: none; }
 }
 
 /* Шапка карточки: лого Яндекс.Карт слева + рейтинг (звёзды + 5,0) справа */
@@ -1241,7 +1253,7 @@ button:focus:not(:focus-visible) {
   font-size: var(--fs-xs);
   color: var(--text-secondary);
 }
-/* Лого "Я" в красном круге — фирменный знак Яндекса */
+/* Лого источника в круге — фирменный цвет агрегатора (Яндекс.Карты или 2ГИС) */
 .review__source-icon {
   display: inline-flex;
   width: 18px;
@@ -1255,6 +1267,9 @@ button:focus:not(:focus-visible) {
   font-weight: 900;
   font-family: Arial, sans-serif;
   line-height: 1;
+}
+.card--review[data-source="2gis"] .review__source-icon {
+  background: #19B548;
 }
 .review__rating {
   display: flex;

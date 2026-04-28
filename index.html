@@ -260,16 +260,17 @@
   <!-- 9. ОТЗЫВЫ -->
   <section class="section section--reviews" data-section="reviews" id="reviews">
     <div class="container">
-      <h2 class="section__title">Что говорят пациенты</h2>
+      <h2 class="section__title" data-bind="reviewsTitle">Что говорят пациенты</h2>
+      <p class="section__subtitle" data-bind="reviewsSubtitle">—</p>
       <div class="cards-grid cards-grid--3" data-list="reviews" data-template="review-tpl"></div>
     </div>
   </section>
   <template id="review-tpl">
-    <article class="card card--review">
+    <article class="card card--review" data-bind-attr="data-source||source">
       <div class="review__header">
         <div class="review__source">
-          <span class="review__source-icon" aria-hidden="true">Я</span>
-          <span>Яндекс.Карты</span>
+          <span class="review__source-icon" data-bind="sourceIcon" aria-hidden="true">Я</span>
+          <span data-bind="sourceName">Яндекс.Карты</span>
         </div>
         <div class="review__rating">
           <span class="review__stars" aria-hidden="true">★★★★★</span>

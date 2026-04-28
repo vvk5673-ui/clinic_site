@@ -472,6 +472,7 @@
     setupCardStagger('.card--service');
     setupCardStagger('.card--promotion');
     setupCardStagger('.card--doctor');
+    setupCardStagger('.card--review');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
     setupLeadForm();
