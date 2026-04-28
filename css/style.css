@@ -795,6 +795,24 @@ p { margin: 0; }
   gap: var(--space-4);
   margin-top: var(--space-5);
 }
+/* Stagger fade-in для опций диагностики */
+.diagnosis-option {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out,
+              border-color var(--t-base), background var(--t-base),
+              box-shadow var(--t-base);
+}
+.diagnosis-option.is-visible { opacity: 1; transform: translateY(0); }
+.diagnosis-option:nth-child(1) { transition-delay: 0s; }
+.diagnosis-option:nth-child(2) { transition-delay: 0.06s; }
+.diagnosis-option:nth-child(3) { transition-delay: 0.12s; }
+.diagnosis-option:nth-child(4) { transition-delay: 0.18s; }
+.diagnosis-option:nth-child(5) { transition-delay: 0.24s; }
+@media (prefers-reduced-motion: reduce) {
+  .diagnosis-option { opacity: 1; transform: none; transition: none; }
+}
+
 .diagnosis-option {
   display: flex;
   align-items: center;
@@ -806,6 +824,29 @@ p { margin: 0; }
   transition: transform var(--t-fast), box-shadow var(--t-base);
 }
 .diagnosis-option:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+/* Активная опция (выбрана пользователем) — обводка и тонированный фон */
+.diagnosis-option.is-active {
+  border-color: var(--brand-primary);
+  background: var(--brand-primary-soft);
+  box-shadow: 0 6px 20px rgba(111, 184, 158, 0.18);
+}
+.diagnosis-option.is-active .diagnosis-option__icon {
+  background: var(--brand-primary);
+  color: #fff;
+}
+/* Иконочный контейнер 64×64 с тонированной подложкой */
+.diagnosis-option__icon {
+  width: 64px; height: 64px;
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--t-base), color var(--t-base);
+}
+.diagnosis-option__icon svg { width: 28px; height: 28px; }
 .diagnosis-option__media {
   width: 64px; height: 64px;
   background: var(--bg-soft);

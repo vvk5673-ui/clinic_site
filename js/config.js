@@ -96,11 +96,11 @@ const CLINIC = {
 
   // === ДИАГНОСТИКА: 5 проблем (выбор для квиза) ===
   diagnosis: [
-    { title: "Болят зубы", text: "Чувствительность, острая боль", image: "img/diag-pain.jpg" },
-    { title: "Хочу отбелить улыбку", text: "Профессиональное отбеливание", image: "img/diag-whitening.jpg" },
-    { title: "Исправление прикуса", text: "Брекеты, элайнеры", image: "img/diag-bite.jpg" },
-    { title: "Плановая профилактика", text: "Чистка и диагностика", image: "img/diag-prevention.jpg" },
-    { title: "Другое", text: "Не нашли свой вариант?", image: "img/diag-other.jpg" }
+    { title: "Болят зубы",            text: "Чувствительность, острая боль",     icon: "tooth" },
+    { title: "Хочу отбелить улыбку",  text: "Профессиональное отбеливание",      icon: "sparkles" },
+    { title: "Исправление прикуса",   text: "Брекеты, элайнеры",                 icon: "smile" },
+    { title: "Плановая профилактика", text: "Чистка и диагностика",              icon: "calendar" },
+    { title: "Другое",                text: "Не нашли свой вариант?",            icon: "help-circle" }
   ],
   diagnosisDoctor: {
     name: "Иванов Александр",
