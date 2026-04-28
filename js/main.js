@@ -355,16 +355,36 @@
     });
   }
 
-  // Делает опции диагностики кликабельными: при клике помечает выбранную
-  // (.is-active), снимая отметку с остальных. Используется как простой
-  // выбор-квиз — состояние не сохраняется, дальше идёт по кнопке CTA.
+  // Квиз диагностики с реактивным прогрессом и меняющимся CTA.
+  // Стартовое состояние: progress 0%, label «Выберите свою ситуацию», CTA дефолтный.
+  // После клика на опцию: progress 50% + label «Шаг 1 из 2 — записывайтесь»,
+  // CTA берёт текст из data-cta выбранной опции (поле ctaLabel в config).
   function setupDiagnosisOptions() {
     var options = document.querySelectorAll('.diagnosis-option');
     if (!options.length) return;
+    var section = document.querySelector('.section--diagnosis');
+    var progressBar = section ? section.querySelector('.progress-bar') : null;
+    var progressFill = progressBar ? progressBar.querySelector('.progress-bar__fill') : null;
+    var progressLabel = progressBar ? progressBar.querySelector('.progress-bar__label') : null;
+    var cta = document.querySelector('.diagnosis__cta');
+
     options.forEach(function (opt) {
       opt.addEventListener('click', function () {
-        options.forEach(function (o) { o.classList.remove('is-active'); });
+        options.forEach(function (o) {
+          o.classList.remove('is-active');
+          o.setAttribute('aria-pressed', 'false');
+        });
         opt.classList.add('is-active');
+        opt.setAttribute('aria-pressed', 'true');
+
+        if (progressFill) progressFill.style.width = '50%';
+        if (progressBar) progressBar.setAttribute('aria-valuenow', '50');
+        if (progressLabel) progressLabel.textContent = 'Шаг 1 из 2 — записывайтесь';
+
+        if (cta) {
+          var ctaLabel = opt.getAttribute('data-cta');
+          if (ctaLabel) cta.textContent = ctaLabel;
+        }
       });
     });
   }
