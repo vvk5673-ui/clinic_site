@@ -754,9 +754,8 @@ button:focus:not(:focus-visible) {
 /* === УСЛУГИ (мятный блок — не тёмный) === */
 .section--services { background: var(--bg); padding: var(--space-10) 0; }
 .section--services__inner {
-  background: var(--brand-primary-soft);
-  border-radius: var(--r-xl);
-  padding: var(--space-10);
+  background: transparent;
+  padding: 0;
 }
 /* Светлый фон → инвертированные заголовки получают тёмный цвет */
 .section--services .section__title--inverted { color: var(--text-primary); }
@@ -804,15 +803,16 @@ button:focus:not(:focus-visible) {
 /* Клоны карточек для бесшовного цикла — на десктопе скрыты */
 .card--service-clone { display: none; }
 
-/* Цена услуги — выделена крупно акцентным цветом, прижата к низу */
+/* Цена услуги — выделена крупно тёмно-зелёным (контраст на белом), прижата к низу */
 .card__price {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   font-size: var(--fs-lg);
-  color: var(--brand-accent);
+  color: var(--brand-dark);
   margin-top: auto;
   padding-top: var(--space-3);
   letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Stagger-появление карточек услуг (как в Преимуществах) */
@@ -1592,12 +1592,7 @@ button:focus:not(:focus-visible) {
   .cards-grid { gap: var(--space-3); }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
 
-  /* Услуги на мобиле — горизонтальный свайп + убираем голубую обёртку */
-  .section--services__inner {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-  }
+  /* Услуги на мобиле — горизонтальный свайп; обёртка уже transparent на всех экранах */
   /* Точки-индикаторы видны на мобиле, цвета подходят к светлому фону */
   .services-dots {
     display: flex;

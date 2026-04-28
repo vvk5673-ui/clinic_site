@@ -2,6 +2,7 @@
 // Поддерживает:
 //   data-bind="path"                   — подставить текст
 //   data-bind-attr="attr|prefix|path"  — установить атрибут (prefix может быть пустым)
+//                                        несколько атрибутов через запятую: "src||image,alt||title"
 //   data-list="path" data-template="id" — отрендерить массив через <template>
 //   data-options="path"                — заполнить <select> опциями {value,label}
 //   data-section="key"                 — скрыть секцию если sections[key] === false
@@ -54,18 +55,23 @@
     });
   }
 
-  function bindAttrs(root, ctx) {
-    root.querySelectorAll('[data-bind-attr]').forEach(function (el) {
-      if (el.closest('template')) return;
-      var spec = el.dataset.bindAttr;
-      if (!spec) return;
-      var parts = spec.split('|');
+  function applyBindAttrSpec(el, spec, ctx) {
+    spec.split(',').forEach(function (one) {
+      var parts = one.split('|');
       if (parts.length < 2) return;
-      var attr = parts[0];
+      var attr = parts[0].trim();
       var prefix = parts[1] || '';
       var path = parts.slice(2).join('|');
       var value = getByPath(ctx, path);
       if (value != null) el.setAttribute(attr, prefix + value);
+    });
+  }
+
+  function bindAttrs(root, ctx) {
+    root.querySelectorAll('[data-bind-attr]').forEach(function (el) {
+      if (el.closest('template')) return;
+      var spec = el.dataset.bindAttr;
+      if (spec) applyBindAttrSpec(el, spec, ctx);
     });
   }
 
@@ -103,12 +109,7 @@
           if (v != null) el.textContent = v;
         });
         clone.querySelectorAll('[data-bind-attr]').forEach(function (el) {
-          var parts = el.dataset.bindAttr.split('|');
-          var attr = parts[0];
-          var prefix = parts[1] || '';
-          var path = parts.slice(2).join('|');
-          var v = getByPath(item, path);
-          if (v != null) el.setAttribute(attr, prefix + v);
+          applyBindAttrSpec(el, el.dataset.bindAttr, item);
         });
         clone.querySelectorAll('[data-icon]').forEach(function (el) {
           var iconName = getByPath(item, el.dataset.icon);
