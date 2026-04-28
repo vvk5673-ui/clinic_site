@@ -8,13 +8,23 @@ const CLINIC = {
   logoBrand: "Dental",
   logoDescriptor: "Стоматология",
   tagline: "Стоматология полного цикла",
+  // tagline разбит на 2 части: вторая получает декоративное подчёркивание-кисть
+  heroTitlePrefix: "Стоматология",
+  heroTitleAccent: "полного цикла",
   subtitle: "От лечения до имплантации — без нервов, очередей и боли",
   badge: "Работаем с 2012 года",
   promoTagValue: "Бесплатная консультация",
   promoTagNote: "на первом приёме",
   heroBadgeRating: { value: "4.9", source: "Яндекс.Карты" },
   heroBadgeLicense: { title: "Лицензия Минздрава", number: "№ ЛО-77-01-019234" },
-  heroPhoto: "pictures/AdobeStock_253448255.jpeg",
+  // 3 фото для fade-карусели Hero (с ken-burns эффектом).
+  // Сейчас плейсхолдеры из текущих фото — заменим на 3 новых эвкалиптовых
+  // когда Виктор сгенерирует через Krea.
+  heroPhotos: [
+    { url: "pictures/AdobeStock_253448255.jpeg" },
+    { url: "pictures/service-therapy.jpg" },
+    { url: "pictures/service-hygiene.jpg" }
+  ],
   logoUrl: "img/logo.svg",
 
   // === КОНТАКТЫ ===

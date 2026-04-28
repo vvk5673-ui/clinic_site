@@ -271,6 +271,77 @@
     });
   }
 
+  // Hero-карусель: 3 фото в .hero__photo-stack меняются каждые 5 секунд
+  // через переключение класса .is-active. Ken-burns-эффект (медленный zoom)
+  // задан в CSS @keyframes hero-ken-burns. Если фото меньше 2 — выходим.
+  function setupHeroCarousel() {
+    var photos = document.querySelectorAll('.hero__photo-stack .hero__photo');
+    if (photos.length < 2) {
+      // одно фото — просто показываем без карусели
+      if (photos[0]) photos[0].classList.add('is-active');
+      return;
+    }
+    var current = 0;
+    photos[0].classList.add('is-active');
+    setInterval(function () {
+      photos[current].classList.remove('is-active');
+      current = (current + 1) % photos.length;
+      photos[current].classList.add('is-active');
+    }, 5000);
+  }
+
+  // Count-up анимация чисел Hero-статистики (от 0 до целевого значения).
+  // Запускается через IntersectionObserver когда Hero попадает в viewport.
+  // Поддерживает целые числа, дробные (через .) и суффиксы (+, ₽, и т.д.)
+  function setupStatCountUp() {
+    var stats = document.querySelectorAll('.stat__value');
+    if (!stats.length || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateStatValue(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(function (s) { observer.observe(s); });
+  }
+  function animateStatValue(el) {
+    var raw = el.textContent.trim();
+    var match = raw.match(/^([\d.]+)(\D*)$/);
+    if (!match) return;
+    var target = parseFloat(match[1]);
+    var suffix = match[2] || '';
+    var isFloat = raw.indexOf('.') !== -1;
+    var duration = 1400;
+    var start = performance.now();
+    function tick(now) {
+      var progress = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic — мягкое завершение
+      var current = target * eased;
+      el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Магнитная кнопка: при движении мыши над .btn--magnetic кнопка
+  // тянется к курсору на 20% от смещения. На тач-устройствах отключено.
+  function setupMagneticButton() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    document.querySelectorAll('.btn--magnetic').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = (e.clientX - rect.left - rect.width / 2) * 0.2;
+        var y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+        btn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+  }
+
   // Перехватывает submit формы лид-магнита: показывает inline-сообщение
   // об успехе вместо window.alert(). В рабочей версии сюда добавится
   // отправка данных менеджеру (через API/email/CRM).
@@ -331,6 +402,9 @@
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
     setupLeadForm();
+    setupHeroCarousel();
+    setupStatCountUp();
+    setupMagneticButton();
     setupCarousel({
       gridSelector: '.section--services .cards-grid',
       cardSelector: '.card--service',

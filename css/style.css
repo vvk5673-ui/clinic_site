@@ -358,17 +358,41 @@ button:focus:not(:focus-visible) {
   opacity: 0.7;
   z-index: 0;
 }
-.hero__photo {
+/* Контейнер fade-карусели Hero (3 фото меняются каждые 5 сек) */
+.hero__photo-stack {
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
   min-height: 520px;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--brand-primary-soft);
+  box-shadow: 0 30px 60px -20px rgba(45, 125, 95, 0.20);
+}
+/* Каждое фото в стопке — абсолютно позиционировано, перекрытие через opacity */
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  background: var(--brand-primary-soft);
-  border-radius: var(--r-xl);
-  box-shadow: 0 30px 60px -20px rgba(45, 125, 95, 0.20);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+/* Активное фото: видимое + медленный ken-burns zoom для "живой" подачи */
+.hero__photo.is-active {
+  opacity: 1;
+  animation: hero-ken-burns 8s ease-out forwards;
+}
+@keyframes hero-ken-burns {
+  from { transform: scale(1.0); }
+  to   { transform: scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__photo { transition: opacity 0.3s ease; }
+  .hero__photo.is-active { animation: none; transform: scale(1.0); }
 }
 
 /* Hero-плашки доверия (рейтинг и лицензия) — белые карточки на фото */
@@ -490,6 +514,75 @@ button:focus:not(:focus-visible) {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__promo-tag::before { animation: none; display: none; }
+}
+
+/* === H1 с подчёркиванием-кистью на ключевом слове ("полного цикла") === */
+.hero__title-highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  color: var(--brand-dark);
+}
+/* SVG-кривая под акцентным словом — рисуется hand-drawn эвкалиптовой кистью при загрузке */
+.hero__title-brush {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 12px;
+  color: var(--brand-primary);
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: hero-brush-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  pointer-events: none;
+}
+@keyframes hero-brush-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* === Каскадное появление контента Hero снизу при загрузке === */
+.hero__content > * {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero__content .badge          { animation-delay: 0.05s; }
+.hero__content .hero__title    { animation-delay: 0.15s; }
+.hero__content .hero__subtitle { animation-delay: 0.30s; }
+.hero__content .btn--primary   { animation-delay: 0.45s; }
+.hero__content .hero__stats    { animation-delay: 0.60s; }
+@keyframes hero-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Float-in бейджей доверия и промо-ярлыка с задержкой === */
+.hero-badge,
+.hero__promo-tag {
+  opacity: 0;
+  transform: translateY(20px) scale(0.92);
+  animation: hero-badge-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-badge--rating  { animation-delay: 0.7s; }
+.hero-badge--license { animation-delay: 1.0s; }
+.hero__promo-tag     { animation-delay: 1.3s; }
+@keyframes hero-badge-in {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__title-brush { stroke-dashoffset: 0; animation: none; }
+  .hero__content > *,
+  .hero-badge,
+  .hero__promo-tag {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* === Магнитная кнопка: transform управляется JS (см. setupMagneticButton) === */
+.btn--magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow var(--t-base), background var(--t-fast);
 }
 
 /* ===================== СЕТКА КАРТОЧЕК ===================== */
@@ -1557,7 +1650,7 @@ button:focus:not(:focus-visible) {
   }
   .hero-badge--license .hero-badge__icon { width: 22px; height: 22px; }
   .hero-badge--license .hero-badge__icon svg { width: 12px; height: 12px; }
-  .hero__photo { min-height: 280px; }
+  .hero__photo-stack { min-height: 280px; }
   .hero__stats { gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
   .hero__stats .stat { flex: 1; min-width: 90px; }
   .stat__value { font-size: 32px; }

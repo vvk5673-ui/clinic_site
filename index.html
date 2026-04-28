@@ -24,7 +24,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Cabinet Grotesk от Indian Type Foundry (Fontshare CDN) — premium friendly шрифт для display -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
@@ -81,14 +84,22 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-        <div class="badge badge--accent" data-bind="badge">№ 1</div>
-        <h1 class="hero__title" data-bind="tagline">Стоматологическая клиника</h1>
-        <p class="hero__subtitle" data-bind="subtitle">Без боли</p>
-        <a href="#cta" class="btn btn--primary btn--lg">Получить консультацию</a>
+        <div class="badge badge--accent" data-bind="badge">—</div>
+        <h1 class="hero__title">
+          <span data-bind="heroTitlePrefix">Стоматология</span>
+          <span class="hero__title-highlight">
+            <span data-bind="heroTitleAccent">полного цикла</span>
+            <svg class="hero__title-brush" viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3 7 C 50 3, 100 9, 197 5" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </span>
+        </h1>
+        <p class="hero__subtitle" data-bind="subtitle">—</p>
+        <a href="#cta" class="btn btn--primary btn--lg btn--magnetic">Получить консультацию</a>
         <div class="hero__stats" data-list="heroStats" data-template="hero-stat-tpl"></div>
       </div>
       <div class="hero__media">
-        <img class="hero__photo" alt="Врач-стоматолог" data-bind-attr="src||heroPhoto" loading="eager" />
+        <div class="hero__photo-stack" data-list="heroPhotos" data-template="hero-photo-tpl" aria-label="Клиника «Дентал»"></div>
         <div class="hero-badge hero-badge--rating">
           <span class="hero-badge__icon" data-icon="yandex-marker"></span>
           <div class="hero-badge__text">
@@ -116,6 +127,10 @@
       <div class="stat__value" data-bind="value">—</div>
       <div class="stat__label" data-bind="label">—</div>
     </div>
+  </template>
+
+  <template id="hero-photo-tpl">
+    <img class="hero__photo" data-bind-attr="src||url" alt="Клиника «Дентал» — приём пациентки" loading="lazy" />
   </template>
 
   <!-- 3. ПРЕИМУЩЕСТВА -->
