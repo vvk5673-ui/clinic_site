@@ -516,29 +516,28 @@ button:focus:not(:focus-visible) {
   .hero__promo-tag::before { animation: none; display: none; }
 }
 
-/* === H1 с подчёркиванием-кистью на ключевом слове ("полного цикла") === */
+/* === H1 с маркер-подсветкой на ключевом слове ("полного цикла") === */
+/* Фоновый градиент с резким переходом на 62% по высоте создаёт эффект
+   "выделено маркером". Background-size: 0% → 100% даёт анимацию
+   "проводят маркером слева направо" при загрузке. Идеально ровный
+   прямоугольник под текстом, всегда под обоими словами. */
 .hero__title-highlight {
   position: relative;
   display: inline-block;
   white-space: nowrap;
   color: var(--brand-dark);
+  background-image: linear-gradient(180deg, transparent 62%, rgba(143, 205, 180, 0.55) 62%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 0;
+  padding: 0 4px;
+  animation: hero-highlight-paint 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
-/* SVG-кривая под акцентным словом — рисуется hand-drawn эвкалиптовой кистью при загрузке */
-.hero__title-brush {
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 100%;
-  height: 12px;
-  color: var(--brand-primary);
-  stroke-dasharray: 220;
-  stroke-dashoffset: 220;
-  animation: hero-brush-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-  pointer-events: none;
+@keyframes hero-highlight-paint {
+  to { background-size: 100% 100%; }
 }
-@keyframes hero-brush-draw {
-  to { stroke-dashoffset: 0; }
-}
+/* Старый SVG-кисть отключён, заменён CSS-маркером выше */
+.hero__title-brush { display: none; }
 
 /* === Каскадное появление контента Hero снизу при загрузке === */
 .hero__content > * {
@@ -570,7 +569,7 @@ button:focus:not(:focus-visible) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__title-brush { stroke-dashoffset: 0; animation: none; }
+  .hero__title-highlight { background-size: 100% 100%; animation: none; }
   .hero__content > *,
   .hero-badge,
   .hero__promo-tag {
