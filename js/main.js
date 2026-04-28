@@ -218,23 +218,36 @@
       dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
     }
 
+    // При прыжке на оригинал нужно временно убрать smooth scroll —
+    // иначе scroll-behavior: smooth из CSS делает скачок плавным
+    // и пользователь видит "возврат" вместо бесшовного цикла.
+    function jumpTo(scrollLeft) {
+      jumping = true;
+      var prev = grid.style.scrollBehavior;
+      grid.style.scrollBehavior = 'auto';
+      grid.scrollLeft = scrollLeft;
+      // Возвращаем smooth через 2 RAF — чтобы браузер успел применить jump без анимации
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          grid.style.scrollBehavior = prev;
+          jumping = false;
+        });
+      });
+    }
+
     var jumping = false;
     grid.addEventListener('scroll', function () {
       if (jumping || !isMobile()) return;
       updateDots();
       var w = getSlideWidth();
       var max = grid.scrollWidth - grid.clientWidth;
-      // Достигли клона в конце → прыжок на первый реальный
+      // Достигли клона в конце → мгновенный прыжок на первый реальный
       if (grid.scrollLeft >= max - 4) {
-        jumping = true;
-        grid.scrollLeft = w;
-        requestAnimationFrame(function () { jumping = false; });
+        jumpTo(w);
       }
-      // Достигли клона в начале → прыжок на последний реальный
+      // Достигли клона в начале → мгновенный прыжок на последний реальный
       else if (grid.scrollLeft <= 4) {
-        jumping = true;
-        grid.scrollLeft = w * realCards.length;
-        requestAnimationFrame(function () { jumping = false; });
+        jumpTo(w * realCards.length);
       }
     }, { passive: true });
 
