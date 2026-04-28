@@ -365,19 +365,23 @@
   <!-- 15. БЛОГ -->
   <section class="section section--blog" data-section="blog" id="blog">
     <div class="container">
-      <h2 class="section__title">Полезные статьи</h2>
-      <p class="section__subtitle">Делимся открыто в нашем блоге</p>
+      <h2 class="section__title" data-bind="blogTitle">—</h2>
+      <p class="section__subtitle" data-bind="blogSubtitle">—</p>
       <div class="cards-grid cards-grid--3" data-list="blog" data-template="blog-tpl"></div>
     </div>
   </section>
   <template id="blog-tpl">
     <article class="card card--blog">
-      <div class="card__media"><img class="card__media-img" data-bind-attr="src||image" alt="" loading="lazy"></div>
+      <div class="card__media"><img class="card__media-img" data-bind-attr="src||image,alt||title" loading="lazy"></div>
       <div class="card__body">
-        <div class="card__meta" data-bind="date">—</div>
+        <div class="card__meta">
+          <span data-bind="date">—</span>
+          <span class="card__meta-sep" aria-hidden="true">·</span>
+          <span class="card__meta-time" data-bind="readTime">—</span>
+        </div>
         <h3 class="card__title" data-bind="title">—</h3>
         <p class="card__text" data-bind="excerpt">—</p>
-        <a href="#" class="card__link">Читать подробнее →</a>
+        <a href="#" class="card__link">Читать статью →</a>
       </div>
     </article>
   </template>

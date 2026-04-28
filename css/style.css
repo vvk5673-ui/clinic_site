@@ -1727,6 +1727,33 @@ button:focus:not(:focus-visible) {
 /* === БЛОГ === */
 .card--blog .card__media { height: 200px; }
 
+/* Stagger fade-in при появлении в viewport */
+.card--blog {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out, box-shadow var(--t-base);
+}
+.card--blog.is-visible { opacity: 1; transform: translateY(0); }
+.card--blog:nth-child(1) { transition-delay: 0s; }
+.card--blog:nth-child(2) { transition-delay: 0.08s; }
+.card--blog:nth-child(3) { transition-delay: 0.16s; }
+
+/* Мета-блок: дата · время чтения */
+.card--blog .card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.card__meta-sep { color: var(--brand-accent); font-weight: 700; }
+.card__meta-time { color: var(--text-secondary); }
+
+/* min-height для выравнивания кнопок «Читать статью» по горизонтали (1-2 строки заголовка / 2-3 строки описания) */
+.card--blog .card__title { min-height: 64px; }
+.card--blog .card__text { min-height: 60px; }
+.card--blog .card__link { margin-top: auto; }
+
 /* === FAQ === */
 .faq { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 .faq__item {

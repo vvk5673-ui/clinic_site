@@ -535,6 +535,7 @@
     setupCardStagger('.card--service');
     setupCardStagger('.card--promotion');
     setupCardStagger('.card--doctor');
+    setupCardStagger('.card--blog');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
     setupLeadForm();
