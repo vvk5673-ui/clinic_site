@@ -242,14 +242,27 @@
   </section>
   <template id="review-tpl">
     <article class="card card--review">
-      <div class="review__rating">★★★★★</div>
-      <p class="review__text" data-bind="text">—</p>
+      <div class="review__header">
+        <div class="review__source">
+          <span class="review__source-icon" aria-hidden="true">Я</span>
+          <span>Яндекс.Карты</span>
+        </div>
+        <div class="review__rating">
+          <span class="review__stars" aria-hidden="true">★★★★★</span>
+          <span class="review__rating-value">5,0</span>
+        </div>
+      </div>
       <div class="review__author">
-        <div class="review__photo"><span data-bind="name">—</span></div>
-        <div>
-          <div class="review__name"><span data-bind="name">—</span>, <span data-bind="age">—</span></div>
+        <div class="review__avatar" data-bind="avatar">—</div>
+        <div class="review__author-meta">
+          <div class="review__name" data-bind="name">—</div>
           <div class="review__date" data-bind="date">—</div>
         </div>
+      </div>
+      <p class="review__text" data-bind="text">—</p>
+      <div class="review__visit-tag">
+        <span class="review__visit-icon" aria-hidden="true">✓</span>
+        <span data-bind="visitTag">—</span>
       </div>
     </article>
   </template>
@@ -260,12 +273,13 @@
       <div class="lead-magnet__content">
         <h2 class="section__title section__title--inverted" data-bind="leadMagnet.title">—</h2>
         <p class="section__subtitle section__subtitle--inverted" data-bind="leadMagnet.subtitle">—</p>
-        <form class="lead-form" onsubmit="alert('Спасибо! В рабочей версии заявка отправится менеджеру.'); return false;">
+        <form class="lead-form" data-form="lead">
           <label class="lead-form__label" data-bind="leadMagnet.formLabel">—</label>
           <select class="lead-form__select" data-options="leadMagnet.channels"></select>
-          <input class="lead-form__input" type="tel" data-bind-attr="placeholder||leadMagnet.inputPlaceholder">
+          <input class="lead-form__input" type="tel" data-bind-attr="placeholder||leadMagnet.inputPlaceholder" required>
           <button class="btn btn--primary btn--lg btn--block" type="submit" data-bind="leadMagnet.submitText">—</button>
           <small class="lead-form__consent" data-bind="leadMagnet.consent">—</small>
+          <div class="lead-form__success" hidden>Заявка отправлена. Перезвоним в течение 5–7 минут.</div>
         </form>
       </div>
       <div class="lead-magnet__visual">
@@ -400,7 +414,7 @@
   <aside class="floating-cta" id="floating-cta">
     <button type="button" class="floating-cta__close" aria-label="Свернуть меню" onclick="document.getElementById('floating-cta').classList.add('floating-cta--collapsed')">×</button>
     <a class="floating-cta__btn floating-cta__btn--white" href="#" data-bind-attr="href|tel:|phoneRaw">
-      <span class="floating-cta__icon" aria-hidden="true">📞</span>
+      <span class="floating-cta__icon" data-icon="phone" aria-hidden="true"></span>
       <span class="floating-cta__label">Записаться на приём</span>
     </a>
     <a class="floating-cta__btn floating-cta__btn--accent" href="#reviews">

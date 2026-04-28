@@ -271,6 +271,19 @@
     });
   }
 
+  // Перехватывает submit формы лид-магнита: показывает inline-сообщение
+  // об успехе вместо window.alert(). В рабочей версии сюда добавится
+  // отправка данных менеджеру (через API/email/CRM).
+  function setupLeadForm() {
+    document.querySelectorAll('[data-form="lead"]').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var success = form.querySelector('.lead-form__success');
+        if (success) success.hidden = false;
+      });
+    });
+  }
+
   // Делает опции диагностики кликабельными: при клике помечает выбранную
   // (.is-active), снимая отметку с остальных. Используется как простой
   // выбор-квиз — состояние не сохраняется, дальше идёт по кнопке CTA.
@@ -317,6 +330,7 @@
     setupCardStagger('.card--promotion');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
+    setupLeadForm();
     setupCarousel({
       gridSelector: '.section--services .cards-grid',
       cardSelector: '.card--service',
