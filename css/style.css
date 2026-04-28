@@ -754,8 +754,9 @@ button:focus:not(:focus-visible) {
 /* === УСЛУГИ (мятный блок — не тёмный) === */
 .section--services { background: var(--bg); padding: var(--space-10) 0; }
 .section--services__inner {
-  background: transparent;
-  padding: 0;
+  background: var(--brand-primary-soft);
+  border-radius: var(--r-xl);
+  padding: var(--space-10);
 }
 /* Светлый фон → инвертированные заголовки получают тёмный цвет */
 .section--services .section__title--inverted { color: var(--text-primary); }
@@ -1592,7 +1593,12 @@ button:focus:not(:focus-visible) {
   .cards-grid { gap: var(--space-3); }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: 1fr; }
 
-  /* Услуги на мобиле — горизонтальный свайп; обёртка уже transparent на всех экранах */
+  /* Услуги на мобиле — горизонтальный свайп + убираем мятную обёртку (на мобиле она ломала скругления у краёв) */
+  .section--services__inner {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
   /* Точки-индикаторы видны на мобиле, цвета подходят к светлому фону */
   .services-dots {
     display: flex;
