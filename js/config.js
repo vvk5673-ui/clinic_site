@@ -199,20 +199,32 @@ const CLINIC = {
     }
   ],
 
-  // === ЛИД-МАГНИТ: «Скачайте инструкцию» ===
+  // === ЛИД-МАГНИТ: PDF-гид по уходу за зубами ===
+  // channels — каждый канал хранит свой type/placeholder для input и
+  // channelLabel для подстановки в success-сообщение (правильный падеж).
   leadMagnet: {
-    title: "Скачайте инструкцию «Как выбрать стоматолога»",
-    subtitle: "Мы собрали 12 критериев, по которым нужно проверить любую клинику до записи",
+    title: "Здоровые зубы за 5 минут в день — гид от наших стоматологов",
+    subtitle: "Простые ежедневные привычки, которые избавят от лечения и сэкономят на стоматологе",
+    bullets: [
+      { text: "Правильная техника чистки утром и вечером" },
+      { text: "Как использовать нить, ёршики и ирригатор" },
+      { text: "Продукты, которые укрепляют и разрушают эмаль" },
+      { text: "5 главных ошибок ежедневного ухода" },
+      { text: "Сигналы, когда срочно нужно к врачу" }
+    ],
     formLabel: "Куда отправить инструкцию?",
     channels: [
-      { value: "whatsapp", label: "В WhatsApp" },
-      { value: "telegram", label: "В Telegram" },
-      { value: "email", label: "На почту" }
+      { value: "whatsapp", label: "В WhatsApp", type: "tel",   placeholder: "+7 (___) ___-__-__", channelLabel: "в WhatsApp" },
+      { value: "telegram", label: "В Telegram", type: "tel",   placeholder: "+7 (___) ___-__-__", channelLabel: "в Telegram" },
+      { value: "email",    label: "На почту",   type: "email", placeholder: "your@email.com",     channelLabel: "на почту" }
     ],
     inputPlaceholder: "+7 (___) ___-__-__",
-    submitText: "Получить сейчас",
-    consent: "Соглашаюсь с условиями обработки данных",
-    cover: "pictures/lead-magnet-cover.webp"
+    submitText: "Скачать PDF бесплатно",
+    consent: "Согласен с обработкой персональных данных",
+    socialProof: "Уже скачали 847 пациентов нашей клиники",
+    successTextTemplate: "Готово! PDF отправили {channel}. Проверьте сообщения в течение 1 минуты.",
+    cover: "pictures/lead-magnet-cover.webp",
+    coverBadge: "PDF · Бесплатно"
   },
 
   // === О КОМПАНИИ ===

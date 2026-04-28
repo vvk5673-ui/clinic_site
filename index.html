@@ -307,20 +307,37 @@
       <div class="lead-magnet__content">
         <h2 class="section__title section__title--inverted" data-bind="leadMagnet.title">—</h2>
         <p class="section__subtitle section__subtitle--inverted" data-bind="leadMagnet.subtitle">—</p>
+        <ul class="lead-magnet__bullets" data-list="leadMagnet.bullets" data-template="lead-bullet-tpl"></ul>
         <form class="lead-form" data-form="lead">
           <label class="lead-form__label" data-bind="leadMagnet.formLabel">—</label>
           <select class="lead-form__select" data-options="leadMagnet.channels"></select>
           <input class="lead-form__input" type="tel" data-bind-attr="placeholder||leadMagnet.inputPlaceholder" required>
-          <button class="btn btn--primary btn--lg btn--block" type="submit" data-bind="leadMagnet.submitText">—</button>
-          <small class="lead-form__consent" data-bind="leadMagnet.consent">—</small>
-          <div class="lead-form__success" hidden>Заявка отправлена. Перезвоним в течение 5–7 минут.</div>
+          <label class="lead-form__check">
+            <input type="checkbox" class="lead-form__check-input" required>
+            <span class="lead-form__check-text">
+              <span data-bind="leadMagnet.consent">—</span>
+              <a href="#" class="lead-form__check-link" target="_blank" rel="noopener">Подробнее</a>
+            </span>
+          </label>
+          <button class="btn btn--lead btn--lg btn--block" type="submit" disabled data-bind="leadMagnet.submitText">—</button>
+          <small class="lead-form__social-proof" data-bind="leadMagnet.socialProof">—</small>
+          <div class="lead-form__success" role="status" aria-live="polite" hidden></div>
         </form>
       </div>
       <div class="lead-magnet__visual">
-        <img class="lead-magnet__cover" data-bind-attr="src||leadMagnet.cover" alt="Обложка инструкции">
+        <div class="lead-magnet__cover-wrap">
+          <img class="lead-magnet__cover" data-bind-attr="src||leadMagnet.cover" alt="Обложка инструкции">
+          <span class="lead-magnet__cover-badge" data-bind="leadMagnet.coverBadge" aria-hidden="true">PDF</span>
+        </div>
       </div>
     </div>
   </section>
+  <template id="lead-bullet-tpl">
+    <li class="lead-magnet__bullet">
+      <span class="lead-magnet__bullet-icon" aria-hidden="true">✓</span>
+      <span class="lead-magnet__bullet-text" data-bind="text">—</span>
+    </li>
+  </template>
 
   <!-- 11. О КОМПАНИИ -->
   <section class="section section--about" data-section="about" id="about">

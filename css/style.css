@@ -1436,38 +1436,168 @@ button:focus:not(:focus-visible) {
   color: var(--text-on-dark);
 }
 .lead-magnet__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+
+/* Буллеты «что внутри PDF» */
+.lead-magnet__bullets {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lead-magnet__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+}
+.lead-magnet__bullet-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* Форма */
 .lead-form { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
-.lead-form__label { font-size: var(--fs-sm); color: rgba(255,255,255,0.8); }
+.lead-form__label { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.85); }
+
+/* Белые поля (вариант 2): «островок света» на тёмно-зелёном фоне */
 .lead-form__select, .lead-form__input {
   padding: 14px 18px;
   border-radius: var(--r-md);
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.08);
-  color: var(--text-on-dark);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #FFFFFF;
+  color: var(--text-primary);
   font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.lead-form__select option { color: var(--text-primary); }
-.lead-form__consent { color: rgba(255,255,255,0.6); font-size: var(--fs-xs); }
-.lead-magnet__visual { display: flex; justify-content: center; }
+.lead-form__select:focus, .lead-form__input:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(143, 205, 180, 0.45);
+}
+.lead-form__input::placeholder { color: rgba(45, 125, 95, 0.45); }
+.lead-form__select option { color: var(--text-primary); background: #FFFFFF; }
+
+/* Чекбокс согласия */
+.lead-form__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.lead-form__check-input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--brand-accent);
+  cursor: pointer;
+}
+.lead-form__check-text {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.45;
+}
+.lead-form__check-link {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-left: 4px;
+}
+
+/* Кнопка — белая (вариант 2). btn--lead переопределяет дефолтные .btn-цвета */
+.btn--lead {
+  background: #FFFFFF;
+  color: var(--brand-dark);
+  border: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+.btn--lead:hover:not(:disabled) {
+  background: #FFFFFF;
+  color: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+.btn--lead:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--brand-dark);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Соцдоказательство под кнопкой */
+.lead-form__social-proof {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: var(--fs-xs);
+  text-align: center;
+  margin-top: 2px;
+}
 
 /* Inline-сообщение об успешной отправке (вместо window.alert) */
 .lead-form__success {
   margin-top: var(--space-3);
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--r-md);
   color: var(--text-on-dark);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
 }
 .lead-form__success[hidden] { display: none; }
+
+/* Обложка PDF: tilt -3°, бейдж в углу, hover выпрямляет */
+.lead-magnet__visual { display: flex; justify-content: center; }
+.lead-magnet__cover-wrap {
+  position: relative;
+  display: inline-block;
+}
 .lead-magnet__cover {
-  width: 280px; height: 360px;
+  width: 280px;
+  height: 360px;
   object-fit: cover;
   border-radius: var(--r-lg);
   display: block;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32), 0 8px 18px rgba(0, 0, 0, 0.18);
+  transform: rotate(-3deg);
+  transition: transform 0.4s cubic-bezier(.2, .8, .2, 1), box-shadow 0.3s ease;
+}
+.lead-magnet__cover-wrap:hover .lead-magnet__cover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.38), 0 12px 22px rgba(0, 0, 0, 0.22);
+}
+.lead-magnet__cover-badge {
+  position: absolute;
+  top: 14px;
+  right: -12px;
+  background: #FFFFFF;
+  color: var(--brand-dark);
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  text-transform: uppercase;
+  z-index: 2;
+  white-space: nowrap;
 }
 .lead-magnet__placeholder {
   width: 280px; height: 360px;
@@ -1477,6 +1607,11 @@ button:focus:not(:focus-visible) {
   display: flex; align-items: center; justify-content: center;
   color: rgba(255,255,255,0.6);
   font-size: var(--fs-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-magnet__cover { transform: none; transition: none; }
+  .lead-magnet__cover-wrap:hover .lead-magnet__cover { transform: none; }
 }
 
 /* === О КОМПАНИИ === */
@@ -1689,6 +1824,8 @@ button:focus:not(:focus-visible) {
   .hero__media { min-height: 360px; }
   .cards-grid--3, .cards-grid--4 { grid-template-columns: repeat(2, 1fr); }
   .diagnosis__grid, .lead-magnet__grid, .about__grid, .contacts__grid { grid-template-columns: 1fr; }
+  /* На планшете и мобиле обложка PDF идёт СВЕРХУ — визуальный hook первым */
+  .lead-magnet__visual { order: -1; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .header__info { display: none; }
   /* На планшете кнопка короче — «Записаться» вместо длинной фразы */
@@ -1904,8 +2041,11 @@ button:focus:not(:focus-visible) {
   /* акции — числа цены не давят на текст */
   .card__price { font-size: 24px; }
 
-  /* лид-магнит — обложка PDF не вылезает */
+  /* лид-магнит — обложка PDF не вылезает, tilt отключаем чтобы не подрезался бейдж */
   .lead-magnet__placeholder, .lead-magnet__cover { width: 100%; max-width: 240px; height: 320px; }
+  .lead-magnet__cover { transform: none; }
+  .lead-magnet__cover-wrap:hover .lead-magnet__cover { transform: translateY(-2px); }
+  .lead-magnet__cover-badge { right: -8px; top: 10px; font-size: 10px; padding: 5px 10px; }
 
   /* о компании — фото меньше */
   .about__placeholder, .about__photo { height: 280px; }

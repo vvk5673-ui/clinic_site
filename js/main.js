@@ -363,12 +363,58 @@
   // Перехватывает submit формы лид-магнита: показывает inline-сообщение
   // об успехе вместо window.alert(). В рабочей версии сюда добавится
   // отправка данных менеджеру (через API/email/CRM).
+  // Дополнительно:
+  //  - Меняет type/placeholder input в зависимости от выбранного канала
+  //    (WhatsApp/Telegram → tel, Email → email).
+  //  - Submit-кнопка disabled пока не отмечен чекбокс согласия.
+  //  - В success-сообщение подставляется выбранный канал в правильном падеже
+  //    (channelLabel из config: «в WhatsApp» / «в Telegram» / «на почту»).
   function setupLeadForm() {
+    var lm = (typeof CLINIC !== 'undefined' && CLINIC.leadMagnet) || {};
+    var channels = Array.isArray(lm.channels) ? lm.channels : [];
+    var template = lm.successTextTemplate ||
+      'Готово! PDF отправили {channel}. Проверьте сообщения.';
+
+    function findChannel(value) {
+      for (var i = 0; i < channels.length; i++) {
+        if (channels[i].value === value) return channels[i];
+      }
+      return null;
+    }
+
     document.querySelectorAll('[data-form="lead"]').forEach(function (form) {
+      var select = form.querySelector('.lead-form__select');
+      var input = form.querySelector('.lead-form__input');
+      var checkbox = form.querySelector('.lead-form__check-input');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var success = form.querySelector('.lead-form__success');
+
+      // Динамический placeholder/type по выбранному каналу
+      if (select && input) {
+        select.addEventListener('change', function () {
+          var ch = findChannel(select.value);
+          if (!ch) return;
+          if (ch.type) input.type = ch.type;
+          if (ch.placeholder) input.placeholder = ch.placeholder;
+          input.value = ''; // старое значение может не подходить под новый формат
+        });
+      }
+
+      // Disabled-кнопка пока чекбокс согласия не отмечен
+      if (checkbox && submitBtn) {
+        submitBtn.disabled = !checkbox.checked;
+        checkbox.addEventListener('change', function () {
+          submitBtn.disabled = !checkbox.checked;
+        });
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var success = form.querySelector('.lead-form__success');
-        if (success) success.hidden = false;
+        if (!success) return;
+        var ch = findChannel(select ? select.value : '');
+        var label = (ch && ch.channelLabel) || 'на ваш контакт';
+        success.textContent = template.replace('{channel}', label);
+        success.hidden = false;
       });
     });
   }
