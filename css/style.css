@@ -656,8 +656,12 @@ button:focus:not(:focus-visible) {
   margin-bottom: var(--space-4);
 }
 .card__icon svg { width: 28px; height: 28px; }
-/* В светлых карточках — мятная подложка под иконку */
-.card--advantage:nth-child(even) .card__icon { background: var(--brand-primary-soft); color: var(--brand-primary); }
+/* В светлых карточках — белая подложка под иконку с лёгкой тенью, чтобы не сливалась с мятным фоном карточки */
+.card--advantage:nth-child(even) .card__icon {
+  background: var(--bg-card);
+  color: var(--brand-primary);
+  box-shadow: 0 4px 12px rgba(45, 125, 95, 0.12);
+}
 .card__title { font-size: var(--fs-xl); margin-bottom: var(--space-3); }
 .card__text { color: var(--text-secondary); font-size: var(--fs-base); }
 .card__text--muted { color: var(--text-muted); font-size: var(--fs-sm); margin-top: var(--space-2); }
@@ -709,7 +713,7 @@ button:focus:not(:focus-visible) {
   font-size: var(--fs-2xl);
   line-height: 1;
   color: currentColor;
-  opacity: 0.18;
+  opacity: 0.32;
   pointer-events: none;
 }
 
@@ -728,13 +732,13 @@ button:focus:not(:focus-visible) {
 .card--advantage:nth-child(5) { transition-delay: 0.32s; }
 .card--advantage:nth-child(6) { transition-delay: 0.40s; }
 
-/* Hover-spotlight: соседние карточки тускнеют когда наводимся на одну */
+/* Hover-spotlight: соседние карточки слегка тускнеют когда наводимся на одну (мягкий эффект) */
 .section--advantages .cards-grid--3:hover .card--advantage {
-  filter: brightness(0.88);
+  filter: brightness(0.95);
   transition: filter 0.3s ease;
 }
 .section--advantages .cards-grid--3:hover .card--advantage:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.03);
   transform: translateY(-6px);
 }
 
