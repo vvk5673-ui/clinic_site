@@ -454,12 +454,6 @@
     });
   }
 
-  // FAQ: открывает первый <details> по умолчанию — сигнал что блок интерактивный.
-  function setupFaqOpen() {
-    var first = document.querySelector('.faq .faq__item');
-    if (first) first.open = true;
-  }
-
   // Добавляет класс .is-scrolled на шапку при прокрутке вниз — для тени.
   function setupHeaderScroll() {
     var header = document.querySelector('.header');
@@ -546,7 +540,6 @@
     setupCardStagger('.faq__item');
     setupCardStagger('.diagnosis-option');
     setupDiagnosisOptions();
-    setupFaqOpen();
     setupLeadForm();
     setupHeroCarousel();
     setupStatCountUp();
