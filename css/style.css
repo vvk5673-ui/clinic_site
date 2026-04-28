@@ -1826,7 +1826,6 @@ button:focus:not(:focus-visible) {
 .card--branch.is-visible:hover { transform: translateY(-4px); }
 
 .card--branch .card__body { padding: var(--space-5); gap: var(--space-3); }
-.card--branch .card__title { margin-bottom: 0; }
 
 .branch__photo {
   position: relative;
