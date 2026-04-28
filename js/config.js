@@ -33,10 +33,10 @@ const CLINIC = {
   instagram: "dental",
 
   // === ЦВЕТА БРЕНДА (применяются как CSS-переменные через main.js) ===
-  // Палитра «Голубой кабинет» — медицинский голубой и белый
-  brandColor: "#5AB4DD",
-  brandColorDark: "#2C7AB5",
-  accentColor: "#7280E0",
+  // Палитра «Eucalyptus Premium» — белый + светлые оттенки зелёного
+  brandColor: "#6FB89E",
+  brandColorDark: "#2D7D5F",
+  accentColor: "#8FCDB4",
 
   // === КАКИЕ БЛОКИ ПОКАЗЫВАТЬ ===
   sections: {
