@@ -381,6 +381,56 @@
     window.addEventListener('scroll', update, { passive: true });
   }
 
+  // Бургер-меню на мобиле: toggle .is-open на навигации и оверлее.
+  // Закрывается при клике на ссылку, на оверлей или по Esc.
+  function setupBurgerMenu() {
+    var burger = document.querySelector('.header__burger');
+    var nav = document.getElementById('primary-nav');
+    var overlay = document.querySelector('.nav-overlay');
+    if (!burger || !nav || !overlay) return;
+
+    function open() {
+      burger.classList.add('is-open');
+      nav.classList.add('is-open');
+      overlay.classList.add('is-open');
+      overlay.hidden = false;
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Закрыть меню');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      burger.classList.remove('is-open');
+      nav.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Открыть меню');
+      document.body.style.overflow = '';
+      // hidden ставим после конца transition, чтобы оверлей не пропадал мгновенно
+      setTimeout(function () {
+        if (!overlay.classList.contains('is-open')) overlay.hidden = true;
+      }, 300);
+    }
+    function toggle() {
+      if (burger.classList.contains('is-open')) close();
+      else open();
+    }
+
+    burger.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && burger.classList.contains('is-open')) close();
+    });
+    // При расширении окна выше мобильного брейкпоинта — сбрасываем drawer
+    window.addEventListener('resize', function () {
+      if (window.matchMedia('(min-width: 641px)').matches && burger.classList.contains('is-open')) {
+        close();
+      }
+    });
+  }
+
   function init() {
     if (typeof CLINIC === 'undefined') {
       console.error('CLINIC не найден. Проверьте js/config.js');
@@ -396,6 +446,7 @@
     // повторно — на случай data-bind-attr внутри отрендеренных карточек, ссылающихся на корневой CLINIC
     bindAttrs(document, CLINIC);
     setupHeaderScroll();
+    setupBurgerMenu();
     setupCardStagger('.card--advantage');
     setupCardStagger('.card--service');
     setupCardStagger('.card--promotion');
