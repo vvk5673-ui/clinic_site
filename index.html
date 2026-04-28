@@ -389,12 +389,13 @@
   <!-- 16. FAQ -->
   <section class="section section--faq" data-section="faq" id="faq">
     <div class="container">
-      <h2 class="section__title">Часто задаваемые вопросы</h2>
+      <h2 class="section__title" data-bind="faqTitle">—</h2>
+      <p class="section__subtitle" data-bind="faqSubtitle">—</p>
       <div class="faq" data-list="faq" data-template="faq-tpl"></div>
       <div class="section__cta">
         <a class="btn btn--outline-accent btn--lg" href="#" data-bind-attr="href|https://wa.me/|whatsapp">
-          <span data-bind="faqCtaText">Задать свой вопрос в Whatsapp</span>
-          <span class="btn__icon-circle" aria-hidden="true">W</span>
+          <span data-bind="faqCtaText">Задать свой вопрос в WhatsApp</span>
+          <span class="btn__icon-circle" data-icon="whatsapp" aria-hidden="true"></span>
         </a>
       </div>
     </div>

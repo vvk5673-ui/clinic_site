@@ -125,6 +125,7 @@ button:focus:not(:focus-visible) {
 .btn--outline-accent:hover .btn__icon-circle {
   background: rgba(255, 255, 255, 0.22);
 }
+.btn__icon-circle svg { width: 16px; height: 16px; display: block; }
 .section__cta { display: flex; justify-content: center; margin-top: var(--space-6); }
 
 /* Shine: блик медленно проходит по зелёным и красным кнопкам слева направо */
@@ -1763,6 +1764,21 @@ button:focus:not(:focus-visible) {
   transition: background var(--t-base);
 }
 .faq__item[open] { background: var(--brand-primary-soft); }
+.faq__item:hover:not([open]) { background: rgba(111, 184, 158, 0.12); }
+
+/* Stagger fade-in при появлении в viewport */
+.faq__item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, background var(--t-base);
+}
+.faq__item.is-visible { opacity: 1; transform: translateY(0); }
+.faq__item:nth-child(1) { transition-delay: 0s; }
+.faq__item:nth-child(2) { transition-delay: 0.06s; }
+.faq__item:nth-child(3) { transition-delay: 0.12s; }
+.faq__item:nth-child(4) { transition-delay: 0.18s; }
+.faq__item:nth-child(5) { transition-delay: 0.24s; }
+.faq__item:nth-child(6) { transition-delay: 0.30s; }
 .faq__q {
   font-family: var(--font-display);
   font-weight: var(--fw-semibold);
