@@ -749,6 +749,13 @@ p { margin: 0; }
   white-space: nowrap;
 }
 
+/* Кнопки и цены Акций — выровнены по нижнему краю карточек.
+   min-height для текста описания (2 строки), цена с margin-top:auto
+   подталкивает блок цены+кнопки к низу. */
+.card--promotion .card__text { min-height: 48px; }
+.card--promotion .card__price { margin-top: auto; }
+.card--promotion .btn--block { margin-top: 0; }
+
 /* Точки-индикаторы карусели Акций (показываются только на мобиле) */
 .promotions-dots { display: none; }
 .promotions-dot {
