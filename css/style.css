@@ -175,7 +175,6 @@ button:focus:not(:focus-visible) {
 
 .header { background: var(--bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 102; transition: box-shadow var(--t-base); }
 .header.is-scrolled { box-shadow: 0 6px 18px rgba(45, 125, 95, 0.10); }
-.header.is-scrolled .header__info { display: none; }
 .header__inner {
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
