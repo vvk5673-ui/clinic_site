@@ -2510,13 +2510,33 @@ button:focus:not(:focus-visible) {
   padding: var(--space-8) var(--space-6) var(--space-6);
   border-radius: var(--r-xl);
   background: var(--bg-card);
-  box-shadow: var(--shadow-lg);
+  /* Sage-tinted shadow вместо generic --shadow-lg: эвкалиптовый ореол вокруг карточки */
+  box-shadow: 0 24px 60px rgba(45, 125, 95, 0.18), 0 8px 16px rgba(45, 125, 95, 0.10);
   max-width: 480px;
   width: calc(100% - 32px);
   font-family: var(--font-body);
   color: var(--text-primary);
   inset: 0;
   margin: auto;
+}
+
+/* Декоративная иконка-якорь над заголовком: sage-кружок с зубом (бренд клиник).
+   Якорь внимания, разбивает текстовую стену. */
+.promo-modal__icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 0 var(--space-5);
+  background: var(--brand-primary-soft);
+  color: var(--brand-dark);
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo-modal__icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .promo-modal[open] {
@@ -2567,9 +2587,11 @@ button:focus:not(:focus-visible) {
 
 .promo-modal__title {
   font-family: var(--font-display);
-  font-size: var(--fs-xl);
+  font-size: 32px; /* было var(--fs-xl) = 28px — заголовок мощнее в попапе */
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
+  letter-spacing: -0.02em; /* premium tightening для display-текста */
+  text-wrap: balance; /* красивый перенос, без orphan-слов */
   color: var(--brand-dark);
   margin: 0 var(--space-6) var(--space-4) 0;
 }
@@ -2578,14 +2600,32 @@ button:focus:not(:focus-visible) {
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
   color: var(--text-primary);
-  margin: 0 0 var(--space-3) 0;
+  margin: 0 0 var(--space-4) 0;
 }
 
+/* Note → бейдж-плашка: было мелким серым текстом, стало sage-капсулой
+   с маркером-точкой. «Разработка от одного дня» теперь визуальный хайлайт,
+   а не подсказка-сноска. */
 .promo-modal__note {
-  font-size: var(--fs-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px 6px 12px;
+  background: var(--brand-primary-soft);
   color: var(--brand-dark);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   margin: 0 0 var(--space-6) 0;
+}
+
+.promo-modal__note::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  flex-shrink: 0;
 }
 
 .promo-modal__cta {
@@ -2626,7 +2666,13 @@ button:focus:not(:focus-visible) {
     padding: var(--space-6) var(--space-5) var(--space-5);
     border-radius: var(--r-lg);
   }
-  .promo-modal__title { font-size: var(--fs-lg); }
+  .promo-modal__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-4);
+  }
+  .promo-modal__icon svg { width: 24px; height: 24px; }
+  .promo-modal__title { font-size: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
