@@ -480,9 +480,18 @@
   <!-- ФИНАЛЬНЫЙ CTA -->
   <section class="section section--cta" id="cta">
     <div class="container cta">
-      <h2 class="cta__title">Запишитесь на бесплатную консультацию</h2>
-      <p class="cta__text">Перезвоним в течение 5–7 минут и подберём удобное время</p>
-      <a class="btn btn--accent btn--lg" href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
+      <h2 class="cta__title" data-bind="cta.title">—</h2>
+      <p class="cta__text" data-bind="cta.text">—</p>
+      <div class="cta__actions">
+        <a class="btn btn--accent btn--lg" href="#" data-bind-attr="href|tel:|phoneRaw">
+          <span class="btn__icon" data-icon="phone" aria-hidden="true"></span>
+          <span data-bind="phone">—</span>
+        </a>
+        <a class="btn btn--outline-primary btn--lg" href="#" data-bind-attr="href|https://wa.me/|whatsapp">
+          <span data-bind="cta.whatsappLabel">—</span>
+          <span class="btn__icon-circle" data-icon="whatsapp" aria-hidden="true"></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -509,11 +518,19 @@
         <a href="#" data-bind-attr="href|mailto:|email" data-bind="email">—</a>
         <span data-bind="address">—</span>
       </div>
-      <div class="footer__col">
+      <div class="footer__col footer__col--social">
         <h4 class="footer__title">Соцсети</h4>
-        <a href="#" data-bind-attr="href|https://t.me/|telegram">Telegram</a>
-        <a href="#" data-bind-attr="href|https://wa.me/|whatsapp">WhatsApp</a>
-        <a href="#" data-bind-attr="href|https://vk.com/|vk">ВКонтакте</a>
+        <div class="social-icons">
+          <a href="#" class="social-icon" data-bind-attr="href|https://t.me/|telegram" aria-label="Telegram" target="_blank" rel="noopener">
+            <span data-icon="telegram" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="social-icon" data-bind-attr="href|https://wa.me/|whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <span data-icon="whatsapp" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="social-icon" data-bind-attr="href|https://vk.com/|vk" aria-label="ВКонтакте" target="_blank" rel="noopener">
+            <span data-icon="vk" aria-hidden="true"></span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="container footer__bottom">

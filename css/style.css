@@ -115,6 +115,24 @@ button:focus:not(:focus-visible) {
   color: var(--text-on-primary);
   border-color: var(--brand-accent);
 }
+
+/* Outline-кнопка с тёмно-зелёной обводкой и текстом — для контраста на светлых фонах
+   (используется в финальном CTA как WhatsApp-кнопка рядом с акцентной телефонной) */
+.btn--outline-primary {
+  background: transparent;
+  color: var(--brand-dark);
+  border: 2px solid var(--brand-primary);
+  transition: background var(--t-base), color var(--t-base), border-color var(--t-base);
+}
+.btn--outline-primary:hover {
+  background: var(--brand-primary);
+  color: var(--text-on-primary);
+  border-color: var(--brand-primary);
+}
+.btn--outline-primary:hover .btn__icon-circle {
+  background: var(--text-on-primary);
+  color: var(--brand-primary);
+}
 .btn__icon-circle {
   display: inline-flex;
   align-items: center;
@@ -227,9 +245,10 @@ button:focus:not(:focus-visible) {
   letter-spacing: 0;
   color: var(--text-muted);
 }
-/* В футере descriptor поверх бренда (по HTML), нужен светлый цвет для тёмного фона */
+/* В футере descriptor поверх бренда (по HTML). Фон футера светло-мятный,
+   тёмный текст с прозрачностью — лучше читается, чем белый поверх светлого. */
 .footer .header__logo-text { gap: 4px; }
-.footer .header__logo-descriptor { color: rgba(255, 255, 255, 0.6); }
+.footer .header__logo-descriptor { color: var(--text-secondary); font-weight: var(--fw-medium); }
 
 .header__info {
   display: flex;
@@ -1933,6 +1952,17 @@ button:focus:not(:focus-visible) {
 .cta { text-align: center; max-width: 720px; margin: 0 auto; }
 .cta__title { font-size: var(--fs-3xl); margin-bottom: var(--space-4); }
 .cta__text { color: var(--text-secondary); font-size: var(--fs-md); margin-bottom: var(--space-6); }
+/* Две кнопки рядом: телефон + WhatsApp. На мобиле в столбик. */
+.cta__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cta__actions .btn { min-width: 240px; }
+.cta__actions .btn .btn__icon { display: inline-flex; width: 18px; height: 18px; }
+.cta__actions .btn .btn__icon svg { width: 100%; height: 100%; }
 
 /* === FOOTER (светло-мятный фон с тёмным текстом — не тёмно-зелёный) === */
 .footer { background: var(--brand-primary-soft); color: var(--text-primary); padding: var(--space-10) 0 var(--space-5); }
@@ -1946,6 +1976,32 @@ button:focus:not(:focus-visible) {
 .footer__title { font-size: var(--fs-md); margin-bottom: var(--space-3); color: var(--text-primary); }
 .footer__col { display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--fs-sm); color: var(--text-secondary); }
 .footer__col a:hover { color: var(--brand-primary); }
+
+/* Соцсети — круглые иконки с brand-окраской вместо текстовых ссылок */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: var(--space-1);
+}
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: var(--brand-primary);
+  border: 1px solid var(--border-color);
+  transition: background var(--t-base), color var(--t-base), transform var(--t-base), border-color var(--t-base);
+}
+.social-icon:hover {
+  background: var(--brand-primary);
+  color: #FFFFFF;
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.social-icon svg { width: 18px; height: 18px; }
 .footer .logo-text--inverted { color: var(--brand-primary); }
 .footer__tagline { color: var(--text-muted); margin-top: var(--space-2); font-size: var(--fs-sm); }
 .footer__bottom {
@@ -2315,10 +2371,16 @@ button:focus:not(:focus-visible) {
   }
   .floating-cta__btn--wa .floating-cta__icon { width: auto; height: auto; font-size: 22px; }
 
-  /* финальный CTA — кнопка во всю ширину, не вылезает */
+  /* финальный CTA — кнопки в столбик, во всю ширину */
   .section--cta { padding: 48px 0; }
   .cta__title { font-size: 24px; }
   .btn--lg { width: 100%; padding: 16px 20px; font-size: 16px; }
+  .cta__actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  .cta__actions .btn { min-width: 0; }
+
+  /* Кнопка «Записаться на консультацию» в О компании — на всю ширину
+     (раньше была inline-flex, прижималась влево) */
+  .about__cta { display: flex; width: 100%; justify-content: center; }
 
   /* btn--sm на мобиле увеличиваем по высоте до 44px (палец попадает в кнопку) */
   .btn--sm { padding: 14px 20px; font-size: 14px; }
