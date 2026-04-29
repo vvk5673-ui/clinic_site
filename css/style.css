@@ -2199,17 +2199,27 @@ button:focus:not(:focus-visible) {
   .hero-badge--rating .hero-badge__value { font-size: 11px; }
   .hero-badge--rating .hero-badge__star { font-size: 11px; }
   .hero-badge--rating .hero-badge__label { font-size: 9px; }
+  /* На мобиле Лицензия переносится в верх-право — иначе пересекается
+     с промо-ярлыком в нижнем-правом углу. Рейтинг остаётся в верх-лево. */
   .hero-badge--license {
-    bottom: 10px;
-    left: 10px;
-    max-width: 155px;
+    bottom: auto;
+    top: 10px;
+    left: auto;
+    right: 10px;
+    max-width: 145px;
   }
   .hero-badge--license .hero-badge__icon { width: 22px; height: 22px; }
   .hero-badge--license .hero-badge__icon svg { width: 12px; height: 12px; }
   .hero__photo-stack { min-height: 280px; }
-  .hero__stats { gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-5); }
-  .hero__stats .stat { flex: 1; min-width: 90px; }
-  .stat__value { font-size: 32px; }
+  /* Статы по центру, равные доли, min-width 0 чтобы 4.9 не обрезалось на узких */
+  .hero__stats {
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    justify-content: space-between;
+  }
+  .hero__stats .stat { flex: 1 1 0; min-width: 0; text-align: center; }
+  .stat__value { font-size: 28px; }
+  .stat__label { font-size: 12px; }
   .hero__promo-tag {
     right: 12px;
     bottom: -20px;

@@ -327,18 +327,23 @@
   }
   function animateStatValue(el) {
     var raw = el.textContent.trim();
-    var match = raw.match(/^([\d.]+)(\D*)$/);
+    // Убираем пробелы (для чисел вида «10 000+») — иначе regex их не примет
+    var clean = raw.replace(/\s/g, '');
+    var match = clean.match(/^([\d.]+)(\D*)$/);
     if (!match) return;
     var target = parseFloat(match[1]);
     var suffix = match[2] || '';
-    var isFloat = raw.indexOf('.') !== -1;
+    var isFloat = clean.indexOf('.') !== -1;
     var duration = 1400;
     var start = performance.now();
     function tick(now) {
       var progress = Math.min((now - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic — мягкое завершение
       var current = target * eased;
-      el.textContent = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      // Числа ≥1000 форматируем с пробелом (10000 → 10 000) — русский стандарт
+      var num = isFloat ? current.toFixed(1) : Math.round(current);
+      if (!isFloat && num >= 1000) num = num.toLocaleString('ru-RU');
+      el.textContent = num + suffix;
       if (progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
