@@ -40,7 +40,8 @@ const CLINIC = {
   cityFromYear: "в Москве с 2012 года",
 
   // === МЕССЕНДЖЕРЫ И СОЦСЕТИ ===
-  whatsapp: "+74957861932",
+  // whatsapp — номер БЕЗ + (стандарт wa.me-ссылок: https://wa.me/74957861932)
+  whatsapp: "74957861932",
   telegram: "dental_clinic",
   vk: "dental",
   instagram: "dental",
