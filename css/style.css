@@ -1088,10 +1088,13 @@ button:focus:not(:focus-visible) {
   .card--doctor { opacity: 1; transform: none; transition: none; }
 }
 .card--doctor:hover { transform: none; }  /* отключаем общий hover-сдвиг */
-/* Карточка Ольги (2-я) — фото с большим лицом, не помещается в cover. Вписываем целиком */
-.card--doctor:nth-child(2) .card__media-img {
-  object-fit: contain;
-  background: var(--brand-primary-soft);
+/* Все портреты: cover + лицо в верхней части кадра (~25% сверху).
+   Раньше для Ольги был contain, но nth-child сломался после клонирования карусели —
+   правило попало на чужую карточку. object-position решает исходную проблему «голова
+   обрезается», работает универсально и не зависит от индекса. */
+.card--doctor .card__media-img {
+  object-fit: cover;
+  object-position: center 22%;
 }
 .card--doctor .card__media {
   position: absolute;
@@ -2326,8 +2329,10 @@ button:focus:not(:focus-visible) {
     border-radius: 0;
   }
   .card--blog .card__media { height: 160px; }
-  /* doctor сохраняет фото на всю карточку и текст-оверлей */
-  .card--doctor { padding: 0; aspect-ratio: 3/4; }
+  /* doctor сохраняет фото на всю карточку и текст-оверлей. На мобиле карточка
+     стала шире (100% от экрана), 3/4 даёт чрезмерную высоту → 1/1 для адекватной
+     высоты и места хватает портрету целиком */
+  .card--doctor { padding: 0; aspect-ratio: 1/1; }
   .card--doctor .card__media { position: absolute; inset: 0; height: 100%; margin: 0; border-radius: 0; }
   .card--doctor .card__overlay { padding: 16px 16px 18px; }
   .diagnosis__doctor .card__media { height: 220px; }
