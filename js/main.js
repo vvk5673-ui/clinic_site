@@ -188,6 +188,14 @@
     lastClone.classList.add(opts.cloneClass);
     firstClone.setAttribute('aria-hidden', 'true');
     lastClone.setAttribute('aria-hidden', 'true');
+    // Убираем фокусируемость у клонов (фикс Lighthouse aria-hidden-focus):
+    // если карточка-клон сама <a>, и любые внутренние <a>/<button> — все получают tabindex=-1
+    [firstClone, lastClone].forEach(function (clone) {
+      if (clone.matches('a, button, [tabindex]')) clone.setAttribute('tabindex', '-1');
+      clone.querySelectorAll('a, button, [tabindex]').forEach(function (el) {
+        el.setAttribute('tabindex', '-1');
+      });
+    });
     grid.insertBefore(lastClone, realCards[0]);
     grid.appendChild(firstClone);
 

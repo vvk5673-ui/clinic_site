@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+
+  <!-- Preload первого фото Hero — оно LCP-элемент, должно начать грузиться сразу -->
+  <link rel="preload" as="image" href="pictures/hero-1.webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Cabinet Grotesk от Indian Type Foundry (Fontshare CDN) — premium friendly шрифт для display -->
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
@@ -135,6 +138,8 @@
     </nav>
     <div class="nav-overlay" hidden></div>
   </header>
+
+  <main>
 
   <!-- 2. HERO -->
   <section class="hero">
@@ -272,7 +277,7 @@
       <div class="diagnosis__main">
         <h2 class="section__title">Не знаете с чего начать?</h2>
         <p class="section__subtitle">Выберите свою ситуацию — мы предложим план диагностики и лечения</p>
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" role="progressbar" aria-label="Прогресс выбора плана диагностики" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
           <div class="progress-bar__fill" style="width: 0%"></div>
         </div>
         <span class="progress-bar__label">Выберите свою ситуацию</span>
@@ -293,7 +298,7 @@
     <button type="button" class="diagnosis-option" aria-pressed="false" data-bind-attr="data-cta||ctaLabel">
       <span class="diagnosis-option__icon" data-icon="icon" aria-hidden="true"></span>
       <div class="diagnosis-option__body">
-        <h4 class="diagnosis-option__title" data-bind="title">—</h4>
+        <h3 class="diagnosis-option__title" data-bind="title">—</h3>
         <p class="diagnosis-option__text" data-bind="text">—</p>
       </div>
     </button>
@@ -381,7 +386,7 @@
         <ul class="lead-magnet__bullets" data-list="leadMagnet.bullets" data-template="lead-bullet-tpl"></ul>
         <form class="lead-form" data-form="lead">
           <label class="lead-form__label" data-bind="leadMagnet.formLabel">—</label>
-          <select class="lead-form__select" data-options="leadMagnet.channels"></select>
+          <select class="lead-form__select" data-options="leadMagnet.channels" aria-label="Способ получения PDF: WhatsApp, Telegram или email"></select>
           <input class="lead-form__input" type="tel" data-bind-attr="placeholder||leadMagnet.inputPlaceholder" required>
           <label class="lead-form__check">
             <input type="checkbox" class="lead-form__check-input" required>
@@ -544,6 +549,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- 18. FOOTER -->
   <footer class="footer">
     <div class="container footer__grid">
@@ -555,20 +562,20 @@
         <p class="footer__tagline" data-bind="cityFromYear">—</p>
       </div>
       <div class="footer__col">
-        <h4 class="footer__title">Навигация</h4>
+        <h3 class="footer__title">Навигация</h4>
         <a href="#services">Услуги</a>
         <a href="#doctors">Врачи</a>
         <a href="#about">О компании</a>
         <a href="#contacts">Контакты</a>
       </div>
       <div class="footer__col">
-        <h4 class="footer__title">Контакты</h4>
+        <h3 class="footer__title">Контакты</h4>
         <a href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
         <a href="#" data-bind-attr="href|mailto:|email" data-bind="email">—</a>
         <span data-bind="address">—</span>
       </div>
       <div class="footer__col footer__col--social">
-        <h4 class="footer__title">Соцсети</h4>
+        <h3 class="footer__title">Соцсети</h4>
         <div class="social-icons">
           <a href="#" class="social-icon" data-bind-attr="href|https://t.me/|telegram" aria-label="Telegram" target="_blank" rel="noopener">
             <span data-icon="telegram" aria-hidden="true"></span>
@@ -599,7 +606,7 @@
       <span class="floating-cta__icon" aria-hidden="true">Я</span>
       <span class="floating-cta__label">Смотреть отзывы</span>
     </a>
-    <a class="floating-cta__btn floating-cta__btn--accent floating-cta__btn--wa" href="#" data-bind-attr="href|https://wa.me/|whatsapp">
+    <a class="floating-cta__btn floating-cta__btn--accent floating-cta__btn--wa" href="#" aria-label="Записаться в WhatsApp" data-bind-attr="href|https://wa.me/|whatsapp">
       <span class="floating-cta__icon" data-icon="tooth" aria-hidden="true"></span>
       <span class="floating-cta__label">Записаться в WhatsApp</span>
     </a>

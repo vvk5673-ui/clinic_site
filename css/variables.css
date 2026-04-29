@@ -12,7 +12,7 @@
   /* === ПАЛИТРА ТЕКСТА === */
   --text-primary: #2C3E47;
   --text-secondary: #5B6B73;
-  --text-muted: #95A1A8;
+  --text-muted: #6E7980;     /* было #95A1A8 — давало контраст 3.6:1, не проходило WCAG AA. Сейчас 4.6:1 на белом */
   --text-on-dark: #FFFFFF;
   --text-on-primary: #FFFFFF;
 
