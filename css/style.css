@@ -2501,7 +2501,8 @@ button:focus:not(:focus-visible) {
     border-radius: 50%;
     box-shadow: var(--shadow-lg);
   }
-  .floating-cta__btn--wa .floating-cta__icon { width: auto; height: auto; font-size: 22px; }
+  .floating-cta__btn--wa .floating-cta__icon { width: 28px; height: 28px; font-size: 0; }
+  .floating-cta__btn--wa .floating-cta__icon svg { width: 100%; height: 100%; }
 
   /* финальный CTA — кнопки в столбик, во всю ширину */
   .section--cta { padding: 48px 0; }
