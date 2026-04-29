@@ -2499,3 +2499,137 @@ button:focus:not(:focus-visible) {
   .footer { padding: 40px 0 20px; }
   .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+/* ============================================================
+   ПРОМО-ПОПАП (только на демо-сайте)
+   Нативный <dialog>: ::backdrop = overlay, showModal() центрирует.
+   ============================================================ */
+.promo-modal {
+  position: fixed;
+  border: none;
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  border-radius: var(--r-xl);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+  max-width: 480px;
+  width: calc(100% - 32px);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  inset: 0;
+  margin: auto;
+}
+
+.promo-modal[open] {
+  animation: promo-modal-enter var(--t-base) ease-out;
+}
+
+@keyframes promo-modal-enter {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.promo-modal::backdrop {
+  background: rgba(15, 32, 39, 0.55);
+  animation: promo-modal-backdrop var(--t-base) ease-out;
+}
+
+@keyframes promo-modal-backdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.promo-modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.promo-modal__close:hover {
+  background: var(--bg-soft);
+  color: var(--text-primary);
+}
+
+.promo-modal__close:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.promo-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--brand-dark);
+  margin: 0 var(--space-6) var(--space-4) 0;
+}
+
+.promo-modal__text {
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.promo-modal__note {
+  font-size: var(--fs-sm);
+  color: var(--brand-dark);
+  font-weight: var(--fw-semibold);
+  margin: 0 0 var(--space-6) 0;
+}
+
+.promo-modal__cta {
+  width: 100%;
+  margin-bottom: var(--space-3);
+  justify-content: center;
+}
+
+.promo-modal__continue {
+  width: 100%;
+  display: block;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  padding: var(--space-3);
+  border-radius: var(--r-md);
+  transition: color var(--t-fast), background var(--t-fast);
+  text-align: center;
+  min-height: 44px;
+}
+
+.promo-modal__continue:hover {
+  color: var(--brand-dark);
+  background: var(--bg-soft);
+}
+
+.promo-modal__continue:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .promo-modal {
+    padding: var(--space-6) var(--space-5) var(--space-5);
+    border-radius: var(--r-lg);
+  }
+  .promo-modal__title { font-size: var(--fs-lg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-modal[open],
+  .promo-modal[open]::backdrop { animation: none; }
+}

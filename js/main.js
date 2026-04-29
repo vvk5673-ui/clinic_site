@@ -534,6 +534,88 @@
     });
   }
 
+  // Промо-попап только для демо-сайта (флаг CLINIC.promoModalEnabled).
+  // Перехватывает клики на все CTA-ссылки и submit лид-формы и
+  // показывает модалку с информацией о разработчике вместо реального действия.
+  // Перехватываем:
+  //   - href="#cta" — все ссылки на финальный CTA-блок
+  //   - tel:, mailto: — звонки и почта
+  //   - wa.me / api.whatsapp.com — WhatsApp-ссылки
+  //   - t.me, vk.com, instagram.com — соцсети клиники
+  //   - yandex.ru/maps — построение маршрута
+  // НЕ перехватываем: остальные внутренние якоря (#services, #about и т.д.) —
+  // это просто навигация по сайту, должна работать.
+  // Внутри самого попапа клики тоже не перехватываем — Telegram-ссылка Виктора
+  // должна открыть мессенджер.
+  function setupPromoModal() {
+    if (typeof CLINIC === 'undefined' || !CLINIC.promoModalEnabled) return;
+    var dialog = document.getElementById('promo-modal');
+    if (!dialog) return;
+
+    // На демо лид-форма триггерит попап. Снимаем disabled и required, чтобы
+    // submit прошёл независимо от заполненности полей и галочки согласия.
+    // Дополнительно перехватываем change чекбокса — чтобы setupLeadForm не
+    // вернул disabled=true когда пользователь снимет галочку.
+    document.querySelectorAll('[data-form="lead"]').forEach(function (form) {
+      form.querySelectorAll('button[type="submit"]').forEach(function (btn) { btn.disabled = false; });
+      form.querySelectorAll('[required]').forEach(function (el) { el.required = false; });
+      form.querySelectorAll('.lead-form__check-input').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          var btn = form.querySelector('button[type="submit"]');
+          if (btn) btn.disabled = false;
+        });
+      });
+    });
+
+    function openModal() {
+      if (typeof dialog.showModal === 'function') {
+        try { dialog.showModal(); } catch (e) { dialog.setAttribute('open', ''); }
+      } else {
+        dialog.setAttribute('open', '');
+      }
+    }
+    function closeModal() {
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    }
+
+    function isPromoTrigger(href) {
+      if (!href) return false;
+      if (href === '#cta') return true;
+      if (href.charAt(0) === '#') return false; // другие внутренние якоря — не трогаем
+      if (/^(tel:|mailto:)/i.test(href)) return true;
+      if (/^https?:\/\/(wa\.me|api\.whatsapp\.com|t\.me|vk\.com|www\.vk\.com|www\.instagram\.com|instagram\.com|yandex\.ru\/maps)/i.test(href)) return true;
+      return false;
+    }
+
+    // Перехватчик кликов на CTA-ссылки (делегирование на document)
+    document.addEventListener('click', function (e) {
+      // Клики внутри попапа пропускаем — наша Telegram-ссылка должна работать
+      if (e.target.closest('.promo-modal')) return;
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      if (!isPromoTrigger(link.getAttribute('href'))) return;
+      e.preventDefault();
+      openModal();
+    });
+
+    // Submit лид-формы — попап вместо success-сообщения.
+    // Capture phase + stopImmediatePropagation: успеваем до bubble-обработчика setupLeadForm.
+    document.addEventListener('submit', function (e) {
+      if (!e.target.closest || !e.target.closest('[data-form="lead"]')) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openModal();
+    }, true);
+
+    // Закрытие: data-promo-close на крестике и кнопке «Продолжить смотреть демо»,
+    // плюс клик по самому dialog (попадает на backdrop, а не на содержимое)
+    dialog.addEventListener('click', function (e) {
+      if (e.target.closest('[data-promo-close]')) { closeModal(); return; }
+      if (e.target === dialog) closeModal();
+    });
+  }
+
   function init() {
     if (typeof CLINIC === 'undefined') {
       console.error('CLINIC не найден. Проверьте js/config.js');
@@ -604,6 +686,9 @@
       prevId: 'reviews-prev',
       nextId: 'reviews-next'
     });
+    // Промо-попап вызывается ПОСЛЕ setupLeadForm — чтобы успеть переопределить
+    // disabled-логику чекбокса согласия, которую вешает setupLeadForm.
+    setupPromoModal();
   }
 
   if (document.readyState === 'loading') {
