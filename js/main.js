@@ -556,7 +556,9 @@
       dotsId: 'services-dots',
       dotClass: 'services-dot',
       cloneClass: 'card--service-clone',
-      ariaLabelPrefix: 'Перейти к услуге '
+      ariaLabelPrefix: 'Перейти к услуге ',
+      prevId: 'services-prev',
+      nextId: 'services-next'
     });
     setupCarousel({
       gridSelector: '.section--promotions .cards-grid',
@@ -564,7 +566,19 @@
       dotsId: 'promotions-dots',
       dotClass: 'promotions-dot',
       cloneClass: 'card--promotion-clone',
-      ariaLabelPrefix: 'Перейти к акции '
+      ariaLabelPrefix: 'Перейти к акции ',
+      prevId: 'promotions-prev',
+      nextId: 'promotions-next'
+    });
+    setupCarousel({
+      gridSelector: '.section--doctors .cards-grid',
+      cardSelector: '.card--doctor',
+      dotsId: 'doctors-dots',
+      dotClass: 'doctors-dot',
+      cloneClass: 'card--doctor-clone',
+      ariaLabelPrefix: 'Перейти к врачу ',
+      prevId: 'doctors-prev',
+      nextId: 'doctors-next'
     });
     setupCarousel({
       gridSelector: '.section--reviews .cards-grid',

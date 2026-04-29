@@ -163,7 +163,15 @@
         <h2 class="section__title section__title--inverted" data-bind="servicesTitle">Услуги нашей клиники</h2>
         <p class="section__subtitle section__subtitle--inverted" data-bind="servicesSubtitle">—</p>
         <div class="cards-grid cards-grid--3" data-list="services" data-template="service-tpl"></div>
-        <div class="services-dots" id="services-dots" aria-label="Навигация по услугам"></div>
+        <div class="carousel-nav">
+          <button type="button" class="carousel-arrow" id="services-prev" aria-label="Предыдущая услуга">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="services-dots" id="services-dots" aria-label="Навигация по услугам"></div>
+          <button type="button" class="carousel-arrow" id="services-next" aria-label="Следующая услуга">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -187,7 +195,15 @@
       <h2 class="section__title" data-bind="promotionsTitle">Акции и спецпредложения</h2>
       <p class="section__subtitle" data-bind="promotionsSubtitle">—</p>
       <div class="cards-grid cards-grid--3" data-list="promotions" data-template="promotion-tpl"></div>
-      <div class="promotions-dots" id="promotions-dots" aria-label="Навигация по акциям"></div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-arrow" id="promotions-prev" aria-label="Предыдущая акция">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="promotions-dots" id="promotions-dots" aria-label="Навигация по акциям"></div>
+        <button type="button" class="carousel-arrow" id="promotions-next" aria-label="Следующая акция">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </div>
   </section>
   <template id="promotion-tpl">
@@ -240,6 +256,15 @@
       <h2 class="section__title" data-bind="doctorsTitle">Команда врачей</h2>
       <p class="section__subtitle" data-bind="doctorsSubtitle">—</p>
       <div class="cards-grid cards-grid--4" data-list="doctors" data-template="doctor-tpl"></div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-arrow" id="doctors-prev" aria-label="Предыдущий врач">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="doctors-dots" id="doctors-dots" aria-label="Навигация по врачам"></div>
+        <button type="button" class="carousel-arrow" id="doctors-next" aria-label="Следующий врач">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </div>
   </section>
   <template id="doctor-tpl">
@@ -260,12 +285,12 @@
       <h2 class="section__title" data-bind="reviewsTitle">Что говорят пациенты</h2>
       <p class="section__subtitle" data-bind="reviewsSubtitle">—</p>
       <div class="cards-grid cards-grid--3" data-list="reviews" data-template="review-tpl"></div>
-      <div class="reviews-nav">
-        <button type="button" class="reviews-arrow reviews-arrow--prev" id="reviews-prev" aria-label="Предыдущий отзыв">
+      <div class="carousel-nav">
+        <button type="button" class="carousel-arrow" id="reviews-prev" aria-label="Предыдущий отзыв">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
         <div class="reviews-dots" id="reviews-dots" aria-label="Листание отзывов"></div>
-        <button type="button" class="reviews-arrow reviews-arrow--next" id="reviews-next" aria-label="Следующий отзыв">
+        <button type="button" class="carousel-arrow" id="reviews-next" aria-label="Следующий отзыв">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
       </div>

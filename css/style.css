@@ -810,8 +810,7 @@ button:focus:not(:focus-visible) {
 }
 .card__icon--inline svg { width: 20px; height: 20px; }
 
-/* Точки-индикаторы карусели Услуг (показываются только на мобиле) */
-.services-dots { display: none; }
+/* Точки-индикаторы карусели Услуг */
 .services-dot {
   width: 8px;
   height: 8px;
@@ -952,8 +951,7 @@ button:focus:not(:focus-visible) {
 .card--promotion .card__price { margin-top: auto; }
 .card--promotion .btn--block { margin-top: 0; }
 
-/* Точки-индикаторы карусели Акций (показываются только на мобиле) */
-.promotions-dots { display: none; }
+/* Точки-индикаторы карусели Акций */
 .promotions-dot {
   width: 8px;
   height: 8px;
@@ -1279,15 +1277,18 @@ button:focus:not(:focus-visible) {
 }
 .card--review-clone { display: flex; }
 
-/* Навигация под каруселью отзывов: стрелка-prev + точки + стрелка-next */
-.reviews-nav {
+/* === ОБЩАЯ НАВИГАЦИЯ КАРУСЕЛЕЙ (Услуги, Акции, Врачи, Отзывы) ===
+   Структура: prev-кнопка + точки + next-кнопка в одной flex-строке.
+   На десктопе для Услуг/Акций/Врачей скрывается (там обычная сетка),
+   для Отзывов всегда видна (карусель работает везде). */
+.carousel-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
   margin-top: var(--space-4);
 }
-.reviews-arrow {
+.carousel-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1299,23 +1300,56 @@ button:focus:not(:focus-visible) {
   color: var(--brand-dark);
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
   transition: background var(--t-base), border-color var(--t-base), color var(--t-base), transform var(--t-base);
 }
-.reviews-arrow:hover {
+.carousel-arrow:hover {
   background: var(--brand-primary);
   border-color: var(--brand-primary);
   color: var(--bg-card);
   transform: scale(1.05);
 }
-.reviews-arrow:active { transform: scale(0.95); }
-.reviews-arrow svg { display: block; }
+.carousel-arrow:active { transform: scale(0.95); }
+.carousel-arrow svg { display: block; }
 
-/* Точки-индикаторы под каруселью отзывов */
-.reviews-dots {
+/* Контейнер точек внутри .carousel-nav */
+.reviews-dots,
+.services-dots,
+.promotions-dots,
+.doctors-dots {
   display: flex;
   justify-content: center;
   gap: 8px;
 }
+
+/* На десктопе .carousel-nav скрыт у Услуг/Акций/Врачей (там обычная сетка).
+   У Отзывов всегда виден — карусель работает на всех экранах. */
+.section--services .carousel-nav,
+.section--promotions .carousel-nav,
+.section--doctors .carousel-nav { display: none; }
+@media (max-width: 640px) {
+  .section--services .carousel-nav,
+  .section--promotions .carousel-nav,
+  .section--doctors .carousel-nav { display: flex; }
+}
+
+/* Точки Врачей — стиль как у Услуг (под светлый фон) */
+.doctors-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: background var(--t-base), transform var(--t-base), width var(--t-base);
+}
+.doctors-dot.is-active {
+  background: var(--brand-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+.card--doctor-clone { display: none; }
 .reviews-dot {
   width: 8px;
   height: 8px;
@@ -1339,10 +1373,8 @@ button:focus:not(:focus-visible) {
 }
 @media (max-width: 640px) {
   .section--reviews .card--review {
-    flex: 0 0 92%;
+    flex: 0 0 100%;
   }
-  /* На мобиле стрелки скрыты — листают свайпом или точками */
-  .reviews-arrow { display: none; }
 }
 
 /* Шапка карточки: лого Яндекс.Карт слева + рейтинг (звёзды + 5,0) справа */
@@ -2057,13 +2089,7 @@ button:focus:not(:focus-visible) {
     padding: 0;
     border-radius: 0;
   }
-  /* Точки-индикаторы видны на мобиле, цвета подходят к светлому фону */
-  .services-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: var(--space-4);
-  }
+  /* Цвета точек подгоняем под светлый фон мобилы */
   .services-dot { background: var(--border-color); }
   .services-dot.is-active { background: var(--brand-primary); }
   /* Клоны карточек видны в свайпе на мобиле */
@@ -2084,13 +2110,7 @@ button:focus:not(:focus-visible) {
   }
   .section--services .cards-grid--3::-webkit-scrollbar { display: none; }
 
-  /* Акции на мобиле — горизонтальный свайп с точками (как в Услугах) */
-  .promotions-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: var(--space-4);
-  }
+  /* Акции на мобиле — горизонтальный свайп (точки + стрелки в .carousel-nav) */
   .card--promotion-clone { display: flex; }
   .section--promotions .cards-grid--3 {
     display: flex;
@@ -2106,32 +2126,42 @@ button:focus:not(:focus-visible) {
   }
   .section--promotions .cards-grid--3::-webkit-scrollbar { display: none; }
   .section--promotions .card--promotion {
-    flex: 0 0 92%;
+    flex: 0 0 100%;
     scroll-snap-align: start;
     /* отключаем stagger transform — он ломает horizontal scroll на мобиле */
     opacity: 1;
     transform: none;
   }
-  /* подсказка после подзаголовка Акций "· листайте →" */
-  .section--promotions .section__subtitle::after {
-    content: " · листайте →";
-    color: var(--text-muted);
-    font-size: 12px;
-  }
 
   .section--services .card--service {
-    flex: 0 0 92%;
+    flex: 0 0 100%;
     scroll-snap-align: start;
     /* отключаем stagger transform — он ломает horizontal scroll */
     opacity: 1;
     transform: none;
   }
-  /* мини-подсказка после подзаголовка "· листайте →" */
-  .section--services .section__subtitle::after {
-    content: " · листайте →";
-    color: var(--text-muted);
-    font-size: 12px;
+
+  /* Врачи на мобиле — горизонтальная карусель (как Услуги/Акции) */
+  .section--doctors .cards-grid--4 {
+    display: flex;
+    grid-template-columns: none;
+    flex-wrap: nowrap;
+    gap: var(--space-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 0 var(--space-4);
   }
+  .section--doctors .cards-grid--4::-webkit-scrollbar { display: none; }
+  .section--doctors .card--doctor {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    opacity: 1;
+    transform: none;
+  }
+  /* Клоны карточек врачей видны в свайпе на мобиле */
+  .card--doctor-clone { display: flex; }
   .diagnosis__options { grid-template-columns: 1fr; }
   .faq { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; gap: var(--space-5); }
