@@ -509,6 +509,9 @@
 
     burger.addEventListener('click', toggle);
     overlay.addEventListener('click', close);
+    // Крестик закрытия в шапке drawer (.nav__close) — дублирует функцию бургера
+    var navClose = nav.querySelector('.nav__close');
+    if (navClose) navClose.addEventListener('click', close);
     nav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', close);
     });

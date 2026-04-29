@@ -76,6 +76,21 @@
       </button>
     </div>
     <nav class="nav container" id="primary-nav" aria-label="Основное меню">
+      <!-- Шапка drawer-меню (видна только на мобиле) — лого + крестик закрытия -->
+      <div class="nav__header">
+        <span class="nav__logo">
+          <span class="header__logo-icon" data-icon="tooth"></span>
+          <span class="header__logo-text">
+            <span class="logo-text" data-bind="logoBrand">Дентал</span>
+            <span class="header__logo-descriptor" data-bind="logoDescriptor">Стоматология</span>
+          </span>
+        </span>
+        <button type="button" class="nav__close" aria-label="Закрыть меню">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Ссылки навигации (видны и на десктопе, и в drawer на мобиле) -->
       <a href="#services">Услуги</a>
       <a href="#promotions">Акции</a>
       <a href="#doctors">Врачи</a>
@@ -83,6 +98,40 @@
       <a href="#blog">Статьи</a>
       <a href="#faq">Вопрос-ответ</a>
       <a href="#contacts">Контакты</a>
+
+      <!-- CTA-блок (только в drawer на мобиле) -->
+      <div class="nav__cta-block">
+        <a href="#cta" class="btn btn--primary btn--block">Записаться на приём</a>
+        <a class="nav__phone" href="#" data-bind-attr="href|tel:|phoneRaw">
+          <span class="nav__phone-icon" data-icon="phone" aria-hidden="true"></span>
+          <span data-bind="phone">—</span>
+        </a>
+      </div>
+
+      <!-- Контакты (только в drawer на мобиле) -->
+      <div class="nav__contacts">
+        <div class="nav__contact-item">
+          <span class="nav__contact-icon" data-icon="map-pin" aria-hidden="true"></span>
+          <span data-bind="address">—</span>
+        </div>
+        <div class="nav__contact-item">
+          <span class="nav__contact-icon" data-icon="clock" aria-hidden="true"></span>
+          <span data-bind="workingHours">—</span>
+        </div>
+      </div>
+
+      <!-- Соцсети (только в drawer на мобиле) -->
+      <div class="nav__socials">
+        <a href="#" class="social-icon" data-bind-attr="href|https://t.me/|telegram" aria-label="Telegram" target="_blank" rel="noopener">
+          <span data-icon="telegram" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="social-icon" data-bind-attr="href|https://wa.me/|whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <span data-icon="whatsapp" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="social-icon" data-bind-attr="href|https://vk.com/|vk" aria-label="ВКонтакте" target="_blank" rel="noopener">
+          <span data-icon="vk" aria-hidden="true"></span>
+        </a>
+      </div>
     </nav>
     <div class="nav-overlay" hidden></div>
   </header>
