@@ -2601,6 +2601,7 @@ button:focus:not(:focus-visible) {
   line-height: var(--lh-normal);
   color: var(--text-primary);
   margin: 0 0 var(--space-4) 0;
+  text-wrap: pretty; /* антиорфан для абзаца — последняя строка не висит одиноким словом */
 }
 
 /* Note → бейдж-плашка: было мелким серым текстом, стало sage-капсулой
@@ -2632,6 +2633,19 @@ button:focus:not(:focus-visible) {
   width: 100%;
   margin-bottom: var(--space-3);
   justify-content: center;
+  /* Премиум-микровзаимодействие: плавный lift на hover + сжатие на active.
+     Переопределяет дефолтный transform у .btn--primary внутри попапа. */
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.promo-modal__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(45, 125, 95, 0.30), 0 4px 8px rgba(45, 125, 95, 0.15);
+}
+
+.promo-modal__cta:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(45, 125, 95, 0.20);
 }
 
 .promo-modal__continue {
