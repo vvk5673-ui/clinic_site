@@ -51,14 +51,14 @@
         <div class="header__info-item">
           <span class="header__icon" data-icon="map-pin"></span>
           <div class="header__info-text">
-            <span class="header__label">Адрес клиники</span>
+            <span class="header__label" data-bind="ui.headerAddressLabel">Адрес клиники</span>
             <span data-bind="address">—</span>
           </div>
         </div>
         <div class="header__info-item">
           <span class="header__icon" data-icon="clock"></span>
           <div class="header__info-text">
-            <span class="header__label">Время работы</span>
+            <span class="header__label" data-bind="ui.headerHoursLabel">Время работы</span>
             <span data-bind="workingHoursShort">—</span>
           </div>
         </div>
@@ -68,8 +68,8 @@
         <span class="header__phone-number" data-bind="phone">—</span>
       </a>
       <a href="#cta" class="btn btn--accent btn--header">
-        <span class="btn__text btn__text--full">Онлайн запись на приём</span>
-        <span class="btn__text btn__text--short">Записаться</span>
+        <span class="btn__text btn__text--full" data-bind="ui.headerCtaFull">Онлайн запись на приём</span>
+        <span class="btn__text btn__text--short" data-bind="ui.headerCtaShort">Записаться</span>
         <span class="btn__arrow" data-icon="arrow-right"></span>
       </a>
       <button type="button" class="header__burger" aria-label="Открыть меню" aria-controls="primary-nav" aria-expanded="false">
@@ -156,7 +156,7 @@
           </span>
         </h1>
         <p class="hero__subtitle" data-bind="subtitle">—</p>
-        <a href="#cta" class="btn btn--primary btn--lg btn--magnetic">Получить консультацию</a>
+        <a href="#cta" class="btn btn--primary btn--lg btn--magnetic" data-bind="ui.heroCta">Получить консультацию</a>
         <div class="hero__stats" data-list="heroStats" data-template="hero-stat-tpl"></div>
       </div>
       <div class="hero__media">
@@ -275,12 +275,12 @@
   <section class="section section--diagnosis" data-section="diagnosis">
     <div class="container diagnosis__grid">
       <div class="diagnosis__main">
-        <h2 class="section__title">Не знаете с чего начать?</h2>
-        <p class="section__subtitle">Выберите свою ситуацию — мы предложим план диагностики и лечения</p>
+        <h2 class="section__title" data-bind="ui.diagnosisTitle">Не знаете с чего начать?</h2>
+        <p class="section__subtitle" data-bind="ui.diagnosisSubtitle">Выберите свою ситуацию — мы предложим план диагностики и лечения</p>
         <div class="progress-bar" role="progressbar" aria-label="Прогресс выбора плана диагностики" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
           <div class="progress-bar__fill" style="width: 0%"></div>
         </div>
-        <span class="progress-bar__label">Выберите свою ситуацию</span>
+        <span class="progress-bar__label" data-bind="ui.diagnosisProgressInitial">Выберите свою ситуацию</span>
         <div class="diagnosis__options" data-list="diagnosis" data-template="diagnosis-tpl"></div>
       </div>
       <aside class="diagnosis__doctor card">
@@ -289,7 +289,7 @@
           <h3 class="card__title" data-bind="diagnosisDoctor.name">—</h3>
           <p class="card__text" data-bind="diagnosisDoctor.role">—</p>
           <p class="card__text card__text--muted" data-bind="diagnosisDoctor.experience">—</p>
-          <a href="#cta" class="btn btn--primary btn--block diagnosis__cta">Получить план лечения</a>
+          <a href="#cta" class="btn btn--primary btn--block diagnosis__cta" data-bind="ui.diagnosisCtaDefault">Получить план лечения</a>
         </div>
       </aside>
     </div>
@@ -562,20 +562,20 @@
         <p class="footer__tagline" data-bind="cityFromYear">—</p>
       </div>
       <div class="footer__col">
-        <h3 class="footer__title">Навигация</h4>
+        <h3 class="footer__title" data-bind="ui.footerNavTitle">Навигация</h3>
         <a href="#services">Услуги</a>
         <a href="#doctors">Врачи</a>
         <a href="#about">О компании</a>
         <a href="#contacts">Контакты</a>
       </div>
       <div class="footer__col">
-        <h3 class="footer__title">Контакты</h4>
+        <h3 class="footer__title" data-bind="ui.footerContactsTitle">Контакты</h3>
         <a href="#" data-bind-attr="href|tel:|phoneRaw" data-bind="phone">—</a>
         <a href="#" data-bind-attr="href|mailto:|email" data-bind="email">—</a>
         <span data-bind="address">—</span>
       </div>
       <div class="footer__col footer__col--social">
-        <h3 class="footer__title">Соцсети</h4>
+        <h3 class="footer__title" data-bind="ui.footerSocialsTitle">Соцсети</h3>
         <div class="social-icons">
           <a href="#" class="social-icon" data-bind-attr="href|https://t.me/|telegram" aria-label="Telegram" target="_blank" rel="noopener">
             <span data-icon="telegram" aria-hidden="true"></span>
@@ -591,7 +591,7 @@
     </div>
     <div class="container footer__bottom">
       <span>© <span data-bind="name">—</span></span>
-      <span>Лицензия Минздрава: <span data-bind="heroBadgeLicense.number">—</span></span>
+      <span><span data-bind="ui.footerLicenseLabel">Лицензия Минздрава</span>: <span data-bind="heroBadgeLicense.number">—</span></span>
     </div>
   </footer>
 

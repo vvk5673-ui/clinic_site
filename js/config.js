@@ -302,6 +302,24 @@ const CLINIC = {
     mapEmbed: "https://yandex.ru/map-widget/v1/?ll=37.568%2C55.813&z=12&pt=37.499,55.819,pm2gnm~37.638,55.808,pm2gnm"
   },
 
+  // === UI-ТЕКСТЫ (короткие подписи и кнопки, которые могут отличаться у клиента) ===
+  // Шапка: подписи к адресу/часам и текст CTA-кнопки в правом углу
+  ui: {
+    headerAddressLabel: "Адрес клиники",
+    headerHoursLabel: "Время работы",
+    headerCtaFull: "Онлайн запись на приём",
+    headerCtaShort: "Записаться",
+    heroCta: "Получить консультацию",
+    diagnosisTitle: "Не знаете с чего начать?",
+    diagnosisSubtitle: "Выберите свою ситуацию — мы предложим план диагностики и лечения",
+    diagnosisProgressInitial: "Выберите свою ситуацию",
+    diagnosisCtaDefault: "Получить план лечения",
+    footerNavTitle: "Навигация",
+    footerContactsTitle: "Контакты",
+    footerSocialsTitle: "Соцсети",
+    footerLicenseLabel: "Лицензия Минздрава"
+  },
+
   // === ФИНАЛЬНЫЙ CTA ===
   // 2 кнопки (звонок + WhatsApp) — даём пациенту выбор канала.
   // Подзаголовок единый «ответим за 5 минут» работает для обоих.
