@@ -336,7 +336,7 @@ const CLINIC = {
   promoModalEnabled: true,
   promo: {
     title: "Это демо-сайт",
-    description: "И эти функции настраиваются индивидуально. По вопросам покупки/разработки сайта пишите в Telegram.",
+    description: "Эти функции настраиваются индивидуально. По вопросам покупки/разработки сайта пишите в Telegram.",
     note: "Разработка от одного дня.",
     ctaLabel: "Написать в Telegram",
     ctaUrl: "https://t.me/VictorKorotkov",
